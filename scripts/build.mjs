@@ -267,7 +267,7 @@ function agencySchema() {
     name: SITE.legalName,
     alternateName: 'ANGOPI',
     slogan: 'Te guardamos la espalda.',
-    description: 'Agencia de seguros multi-productos en Barranquilla desde 1955. Ayudamos a personas y PYMEs a proteger lo que más valoran con soluciones a medida.',
+    description: 'Agencia de seguros multi-productos en Barranquilla desde 1955. Ayudamos a personas y empresas a proteger lo que más valoran.',
     foundingDate: '1955',
     taxID: SITE.nit,
     url: SITE.url,

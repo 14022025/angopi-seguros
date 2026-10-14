@@ -1233,3 +1233,5 @@ html:not(.has-tabs) .services__stage .arrow { display: none; }
 .track { scroll-snap-type: none; }
 @media (hover: none) { .track { scroll-snap-type: x mandatory; } .services.is-auto .track { scroll-snap-type: none; } }
 .history-card__quote .accent { color: var(--blue); }
+/* Los íconos de descarga no giran al pasar el mouse (las flechas de enlace sí) */
+.list--download a:hover .round-btn { transform: none; }
