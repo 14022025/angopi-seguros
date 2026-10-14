@@ -1,12 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-  <url><loc>https://theo272004.github.io/angopi-seguros/</loc><changefreq>monthly</changefreq><priority>1.0</priority></url>
-  <url><loc>https://theo272004.github.io/angopi-seguros/arrendamiento/</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
-  <url><loc>https://theo272004.github.io/angopi-seguros/contacto/</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
-  <url><loc>https://theo272004.github.io/angopi-seguros/empresas/</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
-  <url><loc>https://theo272004.github.io/angopi-seguros/formatos/</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
-  <url><loc>https://theo272004.github.io/angopi-seguros/nosotros/</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
-  <url><loc>https://theo272004.github.io/angopi-seguros/personas/</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
-  <url><loc>https://theo272004.github.io/angopi-seguros/politica-de-datos/</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
-  <url><loc>https://theo272004.github.io/angopi-seguros/siniestros/</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://14022025.github.io/angopi-seguros/</loc><changefreq>monthly</changefreq><priority>1.0</priority></url>
+  <url><loc>https://14022025.github.io/angopi-seguros/politica-de-datos/</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
 </urlset>

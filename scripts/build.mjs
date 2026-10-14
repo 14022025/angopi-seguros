@@ -13,9 +13,10 @@ const SRC = join(ROOT, 'src');
 // ---------------------------------------------------------------------------
 const SITE = {
   // Cambiar a 'https://www.angopi.co/' cuando el sitio se publique en el dominio propio.
-  url: 'https://theo272004.github.io/angopi-seguros/',
+  url: 'https://14022025.github.io/angopi-seguros/',
   name: 'Angopi Agencia de Seguros',
   legalName: 'Agencia de Seguros Angopi Ltda.',
+  nit: '900.297.260-8',
   whatsapp: '573013631792',
   phone1: '+57 301 363 1792',
   phone1Raw: '+573013631792',
@@ -45,6 +46,9 @@ const LINKS = {
   tarifasSoat: 'https://www.angopi.co/files/TarifasSOAT2026.pdf',
   formatoNatural: 'https://www.angopi.co/files/PersonaNatural.pdf',
   formatoJuridica: 'https://www.angopi.co/files/PersonaJuridica.pdf',
+  formHogar: 'https://docs.google.com/forms/d/1TAo7LrC0siZLnIbMaW7OhMaIhCkh0wt3S9-GMLMse-8/viewform',
+  formVida: 'https://docs.google.com/forms/d/1jhKlNKV0RmiF_vYnM2TILmalbTB7pN3RMmf4kKX5buM/viewform',
+  formPyme: 'https://docs.google.com/forms/d/1MLlvlzY1D3Azez8c1_BHTGhq1pu_hM4kiUjwwk2MpLw/viewform',
   facebook: 'https://www.facebook.com/angopiltda',
   instagram: 'https://www.instagram.com/angopi_ltda',
   linkedin: 'https://co.linkedin.com/company/agencia-de-seguros-angopi-ltda',
@@ -53,22 +57,30 @@ const LINKS = {
   mapsEmbed: 'https://www.google.com/maps?q=Edificio%20River%20View%2C%20Carrera%2064B%20%2385-150%2C%20Barranquilla&output=embed',
 };
 
+// El sitio es una sola landing: la navegación lleva a sus secciones
 const NAV = [
-  { key: 'personas', label: 'Personas', href: 'personas/' },
-  { key: 'empresas', label: 'Empresas', href: 'empresas/' },
-  { key: 'arrendamiento', label: 'Arrendamiento', href: 'arrendamiento/' },
-  { key: 'siniestros', label: 'Siniestros', href: 'siniestros/' },
-  { key: 'nosotros', label: 'Nosotros', href: 'nosotros/' },
+  { label: 'Personas', href: '#personas' },
+  { label: 'Empresas', href: '#empresas' },
+  { label: 'Arrendamiento', href: '#arrendamiento' },
+  { label: 'Nosotros', href: '#nosotros' },
+  { label: 'Recursos', href: '#recursos' },
 ];
 
-// Redirecciones desde las URLs del sitio actual (angopi.co)
+// Redirecciones desde las URLs de angopi.co y de las páginas internas anteriores
 const LEGACY = {
-  'spersonas.html': 'personas/',
-  'sempresas.html': 'empresas/',
-  'segurodearrendamiento.html': 'arrendamiento/',
-  'about.html': 'nosotros/',
-  'formatos.html': 'formatos/',
-  'contact.html': 'contacto/',
+  'spersonas.html': '#personas',
+  'sempresas.html': '#empresas',
+  'segurodearrendamiento.html': '#arrendamiento',
+  'about.html': '#nosotros',
+  'formatos.html': '#recursos',
+  'contact.html': '#contacto',
+  'personas/index.html': '#personas',
+  'empresas/index.html': '#empresas',
+  'arrendamiento/index.html': '#arrendamiento',
+  'siniestros/index.html': '#contacto',
+  'nosotros/index.html': '#nosotros',
+  'contacto/index.html': '#contacto',
+  'formatos/index.html': '#recursos',
 };
 
 // ---------------------------------------------------------------------------
@@ -108,6 +120,9 @@ const ICONS = {
   umbrella: '<path d="M22 12a10.06 10.06 1 0 0-20 0Z"/><path d="M12 12v8a2 2 0 0 0 4 0"/><path d="M12 2v1"/>',
   clock: '<circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/>',
   check: '<path d="M20 6 9 17l-5-5"/>',
+  'user-check': '<path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="m16 11 2 2 4-4"/>',
+  compass: '<circle cx="12" cy="12" r="10"/><path d="m16.24 7.76-2.12 6.36-6.36 2.12 2.12-6.36z"/>',
+  award: '<circle cx="12" cy="8" r="6"/><path d="M15.477 12.89 17 22l-5-3-5 3 1.523-9.11"/>',
   menu: '<path d="M4 6h16"/><path d="M4 12h16"/><path d="M4 18h16"/>',
   close: '<path d="M18 6 6 18"/><path d="m6 6 12 12"/>',
   camera: '<path d="M14.5 4h-5L7 7H4a2 2 0 0 0-2 2v9a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V9a2 2 0 0 0-2-2h-3l-2.5-3z"/><circle cx="12" cy="13" r="3"/>',
@@ -135,6 +150,50 @@ function icon(name, cls = '') {
 }
 
 const wa = (text) => `https://wa.me/${SITE.whatsapp}?text=${encodeURIComponent(text)}`;
+
+// Fotografías propias en WebP (assets/img/fotos), en dos tamaños cada una
+const PHOTOS = {
+  hero: [1600, 2400, 3200],
+  personas: [700, 1100],
+  empresas: [900, 1600],
+  familia: [900, 1600],
+  campo: [1400, 2400],
+  historia: [1400, 2400, 3200],
+  // Fotos de Angopi para el carrusel de servicios (recortadas a 3:4)
+  "svc-auto": [720, 1080],
+  "svc-salud": [720, 1080],
+  "svc-hogar": [720, 1080],
+  "svc-mascota": [720, 1080],
+  "svc-bici": [720, 1080],
+  // Provisionales: Unsplash (u:, licencia libre) y vista previa de Magnific (m:, hay que descargarlas con la cuenta antes de publicar)
+  "u-viaje": "m:big-family-leaving-seaside-holiday-with-vehicle-trip-small-child-with-grandparents-parents-travelling-vacation-journey-summer-people-feeling-excited-about-sea-destination_482257-48324.jpg",
+  "u-arriendo": "m:happy-couple-with-house-keys_1098-1984.jpg",
+  "u-moto": "m:young-woman-driving-moped-tropical-life_1321-2766.jpg",
+  "u-profesional": "m:portrait-handsome-smiling-young-man-online-tutor-businessman-working-cafe-remotely-waving-hand_1258-245358.jpg",
+  "u-cumplimiento": "u:1758599543278-32d9d073941e",
+  "u-empleados": "m:happy-business-colleagues-hugging_1262-21066.jpg",
+  "u-negocio": "m:young-florist_1098-13710.jpg",
+  "u-transporte": "m:portrait-professional-truck-driver-showing-thumbs-up-smiling_342744-296.jpg",
+  "u-obra": "m:happy-builders-hardhat_1398-1745.jpg",
+};
+function photo(root, name, alt, sizes, attrs = '') {
+  const widths = PHOTOS[name];
+  if (!widths) throw new Error(`Foto desconocida: ${name}`);
+  if (typeof widths === "string" && widths.startsWith("m:")) {
+    const p = widths.slice(2);
+    const u = (w) => esc(`https://img.magnific.com/free-photo/${p}?w=${w}&q=80`);
+    return `<img src="${u(1000)}" srcset="${u(600)} 600w, ${u(1000)} 1000w" sizes="${sizes}" alt="${esc(alt)}" width="1000" height="667"${attrs ? " " + attrs : ""}>`;
+  }
+  if (typeof widths === "string") {
+    const id = widths.slice(2);
+    const u = (w) => esc(`https://images.unsplash.com/photo-${id}?auto=format&fit=crop&w=${w}&h=${Math.round(w * 4 / 3)}&q=75`);
+    const set = [480, 720, 960].map((w) => `${u(w)} ${w}w`).join(", ");
+    return `<img src="${u(720)}" srcset="${set}" sizes="${sizes}" alt="${esc(alt)}" width="720" height="960"${attrs ? " " + attrs : ""}>`;
+  }
+  const url = (w) => `${root}assets/img/fotos/${name}-${w}.webp`;
+  const srcset = widths.map((w) => `${url(w)} ${w}w`).join(', ');
+  return `<img src="${url(widths[widths.length - 1])}" srcset="${srcset}" sizes="${sizes}" alt="${esc(alt)}"${attrs ? ' ' + attrs : ''}>`;
+}
 
 // ---------------------------------------------------------------------------
 // Utilidades
@@ -167,6 +226,7 @@ function render(html, ctx) {
       .replace(/\{\{partial:([\w-]+)\}\}/g, (_, n) => partial(n))
       .replace(/\{\{icon:([\w-]+)(?::([^}]+))?\}\}/g, (_, n, c) => icon(n, c || ''))
       .replace(/\{\{wa:([^}]*)\}\}/g, (_, t) => esc(wa(t)))
+      .replace(/\{\{photo:([^|}]+)\|([^|}]+)\|([^|}]+)(?:\|([^}]*))?\}\}/g, (_, name, alt, sizes, attrs) => photo(ctx.root, name, alt, sizes, attrs))
       .replace(/\{\{link:(\w+)\}\}/g, (_, k) => {
         if (!LINKS[k]) throw new Error(`Enlace desconocido: ${k}`);
         return esc(LINKS[k]);
@@ -207,7 +267,9 @@ function agencySchema() {
     name: SITE.legalName,
     alternateName: 'ANGOPI',
     slogan: 'Te guardamos la espalda.',
-    description: 'Agencia de seguros familiar en Barranquilla desde 1955. Asesoría en seguros para personas, empresas y arrendamiento con Allianz, Bolívar, Chubb, HDI, Mapfre, SBS y SURA.',
+    description: 'Agencia de seguros multi-productos en Barranquilla desde 1955. Ayudamos a personas y PYMEs a proteger lo que más valoran con soluciones a medida.',
+    foundingDate: '1955',
+    taxID: SITE.nit,
     url: SITE.url,
     logo: `${SITE.url}assets/img/logo-angopi.png`,
     image: `${SITE.url}assets/img/og-angopi.jpg`,
@@ -245,10 +307,7 @@ function layout(meta, body, ctx) {
   const canonical = SITE.url + (meta.path || '');
   const title = meta.title;
   const ogTitle = meta.ogTitle || title;
-
-  const nav = NAV.map(
-    (n) => `<li><a href="${root}${n.href}"${meta.nav === n.key ? ' aria-current="page"' : ''}>${n.label}</a></li>`,
-  ).join('');
+  const asesoria = esc(wa('¡Hola! Me gustaría recibir asesoría.'));
 
   const schemas = [];
   if (meta.schema === 'home') schemas.push(agencySchema());
@@ -273,9 +332,10 @@ function layout(meta, body, ctx) {
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>${esc(title)}</title>
+  <script>document.documentElement.classList.add('js')</script>
   <meta name="description" content="${esc(meta.description)}">
   ${meta.noindex ? '<meta name="robots" content="noindex">' : `<link rel="canonical" href="${esc(canonical)}">`}
-  <meta name="theme-color" content="#1a50b8">
+  <meta name="theme-color" content="#418ef2">
   <meta property="og:type" content="website">
   <meta property="og:locale" content="es_CO">
   <meta property="og:site_name" content="${esc(SITE.name)}">
@@ -293,7 +353,7 @@ function layout(meta, body, ctx) {
   <link rel="manifest" href="${root}site.webmanifest">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600;700&display=swap">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600;700&family=Nunito+Sans:opsz,wght@6..12,600;6..12,700;6..12,800&display=swap">
   <link rel="stylesheet" href="${root}assets/css/styles.css?v=${SITE.version}">
   ${jsonld}
 </head>
@@ -307,10 +367,10 @@ function layout(meta, body, ctx) {
         <img class="brand__light" src="${root}assets/img/logo-angopi-blanco.png" alt="ANGOPI Agencia de Seguros" width="568" height="191">
       </a>
       <nav aria-label="Principal">
-        <ul class="nav-links">${nav}</ul>
+        <ul class="nav-links">${NAV.map((n) => `<li><a href="${root}${n.href}">${n.label}</a></li>`).join('')}</ul>
       </nav>
       <div class="nav-actions">
-        <a class="btn btn--dark btn--sm nav-cta" href="${esc(wa('Hola Angopi, quiero cotizar un seguro.'))}" target="_blank" rel="noopener">Cotizar por WhatsApp</a>
+        <a class="btn btn--dark btn--sm nav-cta" href="${asesoria}" target="_blank" rel="noopener">Solicitar asesoría</a>
         <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="menu-movil" aria-label="Abrir menú">
           <span class="icon-open">${icon('menu')}</span><span class="icon-close">${icon('close')}</span>
         </button>
@@ -319,13 +379,11 @@ function layout(meta, body, ctx) {
     <div class="mobile-menu" id="menu-movil" hidden>
       <nav aria-label="Principal (móvil)">
         <ul>
-          ${NAV.map((n) => `<li><a href="${root}${n.href}"${meta.nav === n.key ? ' aria-current="page"' : ''}>${n.label}${icon('arrow-right', 'icon--sm')}</a></li>`).join('')}
-          <li><a href="${root}formatos/"${meta.nav === 'formatos' ? ' aria-current="page"' : ''}>Formatos${icon('arrow-right', 'icon--sm')}</a></li>
-          <li><a href="${root}contacto/"${meta.nav === 'contacto' ? ' aria-current="page"' : ''}>Contacto${icon('arrow-right', 'icon--sm')}</a></li>
+          ${NAV.map((n) => `<li><a href="${root}${n.href}">${n.label}${icon('arrow-right', 'icon--sm')}</a></li>`).join('')}
         </ul>
       </nav>
       <div class="mobile-menu__actions">
-        <a class="btn btn--dark btn--block" href="${esc(wa('Hola Angopi, quiero cotizar un seguro.'))}" target="_blank" rel="noopener">${icon('whatsapp')}Cotizar por WhatsApp</a>
+        <a class="btn btn--dark btn--block" href="${asesoria}" target="_blank" rel="noopener">Solicitar asesoría</a>
         <a class="btn btn--outline btn--block" href="tel:${SITE.phone1Raw}">${icon('phone')}Llamar al ${SITE.phone1}</a>
       </div>
     </div>
@@ -341,7 +399,7 @@ ${body}
         <div class="footer-brand">
           <img src="${root}assets/img/logo-angopi.png" alt="ANGOPI Agencia de Seguros" width="568" height="191" loading="lazy">
           <p class="footer-claim">Te guardamos la espalda.</p>
-          <p>Agencia de seguros familiar en Barranquilla desde 1955. Trabajamos con Allianz, Bolívar, Chubb, HDI, Mapfre, SBS y SURA.</p>
+          <p>Agencia de seguros multi-productos. En Barranquilla desde 1955.</p>
           <ul class="social" aria-label="Redes sociales">
             <li><a href="${LINKS.facebook}" target="_blank" rel="noopener" aria-label="Facebook">${icon('facebook')}</a></li>
             <li><a href="${LINKS.instagram}" target="_blank" rel="noopener" aria-label="Instagram">${icon('instagram')}</a></li>
@@ -350,43 +408,36 @@ ${body}
           </ul>
         </div>
         <div class="footer-col">
-          <h2>Seguros</h2>
+          <h2>Navegación</h2>
           <ul>
-            <li><a href="${root}personas/">Personas y familias</a></li>
-            <li><a href="${root}empresas/">Empresas</a></li>
-            <li><a href="${root}arrendamiento/">Arrendamiento SURA</a></li>
-            <li><a href="${LINKS.soat}" target="_blank" rel="noopener">SOAT en línea</a></li>
-            <li><a href="${root}siniestros/">¿Tuviste un siniestro?</a></li>
+            ${NAV.map((n) => `<li><a href="${root}${n.href}">${n.label}</a></li>`).join('\n            ')}
           </ul>
         </div>
         <div class="footer-col">
-          <h2>Angopi</h2>
+          <h2>Contacto</h2>
           <ul>
-            <li><a href="${root}nosotros/">Nuestra historia</a></li>
-            <li><a href="${root}nosotros/#equipo">Equipo</a></li>
-            <li><a href="${root}formatos/">Formatos y tarifas SOAT</a></li>
-            <li><a href="${root}contacto/">Contacto</a></li>
-            <li><a href="${root}politica-de-datos/">Tratamiento de datos</a></li>
+            <li><a href="${esc(wa('¡Hola! Les escribo desde la página web.'))}" target="_blank" rel="noopener">WhatsApp ${SITE.phone1}</a></li>
+            <li><a href="tel:${SITE.phone2Raw}">Teléfono ${SITE.phone2}</a></li>
+            <li><a href="mailto:${SITE.email}">${SITE.email}</a></li>
+            <li><a href="${LINKS.calendly}" target="_blank" rel="noopener">Cita virtual con un asesor</a></li>
           </ul>
         </div>
         <div class="footer-col">
           <h2>Visítanos</h2>
           <address>
             <a href="${LINKS.maps}" target="_blank" rel="noopener">Carrera 64B # 85 – 150, Of. 506<br>Edificio River View, Barranquilla</a>
-            <a href="tel:${SITE.phone1Raw}">${SITE.phone1}</a>
-            <a href="tel:${SITE.phone2Raw}">${SITE.phone2}</a>
-            <a href="mailto:${SITE.email}">${SITE.email}</a>
+            <a href="${LINKS.maps}" target="_blank" rel="noopener">Cómo llegar</a>
           </address>
         </div>
       </div>
       <div class="footer-bottom">
-        <p>© ${new Date().getFullYear()} ${SITE.legalName} Todos los derechos reservados.</p>
-        <p>Las coberturas, condiciones, exclusiones y precios dependen de cada aseguradora y de la póliza contratada.</p>
+        <p>© ${new Date().getFullYear()} ${SITE.legalName} NIT ${SITE.nit}</p>
+        <p><a href="${root}politica-de-datos/">Política de tratamiento de datos</a></p>
       </div>
     </div>
   </footer>
 
-  <a class="wa-float" href="${esc(wa('Hola Angopi, estoy en su página web y quiero hacer una consulta.'))}" target="_blank" rel="noopener" aria-label="Escríbenos por WhatsApp">${icon('whatsapp')}</a>
+  <a class="wa-float" href="${esc(wa('¡Hola! Les escribo desde la página web.'))}" target="_blank" rel="noopener" aria-label="Escríbenos por WhatsApp">${icon('whatsapp')}</a>
 
   <script src="${root}assets/js/main.js?v=${SITE.version}" defer></script>
   ${scripts}
@@ -421,8 +472,10 @@ for (const f of files) {
 }
 
 // Redirecciones de URLs antiguas
-for (const [from, to] of Object.entries(LEGACY)) {
-  const target = SITE.url + to;
+for (const [from, anchor] of Object.entries(LEGACY)) {
+  const target = SITE.url + anchor;
+  const to = (rootFor(dirname(from).replace(/^\.$/, '')) || './') + anchor;
+  mkdirSync(dirname(join(ROOT, from)), { recursive: true });
   writeFileSync(
     join(ROOT, from),
     `<!doctype html>
