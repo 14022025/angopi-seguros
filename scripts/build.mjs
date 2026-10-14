@@ -272,7 +272,7 @@ function agencySchema() {
     taxID: SITE.nit,
     url: SITE.url,
     logo: `${SITE.url}assets/img/logo-angopi.png`,
-    image: `${SITE.url}assets/img/og-angopi.jpg`,
+    image: `${SITE.url}assets/img/og-portada.jpg`,
     telephone: SITE.phone1Raw,
     email: SITE.email,
     address: {
@@ -342,10 +342,10 @@ function layout(meta, body, ctx) {
   <meta property="og:title" content="${esc(ogTitle)}">
   <meta property="og:description" content="${esc(meta.description)}">
   <meta property="og:url" content="${esc(canonical)}">
-  <meta property="og:image" content="${SITE.url}assets/img/og-angopi.jpg">
+  <meta property="og:image" content="${SITE.url}assets/img/og-portada.jpg">
   <meta property="og:image:width" content="1200">
   <meta property="og:image:height" content="630">
-  <meta property="og:image:alt" content="Angopi Agencia de Seguros: Te guardamos la espalda.">
+  <meta property="og:image:alt" content="Angopi Agencia de Seguros: Pase lo que pase, estamos aquí para ti.">
   <meta name="twitter:card" content="summary_large_image">
   <link rel="icon" href="${root}favicon.ico" sizes="any">
   <link rel="icon" type="image/png" sizes="32x32" href="${root}assets/img/icons/favicon-32.png">
