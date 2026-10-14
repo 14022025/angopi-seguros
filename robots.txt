@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://theo272004.github.io/angopi-seguros/sitemap.xml

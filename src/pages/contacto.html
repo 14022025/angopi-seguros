@@ -1,0 +1,114 @@
+---
+title: Contacto: cotiza tu seguro por WhatsApp | Angopi
+description: Escríbenos por WhatsApp, llámanos, agenda una cita virtual o visítanos en el Edificio River View de Barranquilla. Cotizar con Angopi no tiene costo.
+path: contacto/
+nav: contacto
+crumb: Contacto
+---
+<section class="frame page-hero" aria-labelledby="titulo">
+  <nav class="breadcrumbs" aria-label="Ruta de navegación"><ol><li><a href="{{root}}">Inicio</a></li><li aria-current="page">Contacto</li></ol></nav>
+  <h1 id="titulo"><span class="dim">Hablemos de lo que</span> quieres proteger.</h1>
+  <p class="lead">Escríbenos por WhatsApp, llámanos, agenda una cita virtual o visítanos en Barranquilla. Elige el canal que te quede más cómodo.</p>
+</section>
+
+<section class="section" aria-label="Canales de contacto y formulario">
+  <div class="container">
+    <div class="panel">
+      <div class="bento bento--3">
+        <div class="channels">
+          <a class="channel" href="{{wa:Hola Angopi, quiero hacer una consulta.}}" target="_blank" rel="noopener"><span class="icon-tile icon-tile--blue">{{icon:whatsapp}}</span><span><span class="channel__label">WhatsApp</span><span class="channel__value">{{site:phone1}}</span></span><span class="round-btn">{{icon:arrow-right:icon--sm}}</span></a>
+          <a class="channel" href="tel:{{site:phone2Raw}}"><span class="icon-tile">{{icon:phone}}</span><span><span class="channel__label">Teléfono</span><span class="channel__value">{{site:phone2}}</span></span><span class="round-btn">{{icon:arrow-right:icon--sm}}</span></a>
+          <a class="channel" href="mailto:{{site:email}}"><span class="icon-tile">{{icon:mail}}</span><span><span class="channel__label">Correo</span><span class="channel__value">{{site:email}}</span></span><span class="round-btn">{{icon:arrow-right:icon--sm}}</span></a>
+          <a class="channel" href="{{link:calendly}}" target="_blank" rel="noopener"><span class="icon-tile">{{icon:calendar}}</span><span><span class="channel__label">Cita virtual</span><span class="channel__value">Agenda con un asesor</span></span><span class="round-btn">{{icon:arrow-right:icon--sm}}</span></a>
+          <a class="channel" href="{{link:maps}}" target="_blank" rel="noopener"><span class="icon-tile">{{icon:pin}}</span><span><span class="channel__label">Oficina</span><span class="channel__value">Edificio River View, Of. 506</span></span><span class="round-btn">{{icon:arrow-right:icon--sm}}</span></a>
+        </div>
+
+        <div class="card span-2">
+          <h2 class="door-title mt-0">Cuéntanos qué necesitas</h2>
+          <p class="mt-1 muted">Al enviar, se abrirá WhatsApp con tu mensaje listo para que nos lo mandes.</p>
+          <form class="form mt-4" data-whatsapp novalidate>
+            <fieldset class="field choice-grid">
+              <legend>¿Qué quieres asegurar? <span class="req" aria-hidden="true">*</span></legend>
+              <label class="choice"><input type="radio" name="necesidad" value="Seguro de carro"><span>{{icon:car:icon--sm}}Carro</span></label>
+              <label class="choice"><input type="radio" name="necesidad" value="SOAT"><span>{{icon:id:icon--sm}}SOAT</span></label>
+              <label class="choice"><input type="radio" name="necesidad" value="Seguro de moto"><span>{{icon:bike:icon--sm}}Moto</span></label>
+              <label class="choice"><input type="radio" name="necesidad" value="Salud o vida"><span>{{icon:health:icon--sm}}Salud o vida</span></label>
+              <label class="choice"><input type="radio" name="necesidad" value="Hogar"><span>{{icon:home:icon--sm}}Hogar</span></label>
+              <label class="choice"><input type="radio" name="necesidad" value="Seguro de arrendamiento"><span>{{icon:key:icon--sm}}Arriendo</span></label>
+              <label class="choice"><input type="radio" name="necesidad" value="Seguros para empresa"><span>{{icon:building:icon--sm}}Empresa</span></label>
+              <label class="choice"><input type="radio" name="necesidad" value="Reportar un siniestro"><span>{{icon:alert:icon--sm}}Siniestro</span></label>
+              <label class="choice"><input type="radio" name="necesidad" value="Otro"><span>{{icon:plus:icon--sm}}Otro</span></label>
+              <p class="field__error" data-error-for="necesidad" role="alert"></p>
+            </fieldset>
+
+            <div class="form__row form__row--2">
+              <div class="field">
+                <label for="f-nombre">Nombre <span class="req" aria-hidden="true">*</span></label>
+                <input class="input" id="f-nombre" name="nombre" type="text" autocomplete="name" required>
+                <p class="field__error" data-error-for="nombre" role="alert"></p>
+              </div>
+              <div class="field">
+                <label for="f-telefono">Celular o WhatsApp <span class="req" aria-hidden="true">*</span></label>
+                <input class="input" id="f-telefono" name="telefono" type="tel" inputmode="tel" autocomplete="tel" placeholder="+57 300 000 0000" required>
+                <p class="field__error" data-error-for="telefono" role="alert"></p>
+              </div>
+            </div>
+
+            <div class="field">
+              <label for="f-ciudad">Ciudad</label>
+              <input class="input" id="f-ciudad" name="ciudad" type="text" autocomplete="address-level2">
+            </div>
+
+            <div class="field">
+              <label for="f-mensaje">Cuéntanos un poco más</label>
+              <textarea class="textarea" id="f-mensaje" name="mensaje" placeholder="Por ejemplo: modelo y año del carro, tipo de inmueble, actividad de tu empresa…"></textarea>
+            </div>
+
+            <div class="field">
+              <label class="consent">
+                <input type="checkbox" name="autorizacion" value="si" required>
+                <span>Autorizo a Agencia de Seguros Angopi Ltda. a tratar mis datos personales para atender mi solicitud, según la <a href="{{root}}politica-de-datos/">política de tratamiento de datos</a>.</span>
+              </label>
+              <p class="field__error" data-error-for="autorizacion" role="alert"></p>
+            </div>
+
+            <button class="btn btn--dark btn--block" type="submit">{{icon:whatsapp}}Enviar por WhatsApp</button>
+            <p class="field__hint" data-status aria-live="polite"></p>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section section--flush-top" aria-labelledby="mapa-titulo">
+  <div class="container">
+    <div class="panel">
+      <div class="bento bento--3">
+        <div class="card">
+          <span class="icon-tile">{{icon:pin}}</span>
+          <h2 id="mapa-titulo" class="door-title">Edificio River View, Barranquilla.</h2>
+          <p>Carrera 64B # 85 – 150, Oficina 506.</p>
+          <div class="product__actions">
+            <a class="btn btn--dark btn--sm" href="{{link:maps}}" target="_blank" rel="noopener">Abrir en Google Maps</a>
+          </div>
+        </div>
+        <div class="card card--media span-2">
+          <div class="map"><iframe src="{{link:mapsEmbed}}" title="Mapa de la oficina de Angopi en el Edificio River View, Barranquilla" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section section--flush-top" aria-labelledby="directo-titulo">
+  <div class="container">
+    <div class="head">
+      <p class="eyebrow">Contacto directo</p>
+      <h2 id="directo-titulo"><span class="dim">¿Ya tienes un asesor?</span> Escríbele directamente.</h2>
+    </div>
+    <div class="panel">
+      {{partial:team}}
+    </div>
+  </div>
+</section>

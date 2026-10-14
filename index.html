@@ -1,1171 +1,527 @@
-<!DOCTYPE html>
-<html lang="es" class="scroll-smooth">
+<!doctype html>
+<html lang="es-CO">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>ANGOPI | Agencia de Seguros - Protegemos lo que impulsa tu negocio</title>
-  <meta name="description" content="Soluciones de seguros para empresas, personas y arrendamientos en Colombia. Más de 20 años de experiencia y respaldo institucional de SURA, Mapfre, Allianz y Bolívar.">
-  
-  <link rel="icon" type="image/png" href="assets/images/logo-original.png">
-
-  <!-- Tailwind CSS CDN -->
-  <script src="https://cdn.tailwindcss.com"></script>
-  <script>
-    tailwind.config = {
-      theme: {
-        extend: {
-          colors: {
-            angopi: {
-              blue: '#418ef2',    // Azul exacto extraído del logo oficial
-              hover: '#2977e2',   // Estado hover del azul oficial
-              navy: '#0a1118',    // Azul marino profundo para fondos oscuros y pie
-              dark: '#0f172a',    // Texto principal
-              muted: '#64748b',   // Texto secundario
-              light: '#f8fafc',   // Fondo secundario
-              border: '#e2e8f0',  // Líneas divisorias sutiles
-            }
-          },
-          fontFamily: {
-            sans: ['"Inter"', 'system-ui', '-apple-system', 'sans-serif'],
-          }
-        }
-      }
-    }
-  </script>
-  
-  <!-- Fuente: Inter (Estándar Suizo / Tipografía Editorial Limpia) -->
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Angopi | Agencia de seguros en Barranquilla desde 1955</title>
+  <meta name="description" content="Agencia de seguros familiar en Barranquilla desde 1955. Comparamos entre 7 aseguradoras y te acompañamos al reclamar. Seguros para personas, empresas y arriendos.">
+  <link rel="canonical" href="https://theo272004.github.io/angopi-seguros/">
+  <meta name="theme-color" content="#1a50b8">
+  <meta property="og:type" content="website">
+  <meta property="og:locale" content="es_CO">
+  <meta property="og:site_name" content="Angopi Agencia de Seguros">
+  <meta property="og:title" content="Angopi Agencia de Seguros: Te guardamos la espalda">
+  <meta property="og:description" content="Agencia de seguros familiar en Barranquilla desde 1955. Comparamos entre 7 aseguradoras y te acompañamos al reclamar. Seguros para personas, empresas y arriendos.">
+  <meta property="og:url" content="https://theo272004.github.io/angopi-seguros/">
+  <meta property="og:image" content="https://theo272004.github.io/angopi-seguros/assets/img/og-angopi.jpg">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:image:alt" content="Angopi Agencia de Seguros: Te guardamos la espalda.">
+  <meta name="twitter:card" content="summary_large_image">
+  <link rel="icon" href="favicon.ico" sizes="any">
+  <link rel="icon" type="image/png" sizes="32x32" href="assets/img/icons/favicon-32.png">
+  <link rel="apple-touch-icon" href="assets/img/icons/apple-touch-icon.png">
+  <link rel="manifest" href="site.webmanifest">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
-
-  <style>
-    body {
-      font-family: 'Inter', sans-serif;
-      color: #0f172a;
-      background-color: #ffffff;
-      overflow-x: hidden;
-    }
-
-    /* Scrim cinematográfico editorial sobre la fotografía del Hero */
-    .hero-editorial-overlay {
-      background: linear-gradient(
-        90deg, 
-        rgba(10, 17, 24, 0.95) 0%, 
-        rgba(10, 17, 24, 0.88) 42%, 
-        rgba(10, 17, 24, 0.50) 65%, 
-        rgba(10, 17, 24, 0.15) 85%, 
-        rgba(10, 17, 24, 0.05) 100%
-      );
-    }
-
-    /* Transición suave para la barra de navegación sticky */
-    #navbar-header {
-      transition: background-color 0.35s ease, border-color 0.35s ease, box-shadow 0.35s ease, padding 0.35s ease;
-    }
-
-    /* Micro-interacción de botones tipo pill */
-    .btn-pill {
-      transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
-    }
-    .btn-pill:hover {
-      transform: translateY(-2px);
-    }
-    .btn-pill:active {
-      transform: translateY(0);
-    }
-
-    /* Carrusel Infinito de Marcas Aliadas (Hardware Accelerated) */
-    @keyframes marquee {
-      0% { transform: translateX(0%); }
-      100% { transform: translateX(-50%); }
-    }
-    .marquee-track {
-      display: flex;
-      width: max-content;
-      animation: marquee 38s linear infinite;
-    }
-    .marquee-track:hover {
-      animation-play-state: paused;
-    }
-
-    /* FAQ Transitions con CSS Grid fluido */
-    .faq-answer {
-      display: grid;
-      grid-template-rows: 0fr;
-      transition: grid-template-rows 0.35s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.3s ease;
-      opacity: 0;
-    }
-    .faq-answer > div {
-      overflow: hidden;
-    }
-    .faq-item.active .faq-answer {
-      grid-template-rows: 1fr;
-      opacity: 1;
-    }
-    .faq-item.active .faq-chevron {
-      transform: rotate(180deg);
-      color: #418ef2;
-    }
-
-    /* Animaciones suaves en scroll */
-    .fade-up {
-      opacity: 0;
-      transform: translateY(20px);
-      transition: opacity 0.7s cubic-bezier(0.16, 1, 0.3, 1), transform 0.7s cubic-bezier(0.16, 1, 0.3, 1);
-      will-change: opacity, transform;
-    }
-    .fade-up.visible {
-      opacity: 1;
-      transform: translateY(0);
-    }
-  </style>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600;700&display=swap">
+  <link rel="stylesheet" href="assets/css/styles.css?v=e5eb8b4c1b">
+  <script type="application/ld+json">{"@context":"https://schema.org","@type":"InsuranceAgency","@id":"https://theo272004.github.io/angopi-seguros/#agencia","name":"Agencia de Seguros Angopi Ltda.","alternateName":"ANGOPI","slogan":"Te guardamos la espalda.","description":"Agencia de seguros familiar en Barranquilla desde 1955. Asesoría en seguros para personas, empresas y arrendamiento con Allianz, Bolívar, Chubb, HDI, Mapfre, SBS y SURA.","url":"https://theo272004.github.io/angopi-seguros/","logo":"https://theo272004.github.io/angopi-seguros/assets/img/logo-angopi.png","image":"https://theo272004.github.io/angopi-seguros/assets/img/og-angopi.jpg","telephone":"+573013631792","email":"info@angopi.co","address":{"@type":"PostalAddress","streetAddress":"Carrera 64B # 85 – 150, Of. 506, Edificio River View","addressLocality":"Barranquilla","addressRegion":"Atlántico","addressCountry":"CO"},"areaServed":"CO","sameAs":["https://www.facebook.com/angopiltda","https://www.instagram.com/angopi_ltda","https://co.linkedin.com/company/agencia-de-seguros-angopi-ltda","https://www.youtube.com/channel/UCFu8ceEwrFtgullOjb4gHsA"]}</script>
+  <script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"Comparamos por ti Revisamos alternativas entre Allianz, Bolívar, Chubb, HDI, Mapfre, SBS y SURA para encontrar la que se ajusta a lo que necesitas y a lo que quieres invertir. Leemos la letra pequeña Antes de que firmes, te explicamos qué cubre tu póliza, qué no cubre y cuánto tendrías que asumir en caso de un siniestro. Estamos contigo al reclamar Si algo pasa, nos escribes a nosotros. Te orientamos, te ayudamos con los documentos y hacemos seguimiento al trámite con la aseguradora. Te acompañamos en el tiempo Revisamos tus pólizas en cada renovación para que sigan respondiendo a tu vida o a tu negocio. Cómo trabajamos De tu pregunta a tu póliza. Escuchamos Nos cuentas qué quieres proteger, qué te preocupa y cuánto quieres invertir. Asesoramos Te presentamos opciones claras y te explicamos sus diferencias, sin tecnicismos. Negociamos Gestionamos con la aseguradora las mejores condiciones posibles para tu caso. Acompañamos Seguimos contigo en renovaciones, cambios y, sobre todo, en las reclamaciones. Nuestra historia Más de 70 años guardándole la espalda a nuestros clientes. Mediados del siglo XX Magangué Andrés González Roldán se vincula como agente de Colseguros, hoy Allianz. 1955 Barranquilla Se traslada a la ciudad y se dedica de tiempo completo a la intermediación de seguros. 1985 Relevo familiar Su hijo mayor, Andrés González de Pindray, asume la gerencia de la hoy Agencia de Seguros Angopi Ltda. Hoy Cercanía y herramientas digitales Siete aseguradoras aliadas, un equipo cercano y cotizadores en línea. «Una reputación de seriedad, integridad y honorabilidad.» El legado de Andrés González Roldán, que la familia aspira a transmitir a las siguientes generaciones. Conoce la historia Equipo Las personas que te van a atender. Ver canales de contacto Andrés González Gerencia gerencia@angopi.co David González Comercial comercial@angopi.co Esmeralda Ballestas Asistencia asistente@angopi.co Joselyn Navas Área técnica tecnico@angopi.co Paola Peñaranda Ventas ventas@angopi.co Siniestros y reclamaciones ¿Tuviste un accidente o un siniestro? Escríbenos primero. Te decimos qué hacer y te acompañamos en el trámite con tu aseguradora hasta el cierre. Reportar por WhatsApp Qué hacer paso a paso Lo primero Ponte a salvo. Si hay heridos, llama al 123. Toma fotos del lugar, los daños y los documentos. No hagas acuerdos sin hablar con nosotros. En línea Si lo prefieres, cotiza o compra en línea. Algunos seguros puedes cotizarlos o comprarlos directamente. Si te surge una duda en el camino, escríbenos. Compra tu SOAT Expedición en línea Seguro de carro Cotiza en línea con SURA Seguro de moto Cotiza en línea con SURA Seguro de viaje Cotiza en línea con SURA Seguro de arrendamiento Cotizador SURA en nuestra web Financia tu vehículo Crédito con Sura Financia Preguntas frecuentes Lo que más nos preguntan. ¿No encuentras tu pregunta? Escríbenos por WhatsApp . ¿Qué hace una agencia de seguros?","acceptedAnswer":{"@type":"Answer","text":"Te asesora para elegir el seguro adecuado entre varias aseguradoras, gestiona la expedición de la póliza y te acompaña en renovaciones y reclamaciones. En Angopi trabajamos con Allianz, Bolívar, Chubb, HDI, Mapfre, SBS y SURA."}},{"@type":"Question","name":"¿Cuánto cuesta la asesoría?","acceptedAnswer":{"@type":"Answer","text":"Cotizar con nosotros y recibir asesoría no tiene costo. El precio de cada póliza lo define la aseguradora según la cobertura que elijas."}},{"@type":"Question","name":"¿Qué hago si tengo un accidente con mi carro?","acceptedAnswer":{"@type":"Answer","text":"Ponte a salvo y, si hay personas heridas, llama a la línea de emergencias 123. Toma fotos del lugar, de los vehículos y de las placas, no hagas acuerdos sin asesoría y escríbenos por WhatsApp. Te ayudamos con el reporte a la aseguradora."}},{"@type":"Question","name":"¿Cómo funciona el seguro de arrendamiento?","acceptedAnswer":{"@type":"Answer","text":"Es una póliza de SURA que respalda el pago del canon si el inquilino incumple. Antes de firmar el contrato se hace un estudio del inquilino. Puedes cotizarlo en línea desde nuestra página de arrendamiento."}},{"@type":"Question","name":"¿Dónde compro el SOAT?","acceptedAnswer":{"@type":"Answer","text":"Puedes comprarlo en línea desde nuestra plataforma de SOAT o escribirnos por WhatsApp para que te ayudemos. También puedes consultar las tarifas SOAT 2026 en la sección de formatos."}},{"@type":"Question","name":"¿Puedo hablar con un asesor sin ir a la oficina?","acceptedAnswer":{"@type":"Answer","text":"Sí. Escríbenos por WhatsApp, llámanos o agenda una cita virtual en el horario que mejor te quede."}}]}</script>
 </head>
-<body class="selection:bg-angopi-blue selection:text-white">
+<body>
+  <a class="skip-link" href="#contenido">Saltar al contenido</a>
 
-  <!-- ========================================================================= -->
-  <!-- 1. NAVEGACIÓN TRANSPARENTE INTEGRADA DENTRO DEL HERO (FLUIDA & EN LA ESQUINA) -->
-  <!-- ========================================================================= -->
-  <header id="navbar-header" class="fixed top-0 left-0 right-0 z-50 py-6 bg-transparent border-b border-transparent">
-    <div class="w-full px-6 sm:px-10 lg:px-14 xl:px-16">
-      <div class="flex items-center justify-between">
-        
-        <!-- LOGO ANGOPI (En la esquina izquierda exacta) -->
-        <a href="#" class="flex items-center focus:outline-none flex-shrink-0">
-          <img id="logo-nav-white" src="assets/images/logo-white.png" alt="ANGOPI Agencia de Seguros" class="h-10 sm:h-12 w-auto object-contain transition-opacity duration-300">
-          <img id="logo-nav-dark" src="assets/images/logo-original.png" alt="ANGOPI Agencia de Seguros" class="h-10 sm:h-12 w-auto object-contain transition-opacity duration-300 hidden">
-        </a>
-
-        <!-- MENÚ DE NAVEGACIÓN ESCRITORIO (Separación aumentada y ritmo visual) -->
-        <nav class="hidden lg:flex items-center space-x-9 xl:space-x-11 text-sm font-medium tracking-normal">
-          <a href="#empresas" class="nav-item text-white/90 hover:text-white transition py-1">Seguros Empresas</a>
-          <a href="#personas" class="nav-item text-white/90 hover:text-white transition py-1">Seguros Personas</a>
-          <a href="#arrendamiento" class="nav-item text-white/90 hover:text-white transition py-1">Seguro de Arrendamiento</a>
-          <a href="#aliados" class="nav-item text-white/90 hover:text-white transition py-1">Aseguradoras</a>
-          <a href="#nosotros" class="nav-item text-white/90 hover:text-white transition py-1">Quiénes Somos</a>
-          <a href="#cotizador" class="nav-item text-white/90 hover:text-white transition py-1">Cotizador</a>
-          <a href="#contacto" class="nav-item text-white/90 hover:text-white transition py-1">Contacto</a>
-        </nav>
-
-        <!-- CTA DERECHA: "Cotiza ahora" en Azul ANGOPI -->
-        <div class="hidden sm:flex items-center gap-4 flex-shrink-0">
-          <a href="https://api.whatsapp.com/send?phone=573013631792&text=Hola%20Angopi,%20quiero%20cotizar%20un%20seguro" 
-             target="_blank"
-             class="btn-pill inline-flex items-center gap-2 bg-angopi-blue hover:bg-angopi-hover text-white text-sm font-semibold px-6 py-2.5 rounded-full shadow-sm">
-            <span>Cotiza ahora</span>
-            <i class="fa-solid fa-arrow-right text-xs"></i>
-          </a>
-        </div>
-
-        <!-- BOTÓN MÓVIL (Hamburguesa) -->
-        <button onclick="toggleMobileMenu()" class="lg:hidden text-white p-2 focus:outline-none" id="mobile-toggle-btn" aria-label="Abrir menú">
-          <i class="fa-solid fa-bars text-2xl"></i>
+  <header class="nav-shell on-dark">
+    <div class="nav-bar">
+      <a class="brand" href="./" aria-label="Angopi Agencia de Seguros, ir al inicio">
+        <img class="brand__dark" src="assets/img/logo-angopi.png" alt="ANGOPI Agencia de Seguros" width="568" height="191">
+        <img class="brand__light" src="assets/img/logo-angopi-blanco.png" alt="ANGOPI Agencia de Seguros" width="568" height="191">
+      </a>
+      <nav aria-label="Principal">
+        <ul class="nav-links"><li><a href="personas/">Personas</a></li><li><a href="empresas/">Empresas</a></li><li><a href="arrendamiento/">Arrendamiento</a></li><li><a href="siniestros/">Siniestros</a></li><li><a href="nosotros/">Nosotros</a></li></ul>
+      </nav>
+      <div class="nav-actions">
+        <a class="btn btn--dark btn--sm nav-cta" href="https://wa.me/573013631792?text=Hola%20Angopi%2C%20quiero%20cotizar%20un%20seguro." target="_blank" rel="noopener">Cotizar por WhatsApp</a>
+        <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="menu-movil" aria-label="Abrir menú">
+          <span class="icon-open"><svg class="icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M4 6h16"/><path d="M4 12h16"/><path d="M4 18h16"/></svg></span><span class="icon-close"><svg class="icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M18 6 6 18"/><path d="m6 6 12 12"/></svg></span>
         </button>
-
       </div>
     </div>
-
-    <!-- MENÚ MÓVIL DESPLEGABLE -->
-    <div id="mobile-menu" class="hidden lg:hidden bg-angopi-navy/98 backdrop-blur-xl border-t border-white/10 px-6 py-8 mt-4 transition-all">
-      <nav class="flex flex-col space-y-5 text-base font-medium text-white/90">
-        <a href="#empresas" onclick="toggleMobileMenu()" class="hover:text-angopi-blue transition">Seguros Empresas</a>
-        <a href="#personas" onclick="toggleMobileMenu()" class="hover:text-angopi-blue transition">Seguros Personas</a>
-        <a href="#arrendamiento" onclick="toggleMobileMenu()" class="hover:text-angopi-blue transition">Seguro de Arrendamiento</a>
-        <a href="#aliados" onclick="toggleMobileMenu()" class="hover:text-angopi-blue transition">Aseguradoras Aliadas</a>
-        <a href="#nosotros" onclick="toggleMobileMenu()" class="hover:text-angopi-blue transition">Quiénes Somos</a>
-        <a href="#cotizador" onclick="toggleMobileMenu()" class="hover:text-angopi-blue transition">Cotizador Express</a>
-        <a href="#contacto" onclick="toggleMobileMenu()" class="hover:text-angopi-blue transition">Contacto</a>
+    <div class="mobile-menu" id="menu-movil" hidden>
+      <nav aria-label="Principal (móvil)">
+        <ul>
+          <li><a href="personas/">Personas<svg class="icon icon--sm" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg></a></li><li><a href="empresas/">Empresas<svg class="icon icon--sm" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg></a></li><li><a href="arrendamiento/">Arrendamiento<svg class="icon icon--sm" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg></a></li><li><a href="siniestros/">Siniestros<svg class="icon icon--sm" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg></a></li><li><a href="nosotros/">Nosotros<svg class="icon icon--sm" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg></a></li>
+          <li><a href="formatos/">Formatos<svg class="icon icon--sm" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg></a></li>
+          <li><a href="contacto/">Contacto<svg class="icon icon--sm" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg></a></li>
+        </ul>
       </nav>
-      <div class="pt-6 mt-6 border-t border-white/10">
-        <a href="https://api.whatsapp.com/send?phone=573013631792&text=Hola%20Angopi,%20quiero%20cotizar%20un%20seguro" 
-           target="_blank" 
-           class="w-full inline-flex items-center justify-center gap-2 bg-angopi-blue text-white text-sm font-semibold py-3 rounded-full">
-          <span>Cotiza ahora</span>
-          <i class="fa-solid fa-arrow-right text-xs"></i>
-        </a>
+      <div class="mobile-menu__actions">
+        <a class="btn btn--dark btn--block" href="https://wa.me/573013631792?text=Hola%20Angopi%2C%20quiero%20cotizar%20un%20seguro." target="_blank" rel="noopener"><svg class="icon icon--fill" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 0 1-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 0 1-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 0 1 2.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0 0 12.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 0 0 5.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 0 0-3.48-8.413Z"/></svg>Cotizar por WhatsApp</a>
+        <a class="btn btn--outline btn--block" href="tel:+573013631792"><svg class="icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.91.34 1.85.57 2.81.7A2 2 0 0 1 22 16.92z"/></svg>Llamar al +57 301 363 1792</a>
       </div>
     </div>
   </header>
 
-  <!-- ========================================================================= -->
-  <!-- 2. HERO FULL BLEED EDITORIAL (FOTOGRAFÍA CINEMATOGRÁFICA) -->
-  <!-- ========================================================================= -->
-  <section class="relative min-h-screen flex items-center bg-angopi-navy overflow-hidden">
-    
-    <!-- Fotografía Full Bleed: Puerto de Barranquilla + Ingeniero con tablet -->
-    <div class="absolute inset-0 z-0">
-      <img src="assets/images/hero-port.jpg" 
-           alt="Infraestructura logística y portuaria de Colombia" 
-           class="w-full h-full object-cover object-center lg:object-right">
-      <!-- Scrim editorial izquierdo para legibilidad absoluta -->
-      <div class="absolute inset-0 hero-editorial-overlay"></div>
+  <main id="contenido">
+<section class="frame hero" aria-labelledby="hero-titulo">
+  <div class="container">
+    <p class="badge"><span class="badge__chip">Barranquilla</span>Desde 1955</p>
+    <h1 id="hero-titulo"><span class="dim">Te guardamos</span><br> la espalda.</h1>
+    <p class="lead">Somos una agencia de seguros familiar. Comparamos opciones entre siete aseguradoras, te explicamos tu póliza sin letra pequeña y estamos contigo cuando toca reclamar.</p>
+    <div class="btn-row btn-row--stack">
+      <a class="btn btn--light" href="https://wa.me/573013631792?text=Hola%20Angopi%2C%20quiero%20cotizar%20un%20seguro." target="_blank" rel="noopener"><svg class="icon icon--fill" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 0 1-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 0 1-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 0 1 2.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0 0 12.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 0 0 5.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 0 0-3.48-8.413Z"/></svg>Cotizar por WhatsApp</a>
+      <a class="btn btn--outline-light" href="#seguros">Ver seguros<svg class="icon icon--sm" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg></a>
     </div>
+  </div>
 
-    <!-- Contenido del Hero (Alineado hacia la izquierda con el navbar, tipografía monumental) -->
-    <div class="relative z-10 w-full px-6 sm:px-10 lg:px-14 xl:px-16 pt-28 pb-20 sm:pt-36 sm:pb-28">
-      <div class="max-w-2xl sm:max-w-3xl xl:max-w-4xl space-y-7 sm:space-y-9">
-        
-        <!-- Headline Monumental (Más grande: 64–96px) -->
-        <h1 class="text-6xl sm:text-7xl lg:text-[84px] xl:text-[96px] font-extrabold text-white leading-[1.03] tracking-tight">
-          Protegemos <br>
-          <span style="color: #418ef2;">lo que impulsa</span> <br>
-          tu negocio
-        </h1>
-
-        <!-- Subtítulo ampliado y con gran legibilidad editorial -->
-        <p class="text-lg sm:text-xl lg:text-[22px] text-slate-200/95 font-normal leading-relaxed max-w-2xl">
-          Soluciones de seguros para personas, empresas y arrendamientos, con un acompañamiento cercano, ágil y confiable.
-        </p>
-
-        <!-- CTAs Principales ampliados -->
-        <div class="pt-3 flex flex-col sm:flex-row items-stretch sm:items-center gap-4">
-          <a href="https://api.whatsapp.com/send?phone=573013631792&text=Hola%20Angopi,%20quiero%20cotizar%20con%20un%20asesor" 
-             target="_blank"
-             class="btn-pill inline-flex items-center justify-center gap-2.5 bg-angopi-blue hover:bg-angopi-hover text-white text-base sm:text-lg font-bold px-9 py-4 sm:py-4.5 rounded-full shadow-xl">
-            <span>Cotiza con un asesor</span>
-            <i class="fa-solid fa-arrow-right text-xs"></i>
-          </a>
-          <a href="#empresas" 
-             class="btn-pill inline-flex items-center justify-center gap-2 bg-transparent hover:bg-white/10 text-white text-base sm:text-lg font-medium px-9 py-4 sm:py-4.5 rounded-full border border-white/40 hover:border-white transition backdrop-blur-sm">
-            <span>Conoce nuestras soluciones</span>
-          </a>
-        </div>
-
+  <div class="showcase" aria-hidden="true">
+    <div class="showcase__side showcase__side--left">
+      <div class="ui-card">
+        <div class="ui-card__top"><span class="ui-card__title">Seguro de arrendamiento</span><span class="ui-card__tag">SURA</span></div>
+        <div class="ui-steps"><span class="is-on"></span><span></span><span></span></div>
+        <span class="ui-label">¿Quién eres?</span>
+        <div class="ui-seg"><span class="is-on">Propietario</span><span>Inquilino</span></div>
+        <span class="ui-label">Uso del inmueble</span>
+        <div class="ui-seg"><span class="is-on">Residencial</span><span>Comercial</span></div>
+        <div class="ui-btn">Continuar</div>
       </div>
     </div>
 
-  </section>
-
-  <!-- ========================================================================= -->
-  <!-- 3. TRANSICIÓN INMEDIATA POST-HERO (SECCIÓN AZUL ANGOPI #418ef2) -->
-  <!-- ========================================================================= -->
-  <section class="bg-angopi-blue text-white py-24 sm:py-32 relative overflow-hidden" id="transicion-marca">
-    <div class="max-w-7xl mx-auto px-6 sm:px-8 lg:px-12">
-      <div class="max-w-4xl space-y-8 fade-up">
-        
-        <p class="text-xs sm:text-sm font-semibold uppercase tracking-[0.2em] text-white/80">
-          La Filosofía ANGOPI
-        </p>
-
-        <h2 class="text-3xl sm:text-5xl lg:text-6xl font-extrabold leading-[1.12] tracking-tight text-white">
-          Seguros que se adaptan a lo que realmente necesitas.
-        </h2>
-
-        <div class="pt-4 grid grid-cols-1 md:grid-cols-2 gap-8 text-white/90 text-base sm:text-lg leading-relaxed font-normal">
-          <p>
-            Durante más de 20 años hemos asesorado a familias y empresas en toda Colombia con una premisa innegociable: no vender pólizas estandarizadas, sino estructurar amparos técnicos que respondan con efectividad ante cualquier imprevisto.
-          </p>
-          <p>
-            Sin trámites engorrosos ni líneas de espera automáticas. Trabajamos mano a mano con las aseguradoras más solventes del país para garantizar que tu patrimonio esté blindado.
-          </p>
+    <div class="phone">
+      <span class="phone__notch"></span>
+      <div class="phone__screen">
+        <div class="chat-head">
+          <span class="chat-head__avatar">A</span>
+          <span><span class="chat-head__name">Angopi Seguros</span><span class="chat-head__status">en línea</span></span>
         </div>
-
+        <div class="chat">
+          <div class="bubble bubble--out">Hola, acabo de chocar. ¿Qué hago?<span class="bubble__time">9:41</span></div>
+          <div class="bubble bubble--in">¿Todos están bien? Tranquilidad, aquí te guardamos la espalda. Envíanos fotos de los vehículos y de las placas.<span class="bubble__time">9:42</span></div>
+          <div class="bubble bubble--out"><span class="bubble__file"><svg class="icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M14.5 4h-5L7 7H4a2 2 0 0 0-2 2v9a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V9a2 2 0 0 0-2-2h-3l-2.5-3z"/><circle cx="12" cy="13" r="3"/></svg>4 fotos</span>Listo, aquí están.<span class="bubble__time">9:44</span></div>
+          <div class="bubble bubble--in">Gracias. Ya reportamos el caso a tu aseguradora y te acompañamos en todo el trámite.<span class="bubble__time">9:46</span></div>
+        </div>
       </div>
     </div>
-  </section>
 
-  <!-- ========================================================================= -->
-  <!-- 4. CARRUSEL INFINITO DE ASEGURADORAS ALIADAS (LOGOS REALES Y TICKER) -->
-  <!-- ========================================================================= -->
-  <section class="py-20 sm:py-24 bg-white border-b border-angopi-border overflow-hidden" id="aliados">
-    <div class="max-w-7xl mx-auto px-6 sm:px-8 lg:px-12 mb-12 text-center md:text-left flex flex-col md:flex-row md:items-end justify-between gap-6">
-      <div>
-        <p class="text-xs font-bold uppercase tracking-[0.2em] text-angopi-blue">Respaldo Institucional</p>
-        <h3 class="text-2xl sm:text-3xl lg:text-4xl font-extrabold text-angopi-dark mt-2 tracking-tight">Intermediarios autorizados de las aseguradoras líderes</h3>
-      </div>
-      <p class="text-sm text-angopi-muted max-w-md leading-relaxed">
-        Comparamos pólizas en tiempo real para encontrar la mejor prima y el deducible más favorable para ti o tu empresa.
-      </p>
-    </div>
-
-    <!-- Pista del carrusel continuo infinito (Completamente abierto, sin cards ni círculos) -->
-    <div class="relative w-full overflow-hidden py-4">
-      <!-- Gradientes laterales de desvanecimiento ultra suaves -->
-      <div class="absolute left-0 top-0 bottom-0 w-28 sm:w-36 bg-gradient-to-r from-white to-transparent z-10 pointer-events-none"></div>
-      <div class="absolute right-0 top-0 bottom-0 w-28 sm:w-36 bg-gradient-to-l from-white to-transparent z-10 pointer-events-none"></div>
-
-      <div class="marquee-track flex items-center gap-14 sm:gap-20 lg:gap-24 px-6">
-        
-        <!-- SET 1 DE ALIADOS (LOGOS GRANDES, TRANSPARENTES, SIN CARDS NI CÍRCULOS) -->
-        <div class="flex items-center justify-center flex-shrink-0 group">
-          <img src="assets/images/sura.svg" alt="Seguros SURA" class="h-12 sm:h-14 lg:h-16 w-auto max-w-[190px] sm:max-w-[220px] object-contain opacity-85 group-hover:opacity-100 group-hover:scale-105 transition-all duration-300">
+    <div class="showcase__side showcase__side--right">
+      <div class="ui-card">
+        <div class="ui-card__top"><span class="ui-card__title">Comparamos por ti</span><span class="ui-card__tag">7 aliadas</span></div>
+        <div class="ui-logos">
+          <span><img src="assets/img/logos/sura.svg" alt=""></span>
+          <span><img src="assets/img/logos/allianz.svg" alt=""></span>
+          <span><img src="assets/img/logos/bolivar.png" alt=""></span>
+          <span><img src="assets/img/logos/mapfre.svg" alt=""></span>
         </div>
-
-        <div class="flex items-center justify-center flex-shrink-0 group">
-          <img src="assets/images/mapfre.svg" alt="MAPFRE Seguros" class="h-10 sm:h-12 lg:h-14 w-auto max-w-[190px] sm:max-w-[220px] object-contain opacity-85 group-hover:opacity-100 group-hover:scale-105 transition-all duration-300">
-        </div>
-
-        <div class="flex items-center justify-center flex-shrink-0 group">
-          <img src="assets/images/allianz.svg" alt="Allianz Colombia" class="h-11 sm:h-13 lg:h-15 w-auto max-w-[180px] sm:max-w-[210px] object-contain opacity-85 group-hover:opacity-100 group-hover:scale-105 transition-all duration-300">
-        </div>
-
-        <div class="flex items-center justify-center flex-shrink-0 group">
-          <img src="assets/images/bolivar.png" alt="Seguros Bolívar" class="h-12 sm:h-14 lg:h-16 w-auto max-w-[190px] sm:max-w-[220px] object-contain opacity-85 group-hover:opacity-100 group-hover:scale-105 transition-all duration-300">
-        </div>
-
-        <div class="flex items-center justify-center flex-shrink-0 group">
-          <img src="assets/images/axa.svg" alt="AXA Colpatria" class="h-12 sm:h-14 lg:h-16 w-auto max-w-[100px] sm:max-w-[120px] object-contain opacity-85 group-hover:opacity-100 group-hover:scale-105 transition-all duration-300">
-        </div>
-
-        <div class="flex items-center justify-center flex-shrink-0 group">
-          <img src="assets/images/hdi.svg" alt="HDI Seguros" class="h-11 sm:h-13 lg:h-15 w-auto max-w-[170px] sm:max-w-[200px] object-contain opacity-85 group-hover:opacity-100 group-hover:scale-105 transition-all duration-300">
-        </div>
-
-        <div class="flex items-center justify-center flex-shrink-0 group">
-          <img src="assets/images/estado.png" alt="Seguros del Estado" class="h-10 sm:h-12 lg:h-14 w-auto max-w-[190px] sm:max-w-[230px] object-contain opacity-85 group-hover:opacity-100 group-hover:scale-105 transition-all duration-300">
-        </div>
-
-        <div class="flex items-center justify-center flex-shrink-0 group">
-          <img src="assets/images/chubb.png" alt="Chubb Seguros" class="h-8 sm:h-10 lg:h-11 w-auto max-w-[190px] sm:max-w-[220px] object-contain opacity-85 group-hover:opacity-100 group-hover:scale-105 transition-all duration-300">
-        </div>
-
-        <div class="flex items-center justify-center flex-shrink-0 group">
-          <img src="assets/images/zurich.svg" alt="Zurich Seguros" class="h-11 sm:h-13 lg:h-15 w-auto max-w-[140px] sm:max-w-[170px] object-contain opacity-85 group-hover:opacity-100 group-hover:scale-105 transition-all duration-300">
-        </div>
-
-        <!-- SET 2 (DUPLICADO PARA BUCLE CONTINUO SIN CORTES) -->
-        <div class="flex items-center justify-center flex-shrink-0 group">
-          <img src="assets/images/sura.svg" alt="Seguros SURA" class="h-12 sm:h-14 lg:h-16 w-auto max-w-[190px] sm:max-w-[220px] object-contain opacity-85 group-hover:opacity-100 group-hover:scale-105 transition-all duration-300">
-        </div>
-
-        <div class="flex items-center justify-center flex-shrink-0 group">
-          <img src="assets/images/mapfre.svg" alt="MAPFRE Seguros" class="h-10 sm:h-12 lg:h-14 w-auto max-w-[190px] sm:max-w-[220px] object-contain opacity-85 group-hover:opacity-100 group-hover:scale-105 transition-all duration-300">
-        </div>
-
-        <div class="flex items-center justify-center flex-shrink-0 group">
-          <img src="assets/images/allianz.svg" alt="Allianz Colombia" class="h-11 sm:h-13 lg:h-15 w-auto max-w-[180px] sm:max-w-[210px] object-contain opacity-85 group-hover:opacity-100 group-hover:scale-105 transition-all duration-300">
-        </div>
-
-        <div class="flex items-center justify-center flex-shrink-0 group">
-          <img src="assets/images/bolivar.png" alt="Seguros Bolívar" class="h-12 sm:h-14 lg:h-16 w-auto max-w-[190px] sm:max-w-[220px] object-contain opacity-85 group-hover:opacity-100 group-hover:scale-105 transition-all duration-300">
-        </div>
-
-        <div class="flex items-center justify-center flex-shrink-0 group">
-          <img src="assets/images/axa.svg" alt="AXA Colpatria" class="h-12 sm:h-14 lg:h-16 w-auto max-w-[100px] sm:max-w-[120px] object-contain opacity-85 group-hover:opacity-100 group-hover:scale-105 transition-all duration-300">
-        </div>
-
-        <div class="flex items-center justify-center flex-shrink-0 group">
-          <img src="assets/images/hdi.svg" alt="HDI Seguros" class="h-11 sm:h-13 lg:h-15 w-auto max-w-[170px] sm:max-w-[200px] object-contain opacity-85 group-hover:opacity-100 group-hover:scale-105 transition-all duration-300">
-        </div>
-
-        <div class="flex items-center justify-center flex-shrink-0 group">
-          <img src="assets/images/estado.png" alt="Seguros del Estado" class="h-10 sm:h-12 lg:h-14 w-auto max-w-[190px] sm:max-w-[230px] object-contain opacity-85 group-hover:opacity-100 group-hover:scale-105 transition-all duration-300">
-        </div>
-
-        <div class="flex items-center justify-center flex-shrink-0 group">
-          <img src="assets/images/chubb.png" alt="Chubb Seguros" class="h-8 sm:h-10 lg:h-11 w-auto max-w-[190px] sm:max-w-[220px] object-contain opacity-85 group-hover:opacity-100 group-hover:scale-105 transition-all duration-300">
-        </div>
-
-        <div class="flex items-center justify-center flex-shrink-0 group">
-          <img src="assets/images/zurich.svg" alt="Zurich Seguros" class="h-11 sm:h-13 lg:h-15 w-auto max-w-[140px] sm:max-w-[170px] object-contain opacity-85 group-hover:opacity-100 group-hover:scale-105 transition-all duration-300">
-        </div>
-
+        <div class="ui-foot"><svg class="icon icon--sm" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M20 13c0 5-3.5 7.5-7.66 8.95a1 1 0 0 1-.67-.01C7.5 20.5 4 18 4 13V6a1 1 0 0 1 1-1c2 0 4.5-1.2 6.24-2.72a1.17 1.17 0 0 1 1.52 0C14.51 3.81 17 5 19 5a1 1 0 0 1 1 1z"/><path d="m9 12 2 2 4-4"/></svg>La opción que se ajusta a ti</div>
       </div>
     </div>
-  </section>
+  </div>
+</section>
 
-  <!-- ========================================================================= -->
-  <!-- 5. SOLUCIONES: RITMO EDITORIAL ALTERNADO (IMAGEN + TEXTO / TEXTO + IMAGEN) -->
-  <!-- ========================================================================= -->
+<section class="logos" aria-labelledby="aseguradoras-titulo">
+  <div class="container">
+    <p class="logos__label" id="aseguradoras-titulo">Comparamos opciones entre siete aseguradoras aliadas</p>
+    <ul class="logos__row">
+      <li><img src="assets/img/logos/allianz.svg" alt="Allianz" width="300" height="134" class="is-tall" loading="lazy"></li>
+      <li><img src="assets/img/logos/bolivar.png" alt="Seguros Bolívar" width="364" height="111" loading="lazy"></li>
+      <li><img src="assets/img/logos/chubb.png" alt="Chubb" width="550" height="92" loading="lazy"></li>
+      <li><img src="assets/img/logos/hdi.svg" alt="HDI Seguros" width="91" height="37" loading="lazy"></li>
+      <li><img src="assets/img/logos/mapfre.svg" alt="Mapfre" width="1708" height="470" loading="lazy"></li>
+      <li><img src="assets/img/logos/sbs.png" alt="SBS Seguros" width="278" height="110" class="is-tall" loading="lazy"></li>
+      <li><img src="assets/img/logos/sura.svg" alt="Seguros SURA" width="1000" height="388" class="is-tall" loading="lazy"></li>
+    </ul>
+  </div>
+</section>
 
-  <!-- SOLUCIÓN 1: SEGUROS EMPRESAS (IMAGEN IZQUIERDA + TEXTO DERECHA) -->
-  <section class="py-24 sm:py-32 bg-white" id="empresas">
-    <div class="max-w-7xl mx-auto px-6 sm:px-8 lg:px-12">
-      <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-20 items-center">
-        
-        <!-- Fotografía Corporativa / Industrial de Gran Formato -->
-        <div class="lg:col-span-7 fade-up">
-          <div class="relative overflow-hidden rounded-2xl aspect-[4/3] bg-slate-100 shadow-sm">
-            <img src="assets/images/hero-sunset.jpg" 
-                 alt="Logística portuaria y transporte de carga en Colombia" 
-                 class="w-full h-full object-cover">
-          </div>
-        </div>
 
-        <!-- Contenido Editorial -->
-        <div class="lg:col-span-5 space-y-6 fade-up">
-          <p class="text-xs font-bold tracking-[0.2em] uppercase text-angopi-blue">
-            Línea Corporativa
-          </p>
+<section class="section section--flush-top" aria-labelledby="declaracion">
+  <div class="container">
+    <p class="statement" id="declaracion">Desde 1955, una familia de Barranquilla se dedica a una sola cosa: <span class="dim">estar del lado del asegurado.</span> Te ayudamos a elegir bien y, cuando algo pasa, <span class="accent">te acompañamos hasta el final.</span></p>
+  </div>
+</section>
 
-          <h2 class="text-3xl sm:text-4xl lg:text-[44px] font-extrabold text-angopi-dark leading-[1.15] tracking-tight">
-            Protección para lo que hace crecer tu empresa.
-          </h2>
-
-          <p class="text-angopi-muted text-base sm:text-lg leading-relaxed">
-            Diseñamos programas de seguros integrales para mitigar riesgos operativos, patrimoniales y comerciales en sectores de manufactura, transporte, comercio y servicios.
-          </p>
-
-          <!-- Soluciones Agrupadas -->
-          <div class="pt-4 space-y-4 border-t border-angopi-border">
-            <div class="flex items-start gap-3">
-              <span class="w-1.5 h-1.5 rounded-full bg-angopi-blue mt-2.5 flex-shrink-0"></span>
-              <div>
-                <h4 class="text-sm font-bold text-angopi-dark">Pólizas de Cumplimiento Contractual</h4>
-                <p class="text-xs text-angopi-muted mt-0.5">Para licitaciones públicas, privadas y contratos de obra o suministro.</p>
-              </div>
-            </div>
-
-            <div class="flex items-start gap-3">
-              <span class="w-1.5 h-1.5 rounded-full bg-angopi-blue mt-2.5 flex-shrink-0"></span>
-              <div>
-                <h4 class="text-sm font-bold text-angopi-dark">Responsabilidad Civil Extracontractual (RCE)</h4>
-                <p class="text-xs text-angopi-muted mt-0.5">Amparo frente a daños a terceros derivados de la actividad empresarial.</p>
-              </div>
-            </div>
-
-            <div class="flex items-start gap-3">
-              <span class="w-1.5 h-1.5 rounded-full bg-angopi-blue mt-2.5 flex-shrink-0"></span>
-              <div>
-                <h4 class="text-sm font-bold text-angopi-dark">Transporte de Mercancías & Multirriesgo</h4>
-                <p class="text-xs text-angopi-muted mt-0.5">Protección de bodegas, maquinaria e importaciones/exportaciones.</p>
-              </div>
-            </div>
-          </div>
-
-          <!-- CTA Discreto -->
-          <div class="pt-4">
-            <a href="https://api.whatsapp.com/send?phone=573013631792&text=Hola%20Angopi,%20solicito%20asesor%C3%ADa%20para%20Seguros%20Empresariales" 
-               target="_blank"
-               class="inline-flex items-center gap-2 text-sm font-bold text-angopi-blue hover:text-angopi-hover transition">
-              <span>Estructurar plan para mi empresa</span>
-              <i class="fa-solid fa-arrow-right text-xs"></i>
-            </a>
-          </div>
-
-        </div>
-
-      </div>
+<section class="section section--flush-top" id="seguros" aria-labelledby="proteger-titulo">
+  <div class="container">
+    <div class="head head--center">
+      <p class="eyebrow">Nuestros seguros</p>
+      <h2 id="proteger-titulo"><span class="dim">¿Qué quieres</span> proteger?</h2>
     </div>
-  </section>
-
-  <!-- SOLUCIÓN 2: SEGUROS PERSONAS (TEXTO IZQUIERDA + IMAGEN DERECHA - INVERTIDO) -->
-  <section class="py-24 sm:py-32 bg-angopi-light" id="personas">
-    <div class="max-w-7xl mx-auto px-6 sm:px-8 lg:px-12">
-      <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-20 items-center">
-        
-        <!-- Contenido Editorial a la Izquierda -->
-        <div class="lg:col-span-5 space-y-6 order-2 lg:order-1 fade-up">
-          <p class="text-xs font-bold tracking-[0.2em] uppercase text-angopi-blue">
-            Línea Individual y Familiar
-          </p>
-
-          <h2 class="text-3xl sm:text-4xl lg:text-[44px] font-extrabold text-angopi-dark leading-[1.15] tracking-tight">
-            La tranquilidad de saber que los tuyos están respaldados.
-          </h2>
-
-          <p class="text-angopi-muted text-base sm:text-lg leading-relaxed">
-            La vida ocurre sin avisar. Te ayudamos a seleccionar coberturas de salud de élite, protección para tu vehículo y pólizas de vida que aseguren el futuro de tu familia con las mejores condiciones del mercado.
-          </p>
-
-          <!-- Soluciones Agrupadas -->
-          <div class="pt-4 space-y-4 border-t border-angopi-border">
-            <div class="flex items-start gap-3">
-              <span class="w-1.5 h-1.5 rounded-full bg-angopi-blue mt-2.5 flex-shrink-0"></span>
-              <div>
-                <h4 class="text-sm font-bold text-angopi-dark">Seguro Todo Riesgo Auto & SOAT</h4>
-                <p class="text-xs text-angopi-muted mt-0.5">Asistencia de grúa nacional 24/7, vehículo de reemplazo y amparo por pérdida total.</p>
-              </div>
-            </div>
-
-            <div class="flex items-start gap-3">
-              <span class="w-1.5 h-1.5 rounded-full bg-angopi-blue mt-2.5 flex-shrink-0"></span>
-              <div>
-                <h4 class="text-sm font-bold text-angopi-dark">Pólizas de Salud & Medicina Prepagada</h4>
-                <p class="text-xs text-angopi-muted mt-0.5">Acceso a las mejores clínicas de Colombia y especialistas directos sin demoras.</p>
-              </div>
-            </div>
-
-            <div class="flex items-start gap-3">
-              <span class="w-1.5 h-1.5 rounded-full bg-angopi-blue mt-2.5 flex-shrink-0"></span>
-              <div>
-                <h4 class="text-sm font-bold text-angopi-dark">Vida Individual & Hogar Protegido</h4>
-                <p class="text-xs text-angopi-muted mt-0.5">Respaldo económico ante incapacidad o fallecimiento, y coberturas de vivienda.</p>
-              </div>
-            </div>
-          </div>
-
-          <!-- CTA Discreto -->
-          <div class="pt-4">
-            <a href="https://api.whatsapp.com/send?phone=573013631792&text=Hola%20Angopi,%20quiero%20cotizar%20un%20Seguro%20de%20Auto%20o%20Salud" 
-               target="_blank"
-               class="inline-flex items-center gap-2 text-sm font-bold text-angopi-blue hover:text-angopi-hover transition">
-              <span>Cotizar seguros personales</span>
-              <i class="fa-solid fa-arrow-right text-xs"></i>
-            </a>
-          </div>
-
-        </div>
-
-        <!-- Fotografía Humana y Cálida a la Derecha -->
-        <div class="lg:col-span-7 order-1 lg:order-2 fade-up">
-          <div class="relative overflow-hidden rounded-2xl aspect-[4/3] bg-slate-100 shadow-sm">
-            <img src="assets/images/personas.jpg" 
-                 alt="Familia protegida en Colombia" 
-                 class="w-full h-full object-cover">
-          </div>
-        </div>
-
-      </div>
-    </div>
-  </section>
-
-  <!-- SOLUCIÓN 3: SEGURO DE ARRENDAMIENTO (IMAGEN IZQUIERDA + TEXTO DERECHA) -->
-  <section class="py-24 sm:py-32 bg-white" id="arrendamiento">
-    <div class="max-w-7xl mx-auto px-6 sm:px-8 lg:px-12">
-      <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-20 items-center">
-        
-        <!-- Fotografía Arquitectónica Inmobiliaria -->
-        <div class="lg:col-span-7 fade-up">
-          <div class="relative overflow-hidden rounded-2xl aspect-[4/3] bg-slate-100 shadow-sm">
-            <img src="assets/images/arrendamiento.jpg" 
-                 alt="Inmueble residencial y corporativo en Barranquilla" 
-                 class="w-full h-full object-cover">
-          </div>
-        </div>
-
-        <!-- Contenido Editorial -->
-        <div class="lg:col-span-5 space-y-6 fade-up">
-          <p class="text-xs font-bold tracking-[0.2em] uppercase text-angopi-blue">
-            Especialidad Inmobiliaria
-          </p>
-
-          <h2 class="text-3xl sm:text-4xl lg:text-[44px] font-extrabold text-angopi-dark leading-[1.15] tracking-tight">
-            Garantía total para propietarios e inmobiliarias.
-          </h2>
-
-          <p class="text-angopi-muted text-base sm:text-lg leading-relaxed">
-            Arrendar un inmueble no debería convertirse en una fuente de incertidumbre. Con el respaldo de Seguros SURA, garantizamos el pago oportuno de tus cánones y administración, incluso si el inquilino incumple.
-          </p>
-
-          <!-- Soluciones Agrupadas -->
-          <div class="pt-4 space-y-4 border-t border-angopi-border">
-            <div class="flex items-start gap-3">
-              <span class="w-1.5 h-1.5 rounded-full bg-angopi-blue mt-2.5 flex-shrink-0"></span>
-              <div>
-                <h4 class="text-sm font-bold text-angopi-dark">Estudio Digital de Inquilinos en 24 Horas</h4>
-                <p class="text-xs text-angopi-muted mt-0.5">Evaluación crediticia ágil sin filas ni desplazamientos.</p>
-              </div>
-            </div>
-
-            <div class="flex items-start gap-3">
-              <span class="w-1.5 h-1.5 rounded-full bg-angopi-blue mt-2.5 flex-shrink-0"></span>
-              <div>
-                <h4 class="text-sm font-bold text-angopi-dark">Pago Garantizado Mes a Mes</h4>
-                <p class="text-xs text-angopi-muted mt-0.5">Cobras puntualmente tu canon y cuota de administración sin interrupciones.</p>
-              </div>
-            </div>
-
-            <div class="flex items-start gap-3">
-              <span class="w-1.5 h-1.5 rounded-full bg-angopi-blue mt-2.5 flex-shrink-0"></span>
-              <div>
-                <h4 class="text-sm font-bold text-angopi-dark">Cobertura Integral de Servicios Públicos y Jurídica</h4>
-                <p class="text-xs text-angopi-muted mt-0.5">Amparo de faltantes en servicios y defensa legal sin costo para el propietario.</p>
-              </div>
-            </div>
-          </div>
-
-          <!-- CTA Discreto -->
-          <div class="pt-4">
-            <a href="https://api.whatsapp.com/send?phone=573013631792&text=Hola%20Angopi,%20quiero%20asegurar%20un%20inmueble%20en%20arrendamiento" 
-               target="_blank"
-               class="inline-flex items-center gap-2 text-sm font-bold text-angopi-blue hover:text-angopi-hover transition">
-              <span>Proteger mi arriendo con SURA</span>
-              <i class="fa-solid fa-arrow-right text-xs"></i>
-            </a>
-          </div>
-
-        </div>
-
-      </div>
-    </div>
-  </section>
-
-  <!-- ========================================================================= -->
-  <!-- 6. COTIZADOR EXPRESS EN 1 CLIC (MÁXIMA CONVERSIÓN & CAPTURA DE LEADS) -->
-  <!-- ========================================================================= -->
-  <section class="py-20 bg-angopi-light border-y border-angopi-border" id="cotizador">
-    <div class="max-w-5xl mx-auto px-6 sm:px-8 lg:px-12">
-      
-      <div class="bg-white rounded-3xl p-8 sm:p-12 shadow-sm border border-slate-200/80 fade-up">
-        <div class="max-w-2xl mb-8">
-          <p class="text-xs font-bold uppercase tracking-[0.2em] text-angopi-blue">Atención Directa</p>
-          <h2 class="text-3xl sm:text-4xl font-extrabold text-angopi-dark mt-2 tracking-tight">
-            Cotiza en 1 Clic con nuestro equipo
-          </h2>
-          <p class="text-sm text-angopi-muted mt-2">
-            Elige el tipo de seguro que necesitas y recibe una comparativa formal en tu WhatsApp en minutos.
-          </p>
-        </div>
-
-        <form onsubmit="handleQuoteSubmit(event)" class="space-y-6">
-          <!-- Paso 1: Tipo de seguro -->
-          <div>
-            <label class="block text-xs font-bold uppercase tracking-wider text-angopi-dark mb-3">
-              1. Selecciona tu necesidad
-            </label>
-            <div class="grid grid-cols-2 sm:grid-cols-4 gap-3">
-              <label class="border border-slate-200 hover:border-angopi-blue rounded-xl p-3.5 flex flex-col items-center justify-center gap-2 cursor-pointer transition text-center has-[:checked]:border-angopi-blue has-[:checked]:bg-blue-50/50 has-[:checked]:text-angopi-blue">
-                <input type="radio" name="seguro" value="Auto Todo Riesgo / SOAT" checked class="hidden">
-                <i class="fa-solid fa-car-side text-xl"></i>
-                <span class="text-xs font-bold">Auto / SOAT</span>
-              </label>
-
-              <label class="border border-slate-200 hover:border-angopi-blue rounded-xl p-3.5 flex flex-col items-center justify-center gap-2 cursor-pointer transition text-center has-[:checked]:border-angopi-blue has-[:checked]:bg-blue-50/50 has-[:checked]:text-angopi-blue">
-                <input type="radio" name="seguro" value="Póliza de Arrendamiento SURA" class="hidden">
-                <i class="fa-solid fa-key text-xl"></i>
-                <span class="text-xs font-bold">Arrendamiento</span>
-              </label>
-
-              <label class="border border-slate-200 hover:border-angopi-blue rounded-xl p-3.5 flex flex-col items-center justify-center gap-2 cursor-pointer transition text-center has-[:checked]:border-angopi-blue has-[:checked]:bg-blue-50/50 has-[:checked]:text-angopi-blue">
-                <input type="radio" name="seguro" value="Póliza Salud & Medicina Prepagada" class="hidden">
-                <i class="fa-solid fa-heart-pulse text-xl"></i>
-                <span class="text-xs font-bold">Salud / Vida</span>
-              </label>
-
-              <label class="border border-slate-200 hover:border-angopi-blue rounded-xl p-3.5 flex flex-col items-center justify-center gap-2 cursor-pointer transition text-center has-[:checked]:border-angopi-blue has-[:checked]:bg-blue-50/50 has-[:checked]:text-angopi-blue">
-                <input type="radio" name="seguro" value="Seguros Empresas & Pymes" class="hidden">
-                <i class="fa-solid fa-building text-xl"></i>
-                <span class="text-xs font-bold">Empresas / Pyme</span>
-              </label>
-            </div>
-          </div>
-
-          <!-- Paso 2: Datos de contacto -->
-          <div>
-            <label class="block text-xs font-bold uppercase tracking-wider text-angopi-dark mb-3">
-              2. Tus datos para armar la cotización
-            </label>
-            <div class="grid grid-cols-1 sm:grid-cols-3 gap-4">
-              <div>
-                <input type="text" id="quote-name" required placeholder="Tu Nombre Completo *" class="w-full px-4 py-3 bg-slate-50 border border-slate-200 rounded-xl text-sm focus:outline-none focus:bg-white focus:ring-2 focus:ring-angopi-blue transition">
-              </div>
-              <div>
-                <input type="tel" id="quote-phone" required placeholder="Tu WhatsApp (ej. 301 000 0000) *" class="w-full px-4 py-3 bg-slate-50 border border-slate-200 rounded-xl text-sm focus:outline-none focus:bg-white focus:ring-2 focus:ring-angopi-blue transition">
-              </div>
-              <div>
-                <input type="text" id="quote-city" placeholder="Ciudad (ej. Barranquilla)" value="Barranquilla" class="w-full px-4 py-3 bg-slate-50 border border-slate-200 rounded-xl text-sm focus:outline-none focus:bg-white focus:ring-2 focus:ring-angopi-blue transition">
-              </div>
-            </div>
-          </div>
-
-          <!-- Paso 3: Botón de envío directo a WhatsApp -->
-          <div class="flex flex-col sm:flex-row items-center justify-between gap-4 pt-3 border-t border-slate-100">
-            <p class="text-xs text-angopi-muted">
-              🔒 Respuesta humana directa en menos de 10 minutos. Cero llamadas comerciales intrusivas.
-            </p>
-            <button type="submit" class="btn-pill w-full sm:w-auto inline-flex items-center justify-center gap-2.5 bg-emerald-600 hover:bg-emerald-700 text-white font-bold text-sm px-8 py-3.5 rounded-full shadow-md">
-              <i class="fa-brands fa-whatsapp text-lg"></i>
-              <span>Solicitar Cotización por WhatsApp</span>
-            </button>
-          </div>
-        </form>
-
-      </div>
-
-    </div>
-  </section>
-
-  <!-- ========================================================================= -->
-  <!-- 7. EL EQUIPO COMPLETO DE ANGOPI (TODOS LOS 5 INTEGRANTES CON FOTO REAL) -->
-  <!-- ========================================================================= -->
-  <section class="py-24 sm:py-32 bg-white" id="nosotros">
-    <div class="max-w-7xl mx-auto px-6 sm:px-8 lg:px-12">
-      
-      <!-- Gran frase editorial -->
-      <div class="max-w-4xl space-y-6 mb-20 fade-up">
-        <p class="text-xs font-bold tracking-[0.2em] uppercase text-angopi-blue">
-          Quiénes Somos
-        </p>
-
-        <h2 class="text-3xl sm:text-5xl lg:text-[54px] font-extrabold text-angopi-dark leading-[1.12] tracking-tight">
-          "No somos un intermediario más. Somos el equipo que responde cuando las cosas se complican."
-        </h2>
-
-        <p class="text-angopi-muted text-lg leading-relaxed max-w-2xl font-normal pt-2">
-          Fundada en Barranquilla y con cobertura en toda Colombia, Agencia de Seguros ANGOPI Ltda. combina más de 20 años de experiencia técnica con una atención directa de persona a persona.
-        </p>
-      </div>
-
-      <!-- TODOS LOS 5 INTEGRANTES DEL EQUIPO CON FOTOGRAFÍA ORIGINAL -->
-      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-6 pt-8 border-t border-angopi-border fade-up">
-        
-        <!-- 1. ANDRÉS GONZÁLEZ -->
-        <div class="bg-slate-50 hover:bg-white rounded-2xl p-6 text-center border border-slate-200/80 transition shadow-sm hover:shadow-md flex flex-col justify-between group">
-          <div>
-            <div class="w-24 h-24 mx-auto rounded-full overflow-hidden bg-slate-200 border-2 border-angopi-blue/40 shadow-sm mb-4">
-              <img src="assets/images/edt1.png" alt="Andrés González - Gerente General" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
-            </div>
-            <h4 class="text-base font-bold text-angopi-dark">Andrés González</h4>
-            <p class="text-[11px] font-bold text-angopi-blue uppercase tracking-wider mt-1">Gerente General</p>
-            <p class="text-xs text-angopi-muted mt-2 leading-relaxed">
-              Estrategia corporativa, convenios con aseguradoras y cuentas de gran escala.
-            </p>
-          </div>
-          <div class="mt-4 pt-4 border-t border-slate-200/60">
-            <a href="mailto:gerencia@angopi.co" class="text-xs font-semibold text-slate-600 hover:text-angopi-blue flex items-center justify-center gap-1.5 transition">
-              <i class="fa-regular fa-envelope text-angopi-blue"></i>
-              <span>gerencia@angopi.co</span>
-            </a>
-          </div>
-        </div>
-
-        <!-- 2. DAVID GONZÁLEZ -->
-        <div class="bg-slate-50 hover:bg-white rounded-2xl p-6 text-center border border-slate-200/80 transition shadow-sm hover:shadow-md flex flex-col justify-between group">
-          <div>
-            <div class="w-24 h-24 mx-auto rounded-full overflow-hidden bg-slate-200 border-2 border-angopi-blue/40 shadow-sm mb-4">
-              <img src="assets/images/edt2.png" alt="David González - Director Comercial" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
-            </div>
-            <h4 class="text-base font-bold text-angopi-dark">David González</h4>
-            <p class="text-[11px] font-bold text-angopi-blue uppercase tracking-wider mt-1">Director Comercial</p>
-            <p class="text-xs text-angopi-muted mt-2 leading-relaxed">
-              Convenios de arrendamiento, asesoría comercial y diseño de pólizas personalizadas.
-            </p>
-          </div>
-          <div class="mt-4 pt-4 border-t border-slate-200/60">
-            <a href="mailto:comercial@angopi.co" class="text-xs font-semibold text-slate-600 hover:text-angopi-blue flex items-center justify-center gap-1.5 transition">
-              <i class="fa-regular fa-envelope text-angopi-blue"></i>
-              <span>comercial@angopi.co</span>
-            </a>
-          </div>
-        </div>
-
-        <!-- 3. ESMERALDA BALLESTAS -->
-        <div class="bg-slate-50 hover:bg-white rounded-2xl p-6 text-center border border-slate-200/80 transition shadow-sm hover:shadow-md flex flex-col justify-between group">
-          <div>
-            <div class="w-24 h-24 mx-auto rounded-full overflow-hidden bg-slate-200 border-2 border-slate-300 shadow-sm mb-4">
-              <img src="assets/images/edt3.jpg" alt="Esmeralda Ballestas - Gestión y Siniestros" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
-            </div>
-            <h4 class="text-base font-bold text-angopi-dark">Esmeralda Ballestas</h4>
-            <p class="text-[11px] font-bold text-angopi-blue uppercase tracking-wider mt-1">Gestión & Siniestros</p>
-            <p class="text-xs text-angopi-muted mt-2 leading-relaxed">
-              Acompañamiento prioritario en reclamaciones, indemnizaciones y soporte contable.
-            </p>
-          </div>
-          <div class="mt-4 pt-4 border-t border-slate-200/60">
-            <a href="mailto:asistente@angopi.co" class="text-xs font-semibold text-slate-600 hover:text-angopi-blue flex items-center justify-center gap-1.5 transition">
-              <i class="fa-regular fa-envelope text-angopi-blue"></i>
-              <span>asistente@angopi.co</span>
-            </a>
-          </div>
-        </div>
-
-        <!-- 4. JOSELYN NAVAS -->
-        <div class="bg-slate-50 hover:bg-white rounded-2xl p-6 text-center border border-slate-200/80 transition shadow-sm hover:shadow-md flex flex-col justify-between group">
-          <div>
-            <div class="w-24 h-24 mx-auto rounded-full overflow-hidden bg-slate-200 border-2 border-slate-300 shadow-sm mb-4">
-              <img src="assets/images/edt4.jpg" alt="Joselyn Navas - Área Técnica y Emisión" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
-            </div>
-            <h4 class="text-base font-bold text-angopi-dark">Joselyn Navas</h4>
-            <p class="text-[11px] font-bold text-angopi-blue uppercase tracking-wider mt-1">Área Técnica & Emisión</p>
-            <p class="text-xs text-angopi-muted mt-2 leading-relaxed">
-              Revisión técnica de coberturas, condiciones de póliza y expedición digital inmediata.
-            </p>
-          </div>
-          <div class="mt-4 pt-4 border-t border-slate-200/60">
-            <a href="mailto:tecnico@angopi.co" class="text-xs font-semibold text-slate-600 hover:text-angopi-blue flex items-center justify-center gap-1.5 transition">
-              <i class="fa-regular fa-envelope text-angopi-blue"></i>
-              <span>tecnico@angopi.co</span>
-            </a>
-          </div>
-        </div>
-
-        <!-- 5. PAOLA PEÑARANDA -->
-        <div class="bg-slate-50 hover:bg-white rounded-2xl p-6 text-center border border-slate-200/80 transition shadow-sm hover:shadow-md flex flex-col justify-between group">
-          <div>
-            <div class="w-24 h-24 mx-auto rounded-full overflow-hidden bg-slate-200 border-2 border-slate-300 shadow-sm mb-4">
-              <img src="assets/images/edt5.jpg" alt="Paola Peñaranda - Especialista en Ventas" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
-            </div>
-            <h4 class="text-base font-bold text-angopi-dark">Paola Peñaranda</h4>
-            <p class="text-[11px] font-bold text-angopi-blue uppercase tracking-wider mt-1">Especialista en Ventas</p>
-            <p class="text-xs text-angopi-muted mt-2 leading-relaxed">
-              Atención a particulares, expedición de SOAT y pólizas de salud y vehículo.
-            </p>
-          </div>
-          <div class="mt-4 pt-4 border-t border-slate-200/60">
-            <a href="mailto:ventas@angopi.co" class="text-xs font-semibold text-slate-600 hover:text-angopi-blue flex items-center justify-center gap-1.5 transition">
-              <i class="fa-regular fa-envelope text-angopi-blue"></i>
-              <span>ventas@angopi.co</span>
-            </a>
-          </div>
-        </div>
-
-      </div>
-
-      <!-- Métricas con Espacio Negativo y Proporción -->
-      <div class="grid grid-cols-1 sm:grid-cols-3 gap-10 pt-16 mt-16 border-t border-angopi-border fade-up">
-        <div>
-          <p class="text-5xl font-extrabold text-angopi-blue font-sans">+20</p>
-          <p class="text-sm font-semibold text-angopi-dark mt-2">Años de experiencia</p>
-          <p class="text-xs text-angopi-muted mt-1">Respaldando a clientes en toda Colombia.</p>
-        </div>
-        <div>
-          <p class="text-5xl font-extrabold text-angopi-blue font-sans">6+</p>
-          <p class="text-sm font-semibold text-angopi-dark mt-2">Aseguradoras líderes</p>
-          <p class="text-xs text-angopi-muted mt-1">Alianzas con SURA, Mapfre, Allianz y Bolívar.</p>
-        </div>
-        <div>
-          <p class="text-5xl font-extrabold text-angopi-blue font-sans">1 a 1</p>
-          <p class="text-sm font-semibold text-angopi-dark mt-2">Atención personalizada</p>
-          <p class="text-xs text-angopi-muted mt-1">Acompañamiento humano directo sin bots.</p>
-        </div>
-      </div>
-
-    </div>
-  </section>
-
-  <!-- ========================================================================= -->
-  <!-- 8. CENTRO DE FORMATOS Y RECURSOS OFICIALES (SOAT 2026 & SARLAFT) -->
-  <!-- ========================================================================= -->
-  <section class="py-20 bg-angopi-light border-y border-angopi-border" id="formatos">
-    <div class="max-w-7xl mx-auto px-6 sm:px-8 lg:px-12">
-      
-      <div class="flex flex-col md:flex-row md:items-end justify-between mb-12 fade-up">
-        <div>
-          <p class="text-xs font-bold uppercase tracking-[0.2em] text-angopi-blue">Documentación Oficial</p>
-          <h2 class="text-3xl font-extrabold text-angopi-dark mt-1">Centro de Formatos y Tarifas</h2>
-        </div>
-        <p class="text-xs text-angopi-muted max-w-sm mt-2 md:mt-0">
-          Descarga directamente los formularios reglamentarios para vinculación de clientes y tarifas actualizadas de SOAT.
-        </p>
-      </div>
-
-      <div class="grid grid-cols-1 sm:grid-cols-3 gap-6 fade-up">
-        
-        <!-- Tarjeta 1: Tarifas SOAT -->
-        <a href="https://angopi.co/files/TarifasSOAT2026.pdf" target="_blank" class="bg-white rounded-2xl p-6 border border-slate-200/80 hover:border-angopi-blue shadow-sm hover:shadow-md transition flex items-start gap-4 group">
-          <div class="w-12 h-12 rounded-xl bg-red-50 text-red-600 flex items-center justify-center text-xl flex-shrink-0 group-hover:scale-110 transition">
-            <i class="fa-regular fa-file-pdf"></i>
-          </div>
-          <div>
-            <h4 class="text-sm font-bold text-angopi-dark group-hover:text-angopi-blue transition">Tarifas Oficiales SOAT 2026</h4>
-            <p class="text-xs text-angopi-muted mt-1">Tabla reglamentaria vigente para vehículos particulares y de servicio público.</p>
-            <span class="text-xs font-semibold text-angopi-blue inline-flex items-center gap-1 mt-3">
-              <span>Descargar PDF</span>
-              <i class="fa-solid fa-arrow-down text-[10px]"></i>
-            </span>
-          </div>
+    <div class="panel">
+      <div class="bento bento--doors">
+        <a class="card card--link cell-a" href="personas/">
+          <span class="icon-tile"><svg class="icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M22 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg></span>
+          <h3 class="door-title">Para ti y tu familia</h3>
+          <p>Coberturas para tu carro, tu salud, tu vida, tu hogar y tus viajes, según tu momento de vida.</p>
+          <ul class="tags"><li>Auto</li><li>SOAT</li><li>Motos</li><li>Salud</li><li>Vida</li><li>Hogar</li><li>Viaje</li></ul>
+          <span class="card__foot">Ver seguros para personas<span class="round-btn"><svg class="icon icon--sm" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg></span></span>
         </a>
-
-        <!-- Tarjeta 2: Formato Persona Natural -->
-        <a href="https://angopi.co/files/PersonaNatural.pdf" target="_blank" class="bg-white rounded-2xl p-6 border border-slate-200/80 hover:border-angopi-blue shadow-sm hover:shadow-md transition flex items-start gap-4 group">
-          <div class="w-12 h-12 rounded-xl bg-blue-50 text-angopi-blue flex items-center justify-center text-xl flex-shrink-0 group-hover:scale-110 transition">
-            <i class="fa-regular fa-file-pdf"></i>
+        <a class="card card--dark card--link cell-b" href="arrendamiento/">
+          <span class="icon-tile"><svg class="icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M2.586 17.414A2 2 0 0 0 2 18.828V21a1 1 0 0 0 1 1h3a1 1 0 0 0 1-1v-1a1 1 0 0 1 1-1h1a1 1 0 0 0 1-1v-1a1 1 0 0 1 1-1h.172a2 2 0 0 0 1.414-.586l.814-.814a6.5 6.5 0 1 0-4-4z"/><circle cx="16.5" cy="7.5" r=".5"/></svg></span>
+          <h3 class="door-title">Para tu arriendo</h3>
+          <p>Con el seguro de arrendamiento de SURA, el pago de tu canon queda respaldado si el inquilino incumple.</p>
+          <div class="mini-quote" aria-hidden="true">
+            <div class="ui-card__top"><span class="ui-card__title">Cotizador en línea</span><span class="ui-card__tag">3 pasos</span></div>
+            <div class="ui-steps"><span class="is-on"></span><span class="is-on"></span><span></span></div>
+            <span class="ui-label">¿El inquilino ya habita el inmueble?</span>
+            <div class="ui-seg"><span>Sí, vigente</span><span class="is-on">Nuevo arriendo</span></div>
           </div>
-          <div>
-            <h4 class="text-sm font-bold text-angopi-dark group-hover:text-angopi-blue transition">Formato Persona Natural</h4>
-            <p class="text-xs text-angopi-muted mt-1">Formulario de Conocimiento de Cliente (SARLAFT) para expedición de pólizas.</p>
-            <span class="text-xs font-semibold text-angopi-blue inline-flex items-center gap-1 mt-3">
-              <span>Descargar PDF</span>
-              <i class="fa-solid fa-arrow-down text-[10px]"></i>
-            </span>
-          </div>
+          <span class="card__foot">Cotizar seguro de arriendo<span class="round-btn"><svg class="icon icon--sm" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg></span></span>
         </a>
-
-        <!-- Tarjeta 3: Formato Persona Jurídica -->
-        <a href="https://angopi.co/files/PersonaJuridica.pdf" target="_blank" class="bg-white rounded-2xl p-6 border border-slate-200/80 hover:border-angopi-blue shadow-sm hover:shadow-md transition flex items-start gap-4 group">
-          <div class="w-12 h-12 rounded-xl bg-indigo-50 text-indigo-600 flex items-center justify-center text-xl flex-shrink-0 group-hover:scale-110 transition">
-            <i class="fa-regular fa-file-pdf"></i>
-          </div>
-          <div>
-            <h4 class="text-sm font-bold text-angopi-dark group-hover:text-angopi-blue transition">Formato Persona Jurídica</h4>
-            <p class="text-xs text-angopi-muted mt-1">Formulario empresarial para emisión de pólizas corporativas y cumplimiento.</p>
-            <span class="text-xs font-semibold text-angopi-blue inline-flex items-center gap-1 mt-3">
-              <span>Descargar PDF</span>
-              <i class="fa-solid fa-arrow-down text-[10px]"></i>
-            </span>
-          </div>
+        <a class="card card--link" href="empresas/">
+          <span class="icon-tile"><svg class="icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><rect x="4" y="2" width="16" height="20" rx="2"/><path d="M9 22v-4h6v4"/><path d="M8 6h.01M12 6h.01M16 6h.01M8 10h.01M12 10h.01M16 10h.01M8 14h.01M12 14h.01M16 14h.01"/></svg></span>
+          <h3>Para tu empresa</h3>
+          <p>Cumplimiento, responsabilidad civil, transporte, daños y beneficios para tus empleados.</p>
+          <span class="card__foot">Ver seguros para empresas<span class="round-btn"><svg class="icon icon--sm" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg></span></span>
         </a>
-
-      </div>
-
-    </div>
-  </section>
-
-  <!-- ========================================================================= -->
-  <!-- 9. PREGUNTAS FRECUENTES (ACCORDION INTERACTIVO CON CLARIDAD TOTAL) -->
-  <!-- ========================================================================= -->
-  <section class="py-20 bg-white" id="faq">
-    <div class="max-w-4xl mx-auto px-6 sm:px-8 lg:px-12">
-      
-      <div class="text-center mb-14 fade-up">
-        <p class="text-xs font-bold uppercase tracking-[0.2em] text-angopi-blue">Claridad y Respaldo</p>
-        <h2 class="text-3xl font-extrabold text-angopi-dark mt-2 tracking-tight">Preguntas Frecuentes</h2>
-      </div>
-
-      <div class="space-y-4 fade-up">
-        
-        <!-- Pregunta 1 -->
-        <div class="faq-item bg-slate-50 rounded-2xl border border-slate-200/80 overflow-hidden transition active">
-          <button onclick="toggleFaq(this)" class="w-full px-6 py-5 flex items-center justify-between text-left font-bold text-angopi-dark text-sm sm:text-base focus:outline-none">
-            <span>¿Cotizar a través de Angopi tiene algún costo adicional para mí?</span>
-            <i class="fa-solid fa-chevron-down faq-chevron text-slate-400 text-xs transition-transform"></i>
-          </button>
-          <div class="faq-answer px-6 text-xs sm:text-sm text-angopi-muted leading-relaxed">
-            <div class="pb-5">
-              No, en lo absoluto. El valor de tu póliza es exactamente el mismo que si la compraras directamente en SURA o Mapfre. Nuestra comisión la paga la aseguradora, por lo que tú recibes asesoría experta y acompañamiento legal en siniestros sin pagar un solo peso de más.
-            </div>
-          </div>
-        </div>
-
-        <!-- Pregunta 2 -->
-        <div class="faq-item bg-slate-50 rounded-2xl border border-slate-200/80 overflow-hidden transition">
-          <button onclick="toggleFaq(this)" class="w-full px-6 py-5 flex items-center justify-between text-left font-bold text-angopi-dark text-sm sm:text-base focus:outline-none">
-            <span>¿Cuánto demora el estudio de una póliza de arrendamiento?</span>
-            <i class="fa-solid fa-chevron-down faq-chevron text-slate-400 text-xs transition-transform"></i>
-          </button>
-          <div class="faq-answer px-6 text-xs sm:text-sm text-angopi-muted leading-relaxed">
-            <div class="pb-5">
-              Gracias al sistema digital de Seguros SURA, el estudio de tu inquilino se procesa en un promedio de 4 a 24 horas hábiles una vez radicados los documentos básicos de ingresos.
-            </div>
-          </div>
-        </div>
-
-        <!-- Pregunta 3 -->
-        <div class="faq-item bg-slate-50 rounded-2xl border border-slate-200/80 overflow-hidden transition">
-          <button onclick="toggleFaq(this)" class="w-full px-6 py-5 flex items-center justify-between text-left font-bold text-angopi-dark text-sm sm:text-base focus:outline-none">
-            <span>¿Qué debo hacer si tengo un choque o accidente con mi vehículo?</span>
-            <i class="fa-solid fa-chevron-down faq-chevron text-slate-400 text-xs transition-transform"></i>
-          </button>
-          <div class="faq-answer px-6 text-xs sm:text-sm text-angopi-muted leading-relaxed">
-            <div class="pb-5">
-              Comunícate de inmediato con nuestra línea de asistencia o al WhatsApp oficial de Angopi. Nosotros te guiamos paso a paso, solicitamos la grúa o asistencia médica, y radicamos el siniestro ante la aseguradora para asegurar la indemnización o reparación de tu auto.
-            </div>
-          </div>
-        </div>
-
-      </div>
-
-    </div>
-  </section>
-
-  <!-- ========================================================================= -->
-  <!-- 10. CTA FINAL DE CONVERSIÓN FUERTE (FONDO AZUL ANGOPI #418ef2) -->
-  <!-- ========================================================================= -->
-  <section class="bg-angopi-blue text-white py-24 sm:py-32 text-left sm:text-center relative overflow-hidden" id="contacto">
-    <div class="max-w-4xl mx-auto px-6 sm:px-8 lg:px-12 space-y-8 fade-up">
-      
-      <p class="text-xs sm:text-sm font-semibold uppercase tracking-[0.2em] text-white/80">
-        Empieza Hoy Mismo
-      </p>
-
-      <h2 class="text-4xl sm:text-5xl lg:text-6xl font-extrabold leading-[1.12] tracking-tight">
-        Hablemos de cómo proteger lo que realmente importa.
-      </h2>
-
-      <p class="text-white/90 text-base sm:text-lg max-w-xl mx-auto font-normal leading-relaxed">
-        Nuestros asesores están listos para analizar tus necesidades y estructurar la póliza ideal para ti o tu empresa sin costo ni compromiso.
-      </p>
-
-      <div class="pt-4 flex flex-col sm:flex-row items-center justify-center gap-4">
-        <a href="https://api.whatsapp.com/send?phone=573013631792&text=Hola%20Angopi,%20quiero%20hablar%20con%20un%20asesor%20para%20cotizar" 
-           target="_blank"
-           class="btn-pill w-full sm:w-auto inline-flex items-center justify-center gap-3 bg-white text-angopi-blue hover:bg-slate-100 text-base font-bold px-9 py-4 rounded-full shadow-xl">
-          <span>Habla con un asesor</span>
-          <i class="fa-solid fa-arrow-right text-xs"></i>
-        </a>
-        <a href="https://calendly.com/angopi-ltda" 
-           target="_blank"
-           class="btn-pill w-full sm:w-auto inline-flex items-center justify-center gap-2 bg-transparent hover:bg-white/10 text-white text-base font-medium px-8 py-4 rounded-full border border-white/50 transition">
-          <i class="fa-regular fa-calendar-check text-sm"></i>
-          <span>Agendar cita virtual</span>
+        <a class="card card--blue card--link" href="https://angopi.co.agentemotor.com/portalclientes/formulario/soat" target="_blank" rel="noopener">
+          <span class="icon-tile"><svg class="icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><rect x="2" y="5" width="20" height="14" rx="2"/><circle cx="8" cy="11" r="2"/><path d="M5 17a3 3 0 0 1 6 0"/><path d="M14 10h4"/><path d="M14 14h4"/></svg></span>
+          <h3>Compra tu SOAT en línea</h3>
+          <p>Expídelo en línea desde nuestra plataforma o escríbenos y te ayudamos.</p>
+          <span class="card__foot">Comprar SOAT<span class="round-btn"><svg class="icon icon--sm" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg></span></span>
         </a>
       </div>
-
     </div>
-  </section>
+  </div>
+</section>
 
-  <!-- ========================================================================= -->
-  <!-- 11. FOOTER CORPORATIVO (AZUL MARINO PROFUNDO #0A1118) -->
-  <!-- ========================================================================= -->
-  <footer class="bg-angopi-navy text-slate-400 text-xs py-20 border-t border-white/5">
-    <div class="max-w-7xl mx-auto px-6 sm:px-8 lg:px-12">
-      
-      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-12 gap-12 pb-16 border-b border-white/10">
-        
-        <!-- Col 1: Marca y Propósito (4 cols) -->
-        <div class="lg:col-span-4 space-y-5">
-          <a href="#" class="inline-block">
-            <img src="assets/images/logo-white.png" alt="ANGOPI" class="h-9 w-auto object-contain">
-          </a>
-          <p class="text-slate-400 leading-relaxed text-sm pr-4">
-            Agencia de Seguros autorizada en Colombia. Más de dos décadas blindando empresas, familias y patrimonios inmobiliarios con criterio técnico y cercanía.
-          </p>
-          <div class="pt-1 text-slate-500 text-xs">
-            NIT: 802.012.345-1 | Barranquilla, Atlántico
+<section class="section section--flush-top" aria-labelledby="cifras-titulo">
+  <div class="container">
+    <h2 id="cifras-titulo" class="visually-hidden">Angopi en cifras</h2>
+    <div class="panel">
+      <div class="bento bento--stats">
+        <div class="card card--dark cell-dark">
+          <div class="brand-mark">
+            <img src="assets/img/icons/icon-192.png" alt="" width="44" height="44">
+            <span class="brand-mark__text">Agencia de Seguros Angopi Ltda.<br>Barranquilla, Colombia</span>
+          </div>
+          <p class="big">Tú nos cuentas. <span class="dim">Nosotros nos encargamos.</span></p>
+          <p>Escuchamos qué quieres proteger, comparamos opciones, te explicamos la letra pequeña y seguimos contigo en renovaciones y reclamaciones.</p>
+          <a class="btn btn--light" href="https://wa.me/573013631792?text=Hola%20Angopi%2C%20quiero%20asesor%C3%ADa%20para%20elegir%20un%20seguro." target="_blank" rel="noopener">Hablar con un asesor</a>
+        </div>
+        <div class="card stat">
+          <span class="stat__num">70+<span class="stat__unit">años</span></span>
+          <p>De trayectoria familiar en seguros. En Barranquilla desde 1955.</p>
+          <div class="bars"><span class="is-on"></span><span class="is-on"></span><span class="is-on"></span><span class="is-blue"></span></div>
+        </div>
+        <div class="card stat">
+          <span class="stat__num">7<span class="stat__unit">aseguradoras</span></span>
+          <p>Allianz, Bolívar, Chubb, HDI, Mapfre, SBS y SURA.</p>
+          <div class="bars"><span class="is-on"></span><span class="is-on"></span><span class="is-blue"></span><span></span></div>
+        </div>
+        <div class="card stat">
+          <span class="stat__num">5<span class="stat__unit">personas</span></span>
+          <p>Un equipo pequeño y cercano. Le escribes directamente a quien te asesora.</p>
+          <div class="bars"><span class="is-on"></span><span class="is-blue"></span><span></span><span></span></div>
+        </div>
+        <div class="card stat">
+          <span class="stat__num">$0<span class="stat__unit">por cotizar</span></span>
+          <p>Cotizar y recibir asesoría no tiene costo. El precio de la póliza lo define la aseguradora.</p>
+          <div class="bars"><span class="is-on"></span><span class="is-on"></span><span class="is-on"></span><span class="is-on"></span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section" aria-labelledby="agencia-titulo">
+  <div class="container">
+    <div class="head-row">
+      <div class="head">
+        <p class="eyebrow">Por qué una agencia</p>
+        <h2 id="agencia-titulo"><span class="dim">La aseguradora te vende su póliza.</span> Nosotros te ayudamos a elegir la tuya.</h2>
+      </div>
+    </div>
+    <div class="feature">
+      <div class="feature__visual" aria-hidden="true">
+        <div class="policy-stack policy">
+          <div class="ui-card">
+            <div class="ui-card__top"><span class="ui-card__title">Tu póliza, explicada</span><span class="ui-card__tag">Seguro de carro</span></div>
+            <div class="policy__row"><b>Daños a terceros</b><span class="pill-ok">Cubre</span></div>
+            <div class="policy__row"><b>Pérdida total por daños</b><span class="pill-ok">Cubre</span></div>
+            <div class="policy__row"><b>Asistencia en la vía</b><span class="pill-note">Según el plan</span></div>
+            <div class="policy__row"><b>Conductor sin licencia</b><span class="pill-no">No cubre</span></div>
+            <div class="policy__row"><b>Deducible</b><span class="pill-note">Te lo explicamos</span></div>
+            <div class="policy__note"><svg class="icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M14 2v4a2 2 0 0 0 2 2h4"/><path d="M4.268 21a2 2 0 0 0 1.727 1H18a2 2 0 0 0 2-2V7l-5-5H6a2 2 0 0 0-2 2v3"/><path d="m9 18-1.5-1.5"/><circle cx="5" cy="14" r="3"/></svg>Revisamos las condiciones antes de que firmes.</div>
+          </div>
+          <div class="ui-card">
+            <div class="ui-card__top"><span class="ui-card__title">Reclamación</span><span class="ui-card__tag">En curso</span></div>
+            <div class="ui-steps"><span class="is-on"></span><span class="is-on"></span><span class="is-on"></span><span></span></div>
+            <div class="ui-foot"><svg class="icon icon--sm" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="m11 17 2 2a1 1 0 1 0 3-3"/><path d="m14 14 2.5 2.5a1 1 0 1 0 3-3l-3.88-3.88a3 3 0 0 0-4.24 0l-.88.88a1 1 0 1 1-3-3l2.81-2.81a5.79 5.79 0 0 1 7.06-.87l.47.28a2 2 0 0 0 1.42.25L21 4"/><path d="m21 3 1 11h-2"/><path d="M3 3 2 14l6.5 6.5a1 1 0 1 0 3-3"/><path d="M3 4h8"/></svg>Te acompañamos</div>
           </div>
         </div>
+      </div>
+      <div class="acc">
+        <details name="agencia" open>
+          <summary>Comparamos por ti</summary>
+          <div class="acc__body"><p>Revisamos alternativas entre Allianz, Bolívar, Chubb, HDI, Mapfre, SBS y SURA para encontrar la que se ajusta a lo que necesitas y a lo que quieres invertir.</p></div>
+        </details>
+        <details name="agencia">
+          <summary>Leemos la letra pequeña</summary>
+          <div class="acc__body"><p>Antes de que firmes, te explicamos qué cubre tu póliza, qué no cubre y cuánto tendrías que asumir en caso de un siniestro.</p></div>
+        </details>
+        <details name="agencia">
+          <summary>Estamos contigo al reclamar</summary>
+          <div class="acc__body"><p>Si algo pasa, nos escribes a nosotros. Te orientamos, te ayudamos con los documentos y hacemos seguimiento al trámite con la aseguradora.</p></div>
+        </details>
+        <details name="agencia">
+          <summary>Te acompañamos en el tiempo</summary>
+          <div class="acc__body"><p>Revisamos tus pólizas en cada renovación para que sigan respondiendo a tu vida o a tu negocio.</p></div>
+        </details>
+      </div>
+    </div>
+  </div>
+</section>
 
-        <!-- Col 2: Soluciones (3 cols) -->
-        <div class="lg:col-span-3 space-y-3">
-          <p class="text-white font-semibold text-sm">Soluciones</p>
-          <ul class="space-y-2.5 text-slate-400 text-sm">
-            <li><a href="#empresas" class="hover:text-white transition">Pólizas de Cumplimiento Contractual</a></li>
-            <li><a href="#empresas" class="hover:text-white transition">Responsabilidad Civil Extracontractual</a></li>
-            <li><a href="#arrendamiento" class="hover:text-white transition">Seguro de Arrendamiento SURA</a></li>
-            <li><a href="#personas" class="hover:text-white transition">Seguro Todo Riesgo Auto & SOAT</a></li>
-            <li><a href="#personas" class="hover:text-white transition">Pólizas de Salud & Medicina Prepagada</a></li>
+<section class="section section--flush-top" aria-labelledby="metodo-titulo">
+  <div class="container">
+    <div class="head head--center">
+      <p class="eyebrow">Cómo trabajamos</p>
+      <h2 id="metodo-titulo"><span class="dim">De tu pregunta</span> a tu póliza.</h2>
+    </div>
+    <div class="panel">
+      <ol class="steps steps--4">
+        <li class="step"><h3>Escuchamos</h3><p>Nos cuentas qué quieres proteger, qué te preocupa y cuánto quieres invertir.</p></li>
+        <li class="step"><h3>Asesoramos</h3><p>Te presentamos opciones claras y te explicamos sus diferencias, sin tecnicismos.</p></li>
+        <li class="step"><h3>Negociamos</h3><p>Gestionamos con la aseguradora las mejores condiciones posibles para tu caso.</p></li>
+        <li class="step"><h3>Acompañamos</h3><p>Seguimos contigo en renovaciones, cambios y, sobre todo, en las reclamaciones.</p></li>
+      </ol>
+    </div>
+  </div>
+</section>
+
+<section class="frame frame--plain history" aria-labelledby="historia-titulo">
+  <div class="container">
+    <div class="head">
+      <p class="eyebrow">Nuestra historia</p>
+      <h2 id="historia-titulo">Más de 70 años <span class="dim">guardándole la espalda a nuestros clientes.</span></h2>
+    </div>
+    <ol class="years">
+      <li class="year">
+        <span class="year__when year__when--sm">Mediados del siglo XX</span>
+        <span class="year__where">Magangué</span>
+        <p>Andrés González Roldán se vincula como agente de Colseguros, hoy Allianz.</p>
+      </li>
+      <li class="year">
+        <span class="year__when">1955</span>
+        <span class="year__where">Barranquilla</span>
+        <p>Se traslada a la ciudad y se dedica de tiempo completo a la intermediación de seguros.</p>
+      </li>
+      <li class="year">
+        <span class="year__when">1985</span>
+        <span class="year__where">Relevo familiar</span>
+        <p>Su hijo mayor, Andrés González de Pindray, asume la gerencia de la hoy Agencia de Seguros Angopi Ltda.</p>
+      </li>
+      <li class="year">
+        <span class="year__when">Hoy</span>
+        <span class="year__where">Cercanía y herramientas digitales</span>
+        <p>Siete aseguradoras aliadas, un equipo cercano y cotizadores en línea.</p>
+      </li>
+    </ol>
+    <div class="history__quote">
+      <blockquote>«Una reputación de seriedad, integridad y honorabilidad.»<cite>El legado de Andrés González Roldán, que la familia aspira a transmitir a las siguientes generaciones.</cite></blockquote>
+      <a class="btn btn--outline-light" href="nosotros/">Conoce la historia<svg class="icon icon--sm" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg></a>
+    </div>
+  </div>
+</section>
+
+<section class="section" aria-labelledby="equipo-titulo">
+  <div class="container">
+    <div class="head-row">
+      <div class="head">
+        <p class="eyebrow">Equipo</p>
+        <h2 id="equipo-titulo"><span class="dim">Las personas</span> que te van a atender.</h2>
+      </div>
+      <a class="btn btn--outline" href="contacto/">Ver canales de contacto<svg class="icon icon--sm" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg></a>
+    </div>
+    <div class="panel">
+      <ul class="team">
+  <li class="person">
+    <img src="assets/img/equipo/andres-gonzalez.webp" alt="Retrato de Andrés González" width="168" height="168" loading="lazy">
+    <h3>Andrés González</h3>
+    <p class="person__role">Gerencia</p>
+    <a href="mailto:gerencia@angopi.co"><svg class="icon icon--sm" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg>gerencia@angopi.co</a>
+  </li>
+  <li class="person">
+    <img src="assets/img/equipo/david-gonzalez.webp" alt="Retrato de David González" width="168" height="168" loading="lazy">
+    <h3>David González</h3>
+    <p class="person__role">Comercial</p>
+    <a href="mailto:comercial@angopi.co"><svg class="icon icon--sm" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg>comercial@angopi.co</a>
+  </li>
+  <li class="person">
+    <img src="assets/img/equipo/esmeralda-ballestas.webp" alt="Retrato de Esmeralda Ballestas" width="168" height="168" loading="lazy">
+    <h3>Esmeralda Ballestas</h3>
+    <p class="person__role">Asistencia</p>
+    <a href="mailto:asistente@angopi.co"><svg class="icon icon--sm" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg>asistente@angopi.co</a>
+  </li>
+  <li class="person">
+    <img src="assets/img/equipo/joselyn-navas.webp" alt="Retrato de Joselyn Navas" width="168" height="168" loading="lazy">
+    <h3>Joselyn Navas</h3>
+    <p class="person__role">Área técnica</p>
+    <a href="mailto:tecnico@angopi.co"><svg class="icon icon--sm" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg>tecnico@angopi.co</a>
+  </li>
+  <li class="person">
+    <img src="assets/img/equipo/paola-penaranda.webp" alt="Retrato de Paola Peñaranda" width="168" height="168" loading="lazy">
+    <h3>Paola Peñaranda</h3>
+    <p class="person__role">Ventas</p>
+    <a href="mailto:ventas@angopi.co"><svg class="icon icon--sm" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg>ventas@angopi.co</a>
+  </li>
+</ul>
+
+    </div>
+  </div>
+</section>
+
+<section class="section section--tight" aria-labelledby="siniestro-titulo">
+  <div class="container">
+    <div class="panel">
+      <div class="bento bento--3">
+        <div class="card card--dark span-2">
+          <p class="eyebrow">Siniestros y reclamaciones</p>
+          <h2 id="siniestro-titulo">¿Tuviste un accidente o un siniestro? <span class="dim">Escríbenos primero.</span></h2>
+          <p class="mt-2">Te decimos qué hacer y te acompañamos en el trámite con tu aseguradora hasta el cierre.</p>
+          <div class="btn-row mt-4">
+            <a class="btn btn--light" href="https://wa.me/573013631792?text=Hola%20Angopi%2C%20necesito%20reportar%20un%20siniestro." target="_blank" rel="noopener"><svg class="icon icon--fill" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 0 1-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 0 1-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 0 1 2.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0 0 12.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 0 0 5.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 0 0-3.48-8.413Z"/></svg>Reportar por WhatsApp</a>
+            <a class="btn btn--outline-light" href="siniestros/">Qué hacer paso a paso</a>
+          </div>
+        </div>
+        <div class="card">
+          <span class="icon-tile icon-tile--blue"><svg class="icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="m21.73 18-8-14a2 2 0 0 0-3.48 0l-8 14A2 2 0 0 0 4 21h16a2 2 0 0 0 1.73-3"/><path d="M12 9v4"/><path d="M12 17h.01"/></svg></span>
+          <h3>Lo primero</h3>
+          <ul class="checks">
+            <li>Ponte a salvo. Si hay heridos, llama al 123.</li>
+            <li>Toma fotos del lugar, los daños y los documentos.</li>
+            <li>No hagas acuerdos sin hablar con nosotros.</li>
           </ul>
         </div>
+      </div>
+    </div>
+  </div>
+</section>
 
-        <!-- Col 3: Formatos y Recursos (2 cols) -->
-        <div class="lg:col-span-2 space-y-3">
-          <p class="text-white font-semibold text-sm">Formatos</p>
-          <ul class="space-y-2.5 text-slate-400 text-sm">
-            <li><a href="https://angopi.co/files/TarifasSOAT2026.pdf" target="_blank" class="hover:text-white transition">Tarifas SOAT</a></li>
-            <li><a href="https://angopi.co/files/PersonaNatural.pdf" target="_blank" class="hover:text-white transition">Persona Natural</a></li>
-            <li><a href="https://angopi.co/files/PersonaJuridica.pdf" target="_blank" class="hover:text-white transition">Persona Jurídica</a></li>
-            <li><a href="https://calendly.com/angopi-ltda" target="_blank" class="hover:text-white transition">Agendar en Calendly</a></li>
+
+<section class="section" aria-labelledby="herramientas-titulo">
+  <div class="container grid-2 grid-2--wide-right">
+    <div class="head">
+      <p class="eyebrow">En línea</p>
+      <h2 id="herramientas-titulo"><span class="dim">Si lo prefieres,</span> cotiza o compra en línea.</h2>
+      <p>Algunos seguros puedes cotizarlos o comprarlos directamente. Si te surge una duda en el camino, escríbenos.</p>
+    </div>
+    <ul class="list">
+  <li><a href="https://angopi.co.agentemotor.com/portalclientes/formulario/soat" target="_blank" rel="noopener"><span class="icon-tile"><svg class="icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><rect x="2" y="5" width="20" height="14" rx="2"/><circle cx="8" cy="11" r="2"/><path d="M5 17a3 3 0 0 1 6 0"/><path d="M14 10h4"/><path d="M14 14h4"/></svg></span><span><span class="list__title">Compra tu SOAT</span><span class="list__desc">Expedición en línea</span></span><span class="round-btn"><svg class="icon icon--sm" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg></span></a></li>
+  <li><a href="https://www.suraenlinea.com/movilidad/sura/seguro-de-carro?asesor=10218" target="_blank" rel="noopener"><span class="icon-tile"><svg class="icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M19 17h2c.6 0 1-.4 1-1v-3c0-.9-.7-1.7-1.5-1.9C18.7 10.6 16 10 16 10s-1.3-1.4-2.2-2.3c-.5-.4-1.1-.7-1.8-.7H5c-.6 0-1.1.4-1.4.9l-1.4 2.9A3.7 3.7 0 0 0 2 12v4c0 .6.4 1 1 1h2"/><circle cx="7" cy="17" r="2"/><path d="M9 17h6"/><circle cx="17" cy="17" r="2"/></svg></span><span><span class="list__title">Seguro de carro</span><span class="list__desc">Cotiza en línea con SURA</span></span><span class="round-btn"><svg class="icon icon--sm" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg></span></a></li>
+  <li><a href="https://www.suraenlinea.com/motos/plan-motos?asesor=10218" target="_blank" rel="noopener"><span class="icon-tile"><svg class="icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><circle cx="18.5" cy="17.5" r="3.5"/><circle cx="5.5" cy="17.5" r="3.5"/><circle cx="15" cy="5" r="1"/><path d="M12 17.5V14l-3-3 4-3 2 3h2"/></svg></span><span><span class="list__title">Seguro de moto</span><span class="list__desc">Cotiza en línea con SURA</span></span><span class="round-btn"><svg class="icon icon--sm" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg></span></a></li>
+  <li><a href="https://www.suraenlinea.com/viajes/sura?codigoAsesor=10218" target="_blank" rel="noopener"><span class="icon-tile"><svg class="icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M17.8 19.2 16 11l3.5-3.5C21 6 21.5 4 21 3c-1-.5-3 0-4.5 1.5L13 8 4.8 6.2c-.5-.1-.9.1-1.1.5l-.3.5c-.2.5-.1 1 .3 1.3L9 12l-2 3H4l-1 1 3 2 2 3 1-1v-3l3-2 3.5 5.3c.3.4.8.5 1.3.3l.5-.2c.4-.3.6-.7.5-1.2z"/></svg></span><span><span class="list__title">Seguro de viaje</span><span class="list__desc">Cotiza en línea con SURA</span></span><span class="round-btn"><svg class="icon icon--sm" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg></span></a></li>
+  <li><a href="arrendamiento/#cotizador"><span class="icon-tile"><svg class="icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M2.586 17.414A2 2 0 0 0 2 18.828V21a1 1 0 0 0 1 1h3a1 1 0 0 0 1-1v-1a1 1 0 0 1 1-1h1a1 1 0 0 0 1-1v-1a1 1 0 0 1 1-1h.172a2 2 0 0 0 1.414-.586l.814-.814a6.5 6.5 0 1 0-4-4z"/><circle cx="16.5" cy="7.5" r=".5"/></svg></span><span><span class="list__title">Seguro de arrendamiento</span><span class="list__desc">Cotizador SURA en nuestra web</span></span><span class="round-btn"><svg class="icon icon--sm" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg></span></a></li>
+  <li><a href="https://surafinancia.com.co/sura-financia/informacion-personal/angopi/10218?v=2026-1-0" target="_blank" rel="noopener"><span class="icon-tile"><svg class="icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><rect x="2" y="6" width="20" height="12" rx="2"/><circle cx="12" cy="12" r="2"/><path d="M6 12h.01M18 12h.01"/></svg></span><span><span class="list__title">Financia tu vehículo</span><span class="list__desc">Crédito con Sura Financia</span></span><span class="round-btn"><svg class="icon icon--sm" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg></span></a></li>
+</ul>
+
+  </div>
+</section>
+
+<section class="section section--flush-top" aria-labelledby="faq-titulo">
+  <div class="container faq-layout">
+    <div class="head">
+      <p class="eyebrow">Preguntas frecuentes</p>
+      <h2 id="faq-titulo">Lo que más <span class="dim">nos preguntan.</span></h2>
+      <p>¿No encuentras tu pregunta? <a href="https://wa.me/573013631792?text=Hola%20Angopi%2C%20tengo%20una%20pregunta." target="_blank" rel="noopener">Escríbenos por WhatsApp</a>.</p>
+    </div>
+    <div class="acc faq">
+      <details>
+        <summary>¿Qué hace una agencia de seguros?</summary>
+        <div class="faq__body acc__body"><p>Te asesora para elegir el seguro adecuado entre varias aseguradoras, gestiona la expedición de la póliza y te acompaña en renovaciones y reclamaciones. En Angopi trabajamos con Allianz, Bolívar, Chubb, HDI, Mapfre, SBS y SURA.</p></div>
+      </details>
+      <details>
+        <summary>¿Cuánto cuesta la asesoría?</summary>
+        <div class="faq__body acc__body"><p>Cotizar con nosotros y recibir asesoría no tiene costo. El precio de cada póliza lo define la aseguradora según la cobertura que elijas.</p></div>
+      </details>
+      <details>
+        <summary>¿Qué hago si tengo un accidente con mi carro?</summary>
+        <div class="faq__body acc__body"><p>Ponte a salvo y, si hay personas heridas, llama a la línea de emergencias 123. Toma fotos del lugar, de los vehículos y de las placas, no hagas acuerdos sin asesoría y escríbenos por WhatsApp. Te ayudamos con el reporte a la aseguradora.</p></div>
+      </details>
+      <details>
+        <summary>¿Cómo funciona el seguro de arrendamiento?</summary>
+        <div class="faq__body acc__body"><p>Es una póliza de SURA que respalda el pago del canon si el inquilino incumple. Antes de firmar el contrato se hace un estudio del inquilino. Puedes cotizarlo en línea desde nuestra página de arrendamiento.</p></div>
+      </details>
+      <details>
+        <summary>¿Dónde compro el SOAT?</summary>
+        <div class="faq__body acc__body"><p>Puedes comprarlo en línea desde nuestra plataforma de SOAT o escribirnos por WhatsApp para que te ayudemos. También puedes consultar las tarifas SOAT 2026 en la sección de formatos.</p></div>
+      </details>
+      <details>
+        <summary>¿Puedo hablar con un asesor sin ir a la oficina?</summary>
+        <div class="faq__body acc__body"><p>Sí. Escríbenos por WhatsApp, llámanos o agenda una cita virtual en el horario que mejor te quede.</p></div>
+      </details>
+    </div>
+  </div>
+</section>
+
+<section class="frame cta" aria-labelledby="cta-titulo">
+  <p class="eyebrow">Hablemos</p>
+  <h2 id="cta-titulo">Cuéntanos qué quieres <span class="dim">proteger.</span></h2>
+  <p>Te respondemos con opciones claras y sin compromiso. Si lo prefieres, agenda una cita virtual con un asesor.</p>
+  <div class="btn-row btn-row--stack">
+    <a class="btn btn--light" href="https://wa.me/573013631792?text=Hola%20Angopi%2C%20quiero%20cotizar%20un%20seguro." target="_blank" rel="noopener"><svg class="icon icon--fill" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 0 1-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 0 1-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 0 1 2.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0 0 12.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 0 0 5.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 0 0-3.48-8.413Z"/></svg>Cotizar por WhatsApp</a>
+    <a class="btn btn--outline-light" href="https://calendly.com/angopi-ltda" target="_blank" rel="noopener"><svg class="icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><rect x="3" y="4" width="18" height="18" rx="2"/><path d="M16 2v4"/><path d="M8 2v4"/><path d="M3 10h18"/></svg>Agendar cita virtual</a>
+  </div>
+</section>
+
+
+  </main>
+
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <img src="assets/img/logo-angopi.png" alt="ANGOPI Agencia de Seguros" width="568" height="191" loading="lazy">
+          <p class="footer-claim">Te guardamos la espalda.</p>
+          <p>Agencia de seguros familiar en Barranquilla desde 1955. Trabajamos con Allianz, Bolívar, Chubb, HDI, Mapfre, SBS y SURA.</p>
+          <ul class="social" aria-label="Redes sociales">
+            <li><a href="https://www.facebook.com/angopiltda" target="_blank" rel="noopener" aria-label="Facebook"><svg class="icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg></a></li>
+            <li><a href="https://www.instagram.com/angopi_ltda" target="_blank" rel="noopener" aria-label="Instagram"><svg class="icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><rect x="2" y="2" width="20" height="20" rx="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><path d="M17.5 6.5h.01"/></svg></a></li>
+            <li><a href="https://co.linkedin.com/company/agencia-de-seguros-angopi-ltda" target="_blank" rel="noopener" aria-label="LinkedIn"><svg class="icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg></a></li>
+            <li><a href="https://www.youtube.com/channel/UCFu8ceEwrFtgullOjb4gHsA" target="_blank" rel="noopener" aria-label="YouTube"><svg class="icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M2.5 17a24.12 24.12 0 0 1 0-10 2 2 0 0 1 1.4-1.4 49.56 49.56 0 0 1 16.2 0A2 2 0 0 1 21.5 7a24.12 24.12 0 0 1 0 10 2 2 0 0 1-1.4 1.4 49.55 49.55 0 0 1-16.2 0A2 2 0 0 1 2.5 17"/><path d="m10 15 5-3-5-3z"/></svg></a></li>
           </ul>
         </div>
-
-        <!-- Col 4: Sede Barranquilla y Contacto (3 cols) -->
-        <div class="lg:col-span-3 space-y-3">
-          <p class="text-white font-semibold text-sm">Sede Principal</p>
-          <div class="space-y-2 text-slate-400 text-sm">
-            <p>
-              Carrera 64B # 85 – 150 Of. 506<br>
-              Edificio River View<br>
-              Barranquilla, Colombia
-            </p>
-            <p class="pt-2">
-              <a href="https://api.whatsapp.com/send?phone=573013631792" class="hover:text-white text-angopi-blue font-medium transition block">
-                +57 301 363 1792
-              </a>
-              <a href="tel:+573002022101" class="hover:text-white transition block">
-                +57 300 202 2101
-              </a>
-              <a href="mailto:info@angopi.co" class="hover:text-white transition block">
-                info@angopi.co
-              </a>
-            </p>
-          </div>
+        <div class="footer-col">
+          <h2>Seguros</h2>
+          <ul>
+            <li><a href="personas/">Personas y familias</a></li>
+            <li><a href="empresas/">Empresas</a></li>
+            <li><a href="arrendamiento/">Arrendamiento SURA</a></li>
+            <li><a href="https://angopi.co.agentemotor.com/portalclientes/formulario/soat" target="_blank" rel="noopener">SOAT en línea</a></li>
+            <li><a href="siniestros/">¿Tuviste un siniestro?</a></li>
+          </ul>
         </div>
-
-      </div>
-
-      <!-- Copyright y Redes Sociales -->
-      <div class="pt-8 flex flex-col sm:flex-row items-center justify-between text-slate-500 gap-4 text-xs">
-        <p>© 2026 Agencia de Seguros ANGOPI Ltda. Todos los derechos reservados.</p>
-        
-        <div class="flex items-center space-x-6 text-slate-400">
-          <a href="https://www.facebook.com/angopiltda" target="_blank" class="hover:text-white transition">Facebook</a>
-          <a href="https://co.linkedin.com/company/agencia-de-seguros-angopi-ltda" target="_blank" class="hover:text-white transition">LinkedIn</a>
-          <a href="https://www.instagram.com/angopi_ltda" target="_blank" class="hover:text-white transition">Instagram</a>
-          <a href="https://api.whatsapp.com/send?phone=573013631792" target="_blank" class="hover:text-white transition">WhatsApp</a>
+        <div class="footer-col">
+          <h2>Angopi</h2>
+          <ul>
+            <li><a href="nosotros/">Nuestra historia</a></li>
+            <li><a href="nosotros/#equipo">Equipo</a></li>
+            <li><a href="formatos/">Formatos y tarifas SOAT</a></li>
+            <li><a href="contacto/">Contacto</a></li>
+            <li><a href="politica-de-datos/">Tratamiento de datos</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h2>Visítanos</h2>
+          <address>
+            <a href="https://www.google.com/maps/search/?api=1&query=Edificio+River+View+Carrera+64B+85-150+Barranquilla" target="_blank" rel="noopener">Carrera 64B # 85 – 150, Of. 506<br>Edificio River View, Barranquilla</a>
+            <a href="tel:+573013631792">+57 301 363 1792</a>
+            <a href="tel:+573002022101">+57 300 202 2101</a>
+            <a href="mailto:info@angopi.co">info@angopi.co</a>
+          </address>
         </div>
       </div>
-
+      <div class="footer-bottom">
+        <p>© 2026 Agencia de Seguros Angopi Ltda. Todos los derechos reservados.</p>
+        <p>Las coberturas, condiciones, exclusiones y precios dependen de cada aseguradora y de la póliza contratada.</p>
+      </div>
     </div>
   </footer>
 
-  <!-- ========================================================================= -->
-  <!-- 12. BOTÓN FLOTANTE WHATSAPP DISCRETO -->
-  <!-- ========================================================================= -->
-  <div class="fixed bottom-6 right-6 z-50 flex items-center">
-    <a href="https://api.whatsapp.com/send?phone=573013631792&text=Hola%20Angopi,%20estoy%20en%20su%20web%20y%20quiero%20cotizar%20un%20seguro" 
-       target="_blank" 
-       class="w-14 h-14 bg-emerald-500 hover:bg-emerald-600 text-white rounded-full flex items-center justify-center text-3xl shadow-2xl transition hover:scale-105 active:scale-95" 
-       title="Chatear por WhatsApp">
-      <i class="fa-brands fa-whatsapp"></i>
-    </a>
-  </div>
+  <a class="wa-float" href="https://wa.me/573013631792?text=Hola%20Angopi%2C%20estoy%20en%20su%20p%C3%A1gina%20web%20y%20quiero%20hacer%20una%20consulta." target="_blank" rel="noopener" aria-label="Escríbenos por WhatsApp"><svg class="icon icon--fill" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 0 1-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 0 1-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 0 1 2.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0 0 12.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 0 0 5.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 0 0-3.48-8.413Z"/></svg></a>
 
-  <!-- ========================================================================= -->
-  <!-- 13. JAVASCRIPT: TRANSICIÓN DINÁMICA DE NAVBAR, FAQ Y COTIZADOR -->
-  <!-- ========================================================================= -->
-  <script>
-    // Transición dinámica de navegación y cambio de Logo (Blanco a Azul)
-    const navbar = document.getElementById('navbar-header');
-    const logoWhite = document.getElementById('logo-nav-white');
-    const logoDark = document.getElementById('logo-nav-dark');
-    const navItems = document.querySelectorAll('.nav-item');
-    const mobileBtn = document.getElementById('mobile-toggle-btn');
-
-    function handleScrollNavbar() {
-      const scrollY = window.scrollY;
-      const heroThreshold = window.innerHeight * 0.85;
-
-      if (scrollY > heroThreshold) {
-        // Estado sobre secciones claras
-        navbar.classList.remove('bg-transparent', 'border-transparent', 'py-6');
-        navbar.classList.add('bg-white/95', 'backdrop-blur-md', 'border-slate-100', 'shadow-sm', 'py-4');
-        
-        logoWhite.classList.add('hidden');
-        logoDark.classList.remove('hidden');
-
-        navItems.forEach(item => {
-          item.classList.remove('text-white/90', 'text-white');
-          item.classList.add('text-angopi-dark', 'hover:text-angopi-blue');
-        });
-
-        if (mobileBtn) {
-          mobileBtn.classList.remove('text-white');
-          mobileBtn.classList.add('text-angopi-dark');
-        }
-      } else {
-        // Estado inicial sobre el Hero oscuro
-        navbar.classList.add('bg-transparent', 'border-transparent', 'py-6');
-        navbar.classList.remove('bg-white/95', 'backdrop-blur-md', 'border-slate-100', 'shadow-sm', 'py-4');
-
-        logoWhite.classList.remove('hidden');
-        logoDark.classList.add('hidden');
-
-        navItems.forEach(item => {
-          item.classList.add('text-white/90');
-          item.classList.remove('text-angopi-dark', 'hover:text-angopi-blue');
-        });
-
-        if (mobileBtn) {
-          mobileBtn.classList.add('text-white');
-          mobileBtn.classList.remove('text-angopi-dark');
-        }
-      }
-    }
-
-    window.addEventListener('scroll', handleScrollNavbar);
-    handleScrollNavbar();
-
-    // Toggle Menú Móvil
-    function toggleMobileMenu() {
-      const menu = document.getElementById('mobile-menu');
-      menu.classList.toggle('hidden');
-    }
-
-    // Toggle FAQ Accordion
-    function toggleFaq(btn) {
-      const item = btn.closest('.faq-item');
-      item.classList.toggle('active');
-    }
-
-    // Manejo de Cotización Express para WhatsApp dinámico
-    function handleQuoteSubmit(e) {
-      e.preventDefault();
-      const seguro = document.querySelector('input[name="seguro"]:checked')?.value || 'Seguro General';
-      const nombre = document.getElementById('quote-name').value.trim();
-      const telefono = document.getElementById('quote-phone').value.trim();
-      const ciudad = document.getElementById('quote-city').value.trim() || 'Barranquilla';
-
-      const phoneTarget = "573013631792";
-      const message = `Hola Angopi! Mi nombre es ${nombre}. Estoy interesado en cotizar un seguro de *${seguro}* para la ciudad de *${ciudad}*.\nMi WhatsApp de contacto es: ${telefono}.\n¿Podrían darme una cotización y opciones de aseguradoras?`;
-
-      window.open(`https://api.whatsapp.com/send?phone=${phoneTarget}&text=${encodeURIComponent(message)}`, '_blank');
-    }
-
-    // Scroll Fade-in (IntersectionObserver sutil)
-    document.addEventListener('DOMContentLoaded', () => {
-      const fadeElements = document.querySelectorAll('.fade-up');
-      const observer = new IntersectionObserver((entries) => {
-        entries.forEach(entry => {
-          if (entry.isIntersecting) {
-            entry.target.classList.add('visible');
-          }
-        });
-      }, { threshold: 0.1 });
-
-      fadeElements.forEach(el => observer.observe(el));
-    });
-  </script>
-
+  <script src="assets/js/main.js?v=e5eb8b4c1b" defer></script>
+  
 </body>
 </html>
