@@ -1235,3 +1235,6 @@ html:not(.has-tabs) .services__stage .arrow { display: none; }
 .history-card__quote .accent { color: var(--blue); }
 /* Los íconos de descarga no giran al pasar el mouse (las flechas de enlace sí) */
 .list--download a:hover .round-btn { transform: none; }
+/* Somos Angopi: la foto se voltea (espejo) para que la familia quede a la derecha y la tarjeta va a la izquierda */
+#respaldo .stage__media img { transform: scaleX(-1); }
+@media (min-width: 960px) { #respaldo .stage__card { margin-left: 0; } }
