@@ -205,18 +205,23 @@
         window.requestAnimationFrame(tick);
       };
       window.requestAnimationFrame(tick);
-      // Solo se detiene con el mouse sobre «Más información» (o el botón de cada tarjeta)
-      stage.addEventListener('mouseover', function (e) {
-        if (e.target.closest('.svc__cta')) { hovering = true; services.classList.remove('is-auto'); }
+      // Solo se detiene cuando la persona lleva el mouse a «Más información». Se miran solo los
+      // movimientos reales: si el botón pasa por debajo de un mouse quieto, el carrusel sigue
+      // (antes se quedaba parado ahí hasta que se moviera el mouse).
+      stage.addEventListener('mousemove', function (e) {
+        if (!e.movementX && !e.movementY) return;
+        var onCta = !!e.target.closest('.svc__cta');
+        if (onCta !== hovering) { hovering = onCta; if (onCta) services.classList.remove('is-auto'); }
       });
-      stage.addEventListener('mouseout', function (e) {
-        var cta = e.target.closest('.svc__cta');
-        if (cta && !cta.contains(e.relatedTarget)) hovering = false;
-      });
+      stage.addEventListener('mouseleave', function () { hovering = false; });
       stage.addEventListener('focusin', function () { hold(8000); });
-      ['pointerdown', 'wheel', 'touchstart'].forEach(function (ev) {
+      ['pointerdown', 'touchstart'].forEach(function (ev) {
         stage.addEventListener(ev, function () { hold(6000); }, { passive: true });
       });
+      // La rueda solo cuenta si se desliza de lado; bajar por la página encima del carrusel no lo pausa
+      stage.addEventListener('wheel', function (e) {
+        if (Math.abs(e.deltaX) > Math.abs(e.deltaY)) hold(6000);
+      }, { passive: true });
       tabs.forEach(function (t) { t.addEventListener('click', function () { dir = 1; pos = 0; hold(1200); }); });
     }
 
