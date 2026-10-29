@@ -1272,37 +1272,56 @@ html:not(.has-tabs) .services__stage .arrow { display: none; }
 /* ---------- Aliados: sin etiqueta, los logos ocupan toda la franja ---------- */
 .allies-bar { gap: 0; }
 
-/* ---------- Seguros: la foto llena la tarjeta y la tarjeta blanca va encima,
-   con un poco de foto por debajo ---------- */
-.track { gap: clamp(16px, 0.8rem + 0.8vw, 24px); }
-.track > li { display: flex; width: clamp(260px, 74vw, 310px); }
-.svc { flex: 1; flex-direction: column; justify-content: flex-end; align-items: stretch; aspect-ratio: auto; min-height: 450px; box-shadow: none; }
+/* ---------- Seguros: foto corta y tarjeta blanca con el sello y el título encima;
+   al tocarla se despliega hacia abajo con el texto y «Más información» ---------- */
+.track { gap: clamp(16px, 0.8rem + 0.8vw, 24px); align-items: flex-start; }
+.track > li { width: clamp(260px, 74vw, 310px); }
+.svc { position: relative; display: block; aspect-ratio: auto; overflow: visible; border-radius: 0; color: var(--ink-2); box-shadow: none; cursor: pointer; }
 .svc::after { display: none; }
-.svc__media { position: absolute; inset: 0; z-index: -1; }
-.svc img { object-position: 50% 30%; transition: transform 1.2s var(--ease-k); }
-.svc:hover img { transform: scale(1.05); }
-.svc__body {
-  position: relative; width: auto; gap: 6px;
-  margin: 0 14px 16px 40px; padding: 20px 20px 20px 40px;
-  border-radius: 20px; background: #fff; color: var(--ink-2);
+.svc__media { display: block; overflow: hidden; aspect-ratio: 4 / 3.7; border-radius: var(--r-lg); }
+.svc img { position: static; z-index: auto; width: 100%; height: 100%; object-fit: cover; object-position: 50% 30%; transition: transform 1.2s var(--ease-k); }
+.svc:hover img, .svc.is-open img { transform: scale(1.06); }
+.svc__card {
+  position: relative; z-index: 1;
+  margin: -96px 14px 0 40px;
+  border-radius: 20px; background: #fff;
   box-shadow: 0 18px 36px -20px rgba(10, 10, 12, 0.45);
+  transition: transform 0.45s var(--ease-k), box-shadow 0.45s var(--ease-k);
 }
-.svc__body .seal { position: absolute; left: -30px; top: 18px; width: 60px; height: 60px; }
-.svc__kicker { align-self: auto; padding: 0; border-radius: 0; background: none; font-family: var(--font-title); font-size: 1.3rem; font-weight: 800; line-height: 1.15; color: var(--blue); }
-.svc__title { font-family: var(--font); font-size: 0.9375rem; font-weight: 400; line-height: 1.45; color: var(--muted); }
-.svc__cta { margin-top: 6px; padding-top: 4px; color: var(--ink); }
-.svc__cta .icon { color: var(--blue); }
-.services__stage .arrow { top: 34%; }
+.svc__head {
+  display: flex; align-items: center; gap: 10px; width: 100%; min-height: 80px;
+  padding: 16px 14px 16px 40px; border: 0; background: none; text-align: left; cursor: pointer;
+  font: inherit; color: inherit; border-radius: 20px;
+}
+.svc__head .seal { position: absolute; left: -30px; top: 10px; width: 60px; height: 60px; transition: transform 0.5s var(--ease-k); }
+.svc__kicker { flex: 1; align-self: auto; padding: 0; border-radius: 0; background: none; font-family: var(--font-title); font-size: 1.25rem; font-weight: 800; line-height: 1.15; color: var(--blue); }
+.svc__chev { display: inline-grid; place-items: center; flex: none; width: 32px; height: 32px; border-radius: 50%; border: 1.5px solid var(--blue); color: var(--blue); transition: transform 0.45s var(--ease-k), background-color 0.25s var(--ease), color 0.25s var(--ease); }
+.svc.is-open .svc__chev { transform: rotate(180deg); background: var(--blue); color: #fff; }
+.svc__more { display: grid; grid-template-rows: 1fr; transition: grid-template-rows 0.5s var(--ease-k), visibility 0.5s; }
+.svc__inner { min-height: 0; overflow: hidden; }
+.svc__inner > * { margin-inline: 20px 18px; }
+.svc__title { padding-top: 2px; font-family: var(--font); font-weight: 400; font-size: 0.9375rem; line-height: 1.5; color: var(--muted); }
+.svc__cta.btn { margin-top: 14px; margin-bottom: 18px; }
+.js .svc:not(.is-open) .svc__more { grid-template-rows: 0fr; visibility: hidden; }
+.js .svc .svc__inner > * { opacity: 0; transform: translateY(-8px); transition: opacity 0.35s var(--ease-k), transform 0.45s var(--ease-k); }
+.js .svc.is-open .svc__inner > * { opacity: 1; transform: none; transition-delay: 0.12s; }
+.js .svc.is-open .svc__inner > .btn { transition-delay: 0.2s; }
+@media (hover: hover) {
+  .svc:hover { transform: none; box-shadow: none; }
+  .svc:hover .svc__card { transform: translateY(-6px); box-shadow: 0 26px 44px -22px rgba(10, 10, 12, 0.5); }
+  .svc:hover .seal { transform: rotate(-10deg) scale(1.08); }
+}
+.services__stage .arrow { top: 120px; }
 @media (max-width: 639px) {
-  .svc { min-height: 420px; }
-  .svc__body { margin: 0 12px 14px 34px; padding: 18px 16px 18px 32px; }
-  .svc__body .seal { left: -26px; width: 52px; height: 52px; }
+  .svc__card { margin: -92px 12px 0 34px; }
+  .svc__head { padding-left: 34px; }
+  .svc__head .seal { left: -26px; top: 13px; width: 52px; height: 52px; }
 }
 
 /* ---------- ¿Por qué elegir Angopi?: la foto en una casita, con su burbuja ---------- */
 .why__media .house img { border-radius: 0; }
-.why__bubble { position: absolute; right: 0; bottom: 8%; max-width: 280px; }
-@media (max-width: 559px) { .why__bubble { position: relative; right: auto; bottom: auto; margin: -40px 0 0 auto; } }
+.why__bubble { position: absolute; right: clamp(-56px, -4vw, -24px); bottom: 10%; max-width: 280px; }
+@media (max-width: 559px) { .why__bubble { position: relative; right: auto; bottom: auto; margin: -40px -10px 0 auto; } }
 
 /* ---------- Somos Angopi: tarjeta y textos más grandes ---------- */
 #respaldo .stage__card { max-width: 920px; padding: clamp(28px, 1rem + 3vw, 60px); }
@@ -1322,3 +1341,52 @@ html:not(.has-tabs) .services__stage .arrow { display: none; }
 
 /* ---------- Cierre: azul con casitas de fondo ---------- */
 .cta { background: var(--blue) var(--houses-blue) center / 150px 150px; }
+
+/* ==========================================================================
+   Movimiento: sellos que saltan, fotos que se destapan, burbujas que flotan
+   ========================================================================== */
+:root { --spring: cubic-bezier(0.34, 1.56, 0.64, 1); }
+@keyframes float { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-8px); } }
+@keyframes houses-drift { to { background-position: 150px -150px; } }
+
+/* Portada: la tarjeta «Desde 1955» flota */
+.hero-v__card.hero-in { animation: rise 0.9s var(--ease-k) 0.7s both, float 6s ease-in-out 1.8s infinite; }
+.hero-v__media { will-change: transform; }
+
+/* Tarjetas de seguros: suben, y el sello salta después */
+.js .svc .svc__card { opacity: 0; transform: translateY(28px); transition: opacity 0.8s var(--ease-k) var(--d, 0ms), transform 0.8s var(--ease-k) var(--d, 0ms), box-shadow 0.45s var(--ease-k); }
+.js .svc .svc__media { opacity: 0; transform: scale(0.94); transition: opacity 0.9s var(--ease-k) var(--d, 0ms), transform 0.9s var(--ease-k) var(--d, 0ms); }
+.js .svc .seal { transform: scale(0) rotate(-40deg); transition: transform 0.7s var(--spring) calc(var(--d, 0ms) + 0.35s); }
+.js .svc.is-in .svc__card, .js .svc.is-in .svc__media { opacity: 1; transform: none; }
+.js .svc.is-in .seal { transform: none; }
+@media (hover: hover) {
+  .js .svc.is-in:hover .svc__card { transform: translateY(-6px); transition-delay: 0s; }
+  .js .svc.is-in:hover .seal { transform: rotate(-12deg) scale(1.1); transition-delay: 0s; }
+}
+
+/* ¿Por qué elegir?: la foto se destapa de abajo hacia arriba y la burbuja aparece y flota */
+.js .why__media .house img { clip-path: inset(100% 0 0 0); transition: clip-path 1.2s var(--ease-k) 0.1s; }
+.js .why__media.is-in .house img { clip-path: inset(0); }
+.js .why__bubble { opacity: 0; transform: scale(0.6); transform-origin: 85% 110%; transition: opacity 0.5s var(--ease-k) 0.9s, transform 0.7s var(--spring) 0.9s; }
+.js .why__media.is-in .why__bubble { opacity: 1; transform: none; animation: float 6s ease-in-out 2s infinite; }
+
+/* Somos Angopi: las cifras entran una tras otra */
+.js .stage__card .facts li { opacity: 0; transform: translateY(16px); transition: opacity 0.7s var(--ease-k), transform 0.7s var(--ease-k); }
+.js .stage__card.is-in .facts li { opacity: 1; transform: none; }
+.js .stage__card.is-in .facts li:nth-child(2) { transition-delay: 0.15s; }
+.js .stage__card.is-in .facts li:nth-child(3) { transition-delay: 0.3s; }
+
+/* Equipo: la pestaña entra desde el borde y las fotos saltan */
+.js .tab-label.reveal { transform: translateX(-100%); opacity: 1; }
+.js .tab-label.reveal.is-in { transform: none; }
+.js .person img { transform: scale(0.6); opacity: 0; transition: transform 0.7s var(--spring) var(--d, 0ms), opacity 0.4s var(--ease-k) var(--d, 0ms); }
+.js .person.is-in img { transform: none; opacity: 1; }
+
+/* Hablemos: las casitas del fondo se mueven despacio */
+.cta { animation: houses-drift 40s linear infinite; }
+
+@media (prefers-reduced-motion: reduce) {
+  .js .svc .svc__card, .js .svc .svc__media, .js .svc .seal, .js .why__bubble, .js .stage__card .facts li, .js .person img { opacity: 1; transform: none; }
+  .js .why__media .house img { clip-path: none; }
+  .js .tab-label.reveal { transform: none; }
+}

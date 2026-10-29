@@ -70,6 +70,36 @@
     showAll();
   }
 
+  // Tarjetas de seguros y del equipo que entran una tras otra, con el sello que salta
+  var pops = document.querySelectorAll('.svc, .person');
+  var popAll = function () { Array.prototype.forEach.call(pops, function (el) { el.classList.add('is-in'); }); };
+  if ('IntersectionObserver' in window && !calm) {
+    var popAnswered = false;
+    window.setTimeout(function () { if (!popAnswered) popAll(); }, 2500);
+    var popper = new IntersectionObserver(function (entries) {
+      popAnswered = true;
+      var n = 0;
+      entries.forEach(function (entry) {
+        if (!entry.isIntersecting) return;
+        entry.target.style.setProperty('--d', Math.min(n++, 5) * 90 + 'ms');
+        entry.target.classList.add('is-in');
+        popper.unobserve(entry.target);
+      });
+    }, { rootMargin: '0px 0px -6% 0px' });
+    Array.prototype.forEach.call(pops, function (el) { popper.observe(el); });
+  } else {
+    popAll();
+  }
+
+  // La foto de la portada baja más despacio que la página
+  var heroMedia = document.querySelector('.hero-v__media');
+  if (heroMedia && !calm) {
+    var drift = function () {
+      if (window.scrollY < 1200) heroMedia.style.transform = 'translate3d(0,' + (window.scrollY * 0.18).toFixed(1) + 'px,0)';
+    };
+    window.addEventListener('scroll', function () { window.requestAnimationFrame(drift); }, { passive: true });
+  }
+
   // Manifiesto que se enciende palabra por palabra al bajar
   each('[data-manifesto]', function (el) {
     var text = el.textContent.trim();
@@ -184,7 +214,7 @@
         last = now;
         var box = stage.getBoundingClientRect();
         var onScreen = box.bottom > 0 && box.top < window.innerHeight;
-        if (onScreen && !hovering && !document.hidden && now > pausedUntil) {
+        if (onScreen && !hovering && !document.hidden && now > pausedUntil && !stage.querySelector('.svc.is-open')) {
           if (!services.classList.contains('is-auto')) { services.classList.add('is-auto'); pos = t.scrollLeft; }
           var max = t.scrollWidth - t.clientWidth;
           pos += dir * SPEED * dt;
@@ -202,6 +232,24 @@
       });
       tabs.forEach(function (t) { t.addEventListener('click', function () { dir = 1; pos = 0; hold(1200); }); });
     }
+
+    // Cada tarjeta se despliega hacia abajo al tocar la foto o el título; solo una abierta a la vez
+    var setCard = function (card, open) {
+      card.classList.toggle('is-open', open);
+      card.querySelector('.svc__head').setAttribute('aria-expanded', String(open));
+    };
+    each('.svc', function (card) {
+      setCard(card, false);
+      card.addEventListener('click', function (e) {
+        if (e.target.closest('a')) return;
+        var open = !card.classList.contains('is-open');
+        each('.svc.is-open', function (other) { if (other !== card) setCard(other, false); });
+        setCard(card, open);
+      });
+    });
+    document.addEventListener('keydown', function (e) {
+      if (e.key === 'Escape') each('.svc.is-open', function (c) { setCard(c, false); });
+    });
 
     // Los enlaces del menú (Personas, Empresas, Arrendamiento) abren la pestaña correcta
     var openFromHash = function (hash) {
