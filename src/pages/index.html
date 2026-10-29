@@ -7,9 +7,11 @@ nav: inicio
 schema: home
 light: true
 ---
-<!-- 02 · Portada: como en sus redes, la foto va dentro de una casita sobre un fondo azul claro con casitas,
-     con una burbuja de comentario y una tarjeta con el sello del escudo -->
+<!-- 02 · Portada: la foto va de arriba abajo, pegada a la derecha y fundida con el blanco -->
 <section class="hero-v" id="inicio" aria-labelledby="hero-titulo">
+  <div class="hero-v__media">
+    {{photo:hero|Papá, mamá y su bebé se abrazan y sonríen junto a la ventana de su casa|(min-width: 960px) 90vw, 100vw|width="3200" height="2133" fetchpriority="high"}}
+  </div>
   <div class="container hero-v__inner">
     <div class="hero-v__copy">
       <h1 id="hero-titulo" class="hero-in"><span class="dim">Pase lo que pase,</span><br class="br-d"> estamos aquí para ti.</h1>
@@ -18,23 +20,17 @@ light: true
         <a class="btn btn--dark" href="#seguros">Ver nuestros seguros{{icon:arrow-right:icon--sm}}</a>
         <a class="btn btn--outline" href="#nosotros">Conócenos</a>
       </div>
+      <p class="hero-v__note hero-in">Asesoría gratuita · 7 aseguradoras aliadas</p>
     </div>
-    <div class="hero-v__art hero-in">
-      <div class="house">
-        {{photo:hero|Papá, mamá y su bebé se abrazan y sonríen junto a la ventana de su casa|(min-width: 960px) 560px, 90vw|width="3200" height="2133" fetchpriority="high"}}
-      </div>
-      <p class="bubble hero-v__bubble">Desde 1955, una agencia de seguros familiar en Barranquilla.</p>
-      <div class="note-card hero-v__note-card">
-        {{seal:shield}}
-        <p><strong>Asesoría gratuita</strong>Te ayudamos a elegir entre nuestras 7 aseguradoras aliadas.</p>
-      </div>
-    </div>
+  </div>
+  <div class="hero-v__card hero-in" aria-hidden="true">
+    <strong>Desde 1955</strong>
+    <span>Una agencia de seguros familiar en Barranquilla.</span>
   </div>
 </section>
 
 <!-- Aliados: franja que entra desde abajo, a mitad entre la portada y la sección siguiente, con los logos en movimiento -->
-<div class="allies-bar" role="region" aria-labelledby="aliados-titulo">
-  <p class="allies-bar__label" id="aliados-titulo">Aliados</p>
+<div class="allies-bar" role="region" aria-label="Aseguradoras aliadas">
   <div class="marquee">
     <div class="marquee__track">
       {{partial:insurers}}
@@ -112,7 +108,7 @@ light: true
 <section class="section" id="por-que" aria-labelledby="porque-titulo">
   <div class="container why">
     <figure class="why__media reveal">
-      <div class="ball">{{photo:familia|Una familia de cuatro juega sentada en el césped en un día de sol|(min-width: 960px) 560px, 90vw|width="1600" height="1067" loading="lazy"}}</div>
+      <div class="house">{{photo:familia|Una familia de cuatro juega sentada en el césped en un día de sol|(min-width: 960px) 560px, 90vw|width="1600" height="1067" loading="lazy"}}</div>
       <figcaption class="bubble bubble--right why__bubble">La calidez es nuestra marca. Así nos relacionamos con cada familia y cada empresa que confía en nosotros.</figcaption>
     </figure>
     <div class="why__body">
@@ -139,15 +135,6 @@ light: true
         </details>
       </div>
     </div>
-  </div>
-  <div class="container how">
-    <p class="how__title reveal">Así te acompañamos</p>
-    <ol class="how__steps">
-      <li class="reveal"><span class="how__n">1</span><h3>Te escuchamos</h3><p>Con calma, en persona o por teléfono, para entender lo que quieres cuidar.</p></li>
-      <li class="reveal"><span class="how__n">2</span><h3>Te asesoramos</h3><p>Te mostramos opciones claras y te explicamos cada una sin complicaciones.</p></li>
-      <li class="reveal"><span class="how__n">3</span><h3>Gestionamos</h3><p>Hablamos con las aseguradoras para conseguir la mejor opción para ti.</p></li>
-      <li class="reveal"><span class="how__n">4</span><h3>Seguimos contigo</h3><p>Te acompañamos en el tiempo y también cuando necesites hacer una reclamación.</p></li>
-    </ol>
   </div>
 </section>
 
