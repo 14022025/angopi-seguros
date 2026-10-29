@@ -426,13 +426,13 @@ ${body}
           </ul>
         </div>
         <div class="footer-col">
-          <h2>Navegación</h2>
+          <p class="footer-col__title">Navegación</p>
           <ul>
             ${NAV.map((n) => `<li><a href="${root}${n.href}">${n.label}</a></li>`).join('\n            ')}
           </ul>
         </div>
         <div class="footer-col">
-          <h2>Contacto</h2>
+          <p class="footer-col__title">Contacto</p>
           <ul>
             <li><a href="${esc(wa('¡Hola! Les escribo desde la página web.'))}" target="_blank" rel="noopener">WhatsApp ${SITE.phone1}</a></li>
             <li><a href="tel:${SITE.phone2Raw}">Teléfono ${SITE.phone2}</a></li>
@@ -441,7 +441,7 @@ ${body}
           </ul>
         </div>
         <div class="footer-col">
-          <h2>Visítanos</h2>
+          <p class="footer-col__title">Visítanos</p>
           <address>
             <a href="${LINKS.maps}" target="_blank" rel="noopener">Carrera 64B # 85 – 150, Of. 506<br>Edificio River View, Barranquilla</a>
             <a href="${LINKS.maps}" target="_blank" rel="noopener">Cómo llegar</a>
