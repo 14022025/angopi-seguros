@@ -1276,7 +1276,7 @@ html:not(.has-tabs) .services__stage .arrow { display: none; }
    al tocarla se despliega hacia abajo con el texto y «Más información» ---------- */
 .track { gap: clamp(16px, 0.8rem + 0.8vw, 24px); align-items: flex-start; }
 .track > li { width: clamp(260px, 74vw, 310px); }
-.svc { position: relative; display: block; aspect-ratio: auto; overflow: visible; border-radius: 0; color: var(--ink-2); box-shadow: none; cursor: pointer; }
+.svc { position: relative; display: block; aspect-ratio: auto; overflow: visible; border-radius: 0; color: var(--ink-2); box-shadow: none; }
 .svc::after { display: none; }
 .svc__media { display: block; overflow: hidden; aspect-ratio: 4 / 3.7; border-radius: var(--r-lg); }
 .svc img { position: static; z-index: auto; width: 100%; height: 100%; object-fit: cover; object-position: 50% 30%; transition: none; }
@@ -1289,7 +1289,7 @@ html:not(.has-tabs) .services__stage .arrow { display: none; }
 }
 .svc__head {
   display: flex; align-items: center; gap: 10px; width: 100%; min-height: 72px;
-  padding: 12px 14px 12px 40px; border: 0; background: none; text-align: left; cursor: pointer;
+  padding: 12px 14px 12px 40px; border: 0; background: none; text-align: left;
   font: inherit; color: inherit; border-radius: 20px;
 }
 .svc__head .seal { position: absolute; left: -30px; top: 8px; width: 56px; height: 56px; }
@@ -1297,12 +1297,11 @@ html:not(.has-tabs) .services__stage .arrow { display: none; }
 .svc__chev { display: inline-grid; place-items: center; flex: none; width: 32px; height: 32px; border-radius: 50%; border: 1.5px solid var(--blue); color: var(--blue); transition: transform 0.45s var(--ease-k), background-color 0.25s var(--ease), color 0.25s var(--ease); }
 .svc.is-open .svc__chev { transform: rotate(180deg); background: var(--blue); color: #fff; }
 .svc__more { display: grid; grid-template-rows: 1fr; transition: grid-template-rows 0.5s var(--ease-k), margin 0.5s var(--ease-k), visibility 0.5s; }
-.svc.is-open .svc__more { margin-top: -12px; }
+.svc__more { margin-top: -12px; }
 .svc__inner { min-height: 0; overflow: hidden; }
 .svc__inner > * { margin-inline: 40px 18px; }
 .svc__title { padding-top: 0; font-family: var(--font); font-weight: 400; font-size: 0.9375rem; line-height: 1.5; color: var(--muted); }
 .svc__cta.btn { margin-top: 14px; margin-bottom: 18px; }
-.js .svc:not(.is-open) .svc__more { grid-template-rows: 0fr; visibility: hidden; }
 @media (hover: hover) { .svc:hover { transform: none; box-shadow: none; } }
 .services__stage .arrow { top: 120px; }
 @media (max-width: 639px) {
@@ -1319,7 +1318,7 @@ html:not(.has-tabs) .services__stage .arrow { display: none; }
 
 /* ---------- Somos Angopi: tarjeta y textos más grandes ---------- */
 #respaldo .stage__card { max-width: 800px; padding: clamp(26px, 1rem + 2.4vw, 48px); }
-@media (min-width: 960px) { #respaldo .stage__card { margin-left: -12px; } }
+@media (min-width: 960px) { #respaldo > .container { padding-left: 24px; } }
 #respaldo .manifesto { font-size: clamp(1.5rem, 1.1rem + 1.4vw, 2.35rem); line-height: 1.16; }
 #respaldo .facts { gap: 18px; margin-top: 30px; padding-top: 26px; }
 #respaldo .facts__num { font-size: clamp(2rem, 1.7rem + 0.9vw, 2.6rem); }

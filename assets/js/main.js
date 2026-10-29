@@ -184,7 +184,7 @@
         last = now;
         var box = stage.getBoundingClientRect();
         var onScreen = box.bottom > 0 && box.top < window.innerHeight;
-        if (onScreen && !hovering && !document.hidden && now > pausedUntil && !stage.querySelector('.svc.is-open')) {
+        if (onScreen && !hovering && !document.hidden && now > pausedUntil) {
           if (!services.classList.contains('is-auto')) { services.classList.add('is-auto'); pos = t.scrollLeft; }
           var max = t.scrollWidth - t.clientWidth;
           pos += dir * SPEED * dt;
@@ -202,24 +202,6 @@
       });
       tabs.forEach(function (t) { t.addEventListener('click', function () { dir = 1; pos = 0; hold(1200); }); });
     }
-
-    // Cada tarjeta se despliega hacia abajo al tocar la foto o el título; solo una abierta a la vez
-    var setCard = function (card, open) {
-      card.classList.toggle('is-open', open);
-      card.querySelector('.svc__head').setAttribute('aria-expanded', String(open));
-    };
-    each('.svc', function (card) {
-      setCard(card, false);
-      card.addEventListener('click', function (e) {
-        if (e.target.closest('a')) return;
-        var open = !card.classList.contains('is-open');
-        each('.svc.is-open', function (other) { if (other !== card) setCard(other, false); });
-        setCard(card, open);
-      });
-    });
-    document.addEventListener('keydown', function (e) {
-      if (e.key === 'Escape') each('.svc.is-open', function (c) { setCard(c, false); });
-    });
 
     // Los enlaces del menú (Personas, Empresas, Arrendamiento) abren la pestaña correcta
     var openFromHash = function (hash) {
