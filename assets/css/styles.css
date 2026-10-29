@@ -1405,8 +1405,8 @@ h4.svc__kicker { letter-spacing: 0; }
 .hero-chat--out.hero-in { animation-delay: 1.5s; }
 @media (max-width: 959px) {
   .hero-chat { max-width: 210px; padding: 10px 14px; font-size: 0.8125rem; }
-  .hero-chat--in { top: 58%; right: 4%; }
-  .hero-chat--out { top: calc(58% + 72px); right: 8%; }
+  .hero-chat--in { top: 40%; left: 8%; right: auto; }
+  .hero-chat--out { top: 66%; right: 6%; }
 }
 
 /* Equipo: cada persona en un círculo azul, con la cabeza saliendo por arriba */
@@ -1414,3 +1414,19 @@ h4.svc__kicker { letter-spacing: 0; }
 #equipo .avatar::before { content: ""; position: absolute; inset: 0; border-radius: 50%; background: var(--blue); }
 #equipo .avatar__clip { position: absolute; left: 0; right: 0; bottom: 0; height: 160%; overflow: hidden; border-radius: 0 0 55px 55px; }
 #equipo .avatar img { position: absolute; bottom: -4%; left: -24%; width: 148%; max-width: none; height: auto; border-radius: 0; background: none; }
+
+/* Portada con la casita azul: foto más pequeña, corrida a la derecha y con un desvanecido redondo hacia el blanco */
+@media (min-width: 960px) {
+  .hero-v__media { top: 72px; bottom: 24px; right: -2%; width: 56%; }
+  .hero-v__media::before, .hero-v__media::after { display: none; }
+  .hero-v__media img {
+    object-position: 50% 40%;
+    -webkit-mask-image: radial-gradient(ellipse 54% 54% at 52% 48%, #000 60%, transparent 100%);
+    mask-image: radial-gradient(ellipse 54% 54% at 52% 48%, #000 60%, transparent 100%);
+  }
+}
+@media (min-width: 960px) {
+  /* La persona escribe debajo de la cabecita del bebé; Angopi responde más abajo, dentro de la familia */
+  .hero-chat--in { top: 37%; left: 22%; right: auto; }
+  .hero-chat--out { top: 64%; right: 13%; }
+}
