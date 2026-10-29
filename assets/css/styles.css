@@ -1430,3 +1430,7 @@ h4.svc__kicker { letter-spacing: 0; }
   .hero-chat--in { top: 37%; left: 22%; right: auto; }
   .hero-chat--out { top: 64%; right: 13%; }
 }
+
+/* Las fotos del carrusel siempre ocupan todo el ancho de la tarjeta */
+.track .svc { align-items: stretch; }
+.svc__media { width: 100%; }

@@ -166,7 +166,7 @@ const wa = (text) =>`https://wa.me/${SITE.whatsapp}?text=${encodeURIComponent(te
 
 // Fotografías propias en WebP (assets/img/fotos), en dos tamaños cada una
 const PHOTOS = {
-  hero: [1600, 2400, 3200],
+  "hero-casa": [1600, 2400, 3200],
   personas: [700, 1100],
   empresas: [900, 1600],
   familia: [900, 1600],
