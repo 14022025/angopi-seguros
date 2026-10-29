@@ -170,6 +170,10 @@ const PHOTOS = {
   personas: [700, 1100],
   empresas: [900, 1600],
   familia: [900, 1600],
+  // ¿Por qué elegir?: una foto por cada punto (Unsplash, uso libre)
+  "familia-2": [900, 1600],
+  "familia-3": [900, 1600],
+  "familia-4": [900, 1600],
   campo: [1400, 2400],
   historia: [1400, 2400, 3200],
   // Fotos de Angopi para el carrusel de servicios (recortadas a 3:4)

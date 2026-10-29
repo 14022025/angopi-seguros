@@ -1313,12 +1313,19 @@ html:not(.has-tabs) .services__stage .arrow { display: none; }
 
 /* ---------- ¿Por qué elegir Angopi?: la foto en una casita, con su burbuja ---------- */
 .why__media .house img { border-radius: 0; }
-.why__bubble { position: absolute; right: clamp(-56px, -4vw, -24px); bottom: 10%; max-width: 280px; }
-@media (max-width: 559px) { .why__bubble { position: relative; right: auto; bottom: auto; margin: -40px -10px 0 auto; } }
+.why__bubble { position: absolute; left: clamp(-24px, -1.5vw, -12px); bottom: 10%; max-width: 280px; }
+@media (max-width: 559px) { .why__bubble { position: relative; left: auto; bottom: auto; margin: -40px auto 0 -10px; } }
+/* Una foto por punto: la del punto abierto aparece suavemente sobre las demás */
+.why__media .house img { position: absolute; inset: 0; opacity: 0; transition: opacity 0.7s var(--ease-k); }
+.why__media .house img.is-on { opacity: 1; }
 
 /* ---------- Somos Angopi: tarjeta y textos más grandes ---------- */
 #respaldo .stage__card { max-width: 800px; padding: clamp(26px, 1rem + 2.4vw, 48px); }
 @media (min-width: 960px) { #respaldo > .container { padding-left: 24px; } }
+/* La tarjeta tapa un poco al papá: su borde derecho llega hasta el brazo (≈63 % del ancho de la foto) */
+@media (min-width: 960px) {
+  #respaldo .stage__card { margin-left: max(0px, calc(63vw - 800px - max(0px, (100vw - var(--container)) / 2 - var(--gutter)) - 24px)); }
+}
 #respaldo .manifesto { font-size: clamp(1.5rem, 1.1rem + 1.4vw, 2.35rem); line-height: 1.16; }
 #respaldo .facts { gap: 18px; margin-top: 30px; padding-top: 26px; }
 #respaldo .facts__num { font-size: clamp(2rem, 1.7rem + 0.9vw, 2.6rem); }

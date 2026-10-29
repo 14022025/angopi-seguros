@@ -127,6 +127,17 @@
     });
   });
 
+  // ¿Por qué elegir?: cada punto que se abre cambia la foto de la casita
+  var whyPhotos = document.querySelectorAll('.why .house img');
+  if (whyPhotos.length > 1) {
+    Array.prototype.forEach.call(document.querySelectorAll('.why .acc details'), function (d, i) {
+      d.querySelector('summary').addEventListener('click', function () {
+        if (!d.open || d.classList.contains('is-closing') || !whyPhotos[i]) return;
+        Array.prototype.forEach.call(whyPhotos, function (img, k) { img.classList.toggle('is-on', k === i); });
+      });
+    });
+  }
+
   // Carrusel de servicios: pestañas Personas / Empresas y flechas
   var services = document.querySelector('.services');
   if (services) {
@@ -172,7 +183,7 @@
     window.addEventListener('resize', updateArrows);
 
     // Avance automático y lento: de derecha a izquierda y, al llegar al final, de vuelta.
-    // Se pausa mientras el mouse está encima o la persona lo usa, y retoma solo.
+    // Se pausa con el mouse sobre «Más información» o mientras la persona lo usa, y retoma solo.
     if (!calm) {
       var SPEED = 24; // píxeles por segundo
       var stage = services.querySelector('.services__stage');
@@ -194,8 +205,14 @@
         window.requestAnimationFrame(tick);
       };
       window.requestAnimationFrame(tick);
-      stage.addEventListener('mouseenter', function () { hovering = true; services.classList.remove('is-auto'); });
-      stage.addEventListener('mouseleave', function () { hovering = false; });
+      // Solo se detiene con el mouse sobre «Más información» (o el botón de cada tarjeta)
+      stage.addEventListener('mouseover', function (e) {
+        if (e.target.closest('.svc__cta')) { hovering = true; services.classList.remove('is-auto'); }
+      });
+      stage.addEventListener('mouseout', function (e) {
+        var cta = e.target.closest('.svc__cta');
+        if (cta && !cta.contains(e.relatedTarget)) hovering = false;
+      });
       stage.addEventListener('focusin', function () { hold(8000); });
       ['pointerdown', 'wheel', 'touchstart'].forEach(function (ev) {
         stage.addEventListener(ev, function () { hold(6000); }, { passive: true });
