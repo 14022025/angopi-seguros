@@ -1381,3 +1381,36 @@ html:not(.has-tabs) .services__stage .arrow { display: none; }
 .hero-v h1 .hero-v__kw { display: block; margin-top: 18px; font-size: clamp(1.05rem, 0.95rem + 0.4vw, 1.3rem); font-weight: 700; line-height: 1.3; letter-spacing: 0; color: var(--blue); }
 /* Los nombres de los seguros son títulos (h4) sin cambiar cómo se ven */
 h4.svc__kicker { letter-spacing: 0; }
+
+/* Seguros: todas las tarjetas del mismo alto, con el botón siempre abajo */
+.track { align-items: stretch; }
+.track > li { display: flex; }
+.track .svc { display: flex; flex-direction: column; width: 100%; }
+.svc__card { flex: 1; display: flex; flex-direction: column; }
+.svc__more { flex: 1; }
+.svc__inner { display: flex; flex-direction: column; align-items: flex-start; }
+.svc__inner .svc__title { margin-bottom: 14px; }
+.svc__cta.btn { margin-top: auto; }
+
+/* Somos Angopi: cada cifra encima de su texto, para que «Experiencia» respire */
+@media (min-width: 640px) {
+  #respaldo .facts li { flex-direction: column; align-items: flex-start; gap: 10px; }
+}
+
+/* Portada: dos burbujas de chat sobre la foto (la persona escribe y Angopi responde) */
+.hero-chat { position: absolute; z-index: 1; width: max-content; max-width: 300px; }
+.hero-chat--in { top: 56%; right: 4%; background: #fff; color: var(--ink); }
+.hero-chat--out { top: calc(56% + 64px); right: 8%; }
+.hero-chat.hero-in { animation-delay: 0.9s; }
+.hero-chat--out.hero-in { animation-delay: 1.5s; }
+@media (max-width: 959px) {
+  .hero-chat { max-width: 210px; padding: 10px 14px; font-size: 0.8125rem; }
+  .hero-chat--in { top: 58%; right: 4%; }
+  .hero-chat--out { top: calc(58% + 72px); right: 8%; }
+}
+
+/* Equipo: cada persona en un círculo azul, con la cabeza saliendo por arriba */
+#equipo .avatar { position: relative; display: block; width: 110px; height: 110px; margin-top: 48px; }
+#equipo .avatar::before { content: ""; position: absolute; inset: 0; border-radius: 50%; background: var(--blue); }
+#equipo .avatar__clip { position: absolute; left: 0; right: 0; bottom: 0; height: 160%; overflow: hidden; border-radius: 0 0 55px 55px; }
+#equipo .avatar img { position: absolute; bottom: -4%; left: -24%; width: 148%; max-width: none; height: auto; border-radius: 0; background: none; }
