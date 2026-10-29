@@ -7,11 +7,9 @@ nav: inicio
 schema: home
 light: true
 ---
-<!-- 02 · Portada: la foto va de arriba abajo, pegada a la derecha y fundida con el blanco -->
+<!-- 02 · Portada: como en sus redes, la foto va dentro de una casita sobre un fondo azul claro con casitas,
+     con una burbuja de comentario y una tarjeta con el sello del escudo -->
 <section class="hero-v" id="inicio" aria-labelledby="hero-titulo">
-  <div class="hero-v__media">
-    {{photo:hero|Papá, mamá y su bebé se abrazan y sonríen junto a la ventana de su casa|(min-width: 960px) 90vw, 100vw|width="3200" height="2133" fetchpriority="high"}}
-  </div>
   <div class="container hero-v__inner">
     <div class="hero-v__copy">
       <h1 id="hero-titulo" class="hero-in"><span class="dim">Pase lo que pase,</span><br class="br-d"> estamos aquí para ti.</h1>
@@ -20,12 +18,17 @@ light: true
         <a class="btn btn--dark" href="#seguros">Ver nuestros seguros{{icon:arrow-right:icon--sm}}</a>
         <a class="btn btn--outline" href="#nosotros">Conócenos</a>
       </div>
-      <p class="hero-v__note hero-in">Asesoría gratuita · 7 aseguradoras aliadas</p>
     </div>
-  </div>
-  <div class="hero-v__card hero-in" aria-hidden="true">
-    <strong>Desde 1955</strong>
-    <span>Una agencia de seguros familiar en Barranquilla.</span>
+    <div class="hero-v__art hero-in">
+      <div class="house">
+        {{photo:hero|Papá, mamá y su bebé se abrazan y sonríen junto a la ventana de su casa|(min-width: 960px) 560px, 90vw|width="3200" height="2133" fetchpriority="high"}}
+      </div>
+      <p class="bubble hero-v__bubble">Desde 1955, una agencia de seguros familiar en Barranquilla.</p>
+      <div class="note-card hero-v__note-card">
+        {{seal:shield}}
+        <p><strong>Asesoría gratuita</strong>Te ayudamos a elegir entre nuestras 7 aseguradoras aliadas.</p>
+      </div>
+    </div>
   </div>
 </section>
 
@@ -62,28 +65,28 @@ light: true
   <div class="services__panel" role="tabpanel" id="personas" aria-labelledby="tab-personas">
     <h3 class="services__label container">Para personas</h3>
     <ul class="track">
-      <li><a class="svc" href="{{wa:¡Hola! Me gustaría recibir más información sobre el seguro de auto.}}" target="_blank" rel="noopener">{{photo:svc-auto|Un joven sonríe junto a la puerta de su carro nuevo|(min-width: 900px) 300px, 75vw|loading="lazy"}}<span class="svc__body"><span class="svc__kicker">Auto</span><span class="svc__title">Tu seguro de autos a la medida de tus necesidades.</span><span class="svc__cta">Más información{{icon:arrow-right:icon--sm}}</span></span></a></li>
-      <li><a class="svc" href="{{wa:¡Hola! Me gustaría recibir más información sobre el seguro de vida.}}" target="_blank" rel="noopener">{{photo:personas|Un niño abraza a su mamá mientras su papá lo carga en el parque|(min-width: 900px) 300px, 75vw|loading="lazy"}}<span class="svc__body"><span class="svc__kicker">Vida</span><span class="svc__title">Porque la familia es lo más importante, protege tu vida.</span><span class="svc__cta">Más información{{icon:arrow-right:icon--sm}}</span></span></a></li>
-      <li><a class="svc" href="{{wa:¡Hola! Me gustaría recibir más información sobre el seguro de salud.}}" target="_blank" rel="noopener">{{photo:svc-salud|Un médico atiende a una niña en el consultorio|(min-width: 900px) 300px, 75vw|loading="lazy"}}<span class="svc__body"><span class="svc__kicker">Salud</span><span class="svc__title">Los mejores profesionales, cuidando de ti y de los que amas.</span><span class="svc__cta">Más información{{icon:arrow-right:icon--sm}}</span></span></a></li>
-      <li><a class="svc" href="{{wa:¡Hola! Me gustaría recibir más información sobre el seguro de hogar.}}" target="_blank" rel="noopener">{{photo:svc-hogar|Unos abuelos ríen abrazados con su nieta en casa|(min-width: 900px) 300px, 75vw|loading="lazy"}}<span class="svc__body"><span class="svc__kicker">Hogar</span><span class="svc__title">Un seguro de hogar para cada estilo de vida.</span><span class="svc__cta">Más información{{icon:arrow-right:icon--sm}}</span></span></a></li>
-      <li><a class="svc" href="{{link:suraViaje}}" target="_blank" rel="noopener">{{photo:u-viaje|Una familia con abuelos y una niña sale feliz de viaje a la playa|(min-width: 900px) 300px, 75vw|loading="lazy"}}<span class="svc__body"><span class="svc__kicker">Viaje</span><span class="svc__title">Viaja tranquilo, con un seguro que te acompaña.</span><span class="svc__cta">Cotizar en línea{{icon:arrow-right:icon--sm}}</span></span></a></li>
-      <li><a class="svc" href="{{wa:¡Hola! Me gustaría recibir más información sobre el seguro para mascotas.}}" target="_blank" rel="noopener">{{photo:svc-mascota|Una joven abraza a su perro en el parque|(min-width: 900px) 300px, 75vw|loading="lazy"}}<span class="svc__body"><span class="svc__kicker">Mascotas</span><span class="svc__title">Protege tu tranquilidad y la de tu mejor amigo.</span><span class="svc__cta">Más información{{icon:arrow-right:icon--sm}}</span></span></a></li>
-      <li><a class="svc" href="{{wa:¡Hola! Me gustaría recibir más información sobre el seguro para bicicletas.}}" target="_blank" rel="noopener">{{photo:svc-bici|Un hombre con su bicicleta junto al mar al amanecer|(min-width: 900px) 300px, 75vw|loading="lazy"}}<span class="svc__body"><span class="svc__kicker">Bicicletas</span><span class="svc__title">Pedalea más tranquilo durante tus recorridos.</span><span class="svc__cta">Más información{{icon:arrow-right:icon--sm}}</span></span></a></li>
-      <li id="arrendamiento"><a class="svc" href="{{link:suraArriendo}}" target="_blank" rel="noopener">{{photo:u-arriendo|Una pareja sonríe con las llaves de su nuevo hogar|(min-width: 900px) 300px, 75vw|loading="lazy"}}<span class="svc__body"><span class="svc__kicker">Arrendamiento SURA</span><span class="svc__title">Arrienda con tranquilidad: estudio y póliza en línea.</span><span class="svc__cta">Cotizar en línea{{icon:arrow-right:icon--sm}}</span></span></a></li>
-      <li><a class="svc" href="{{link:soat}}" target="_blank" rel="noopener">{{photo:u-moto|Una joven sonríe mientras maneja su moto entre palmeras|(min-width: 900px) 300px, 75vw|loading="lazy"}}<span class="svc__body"><span class="svc__kicker">SOAT</span><span class="svc__title">Compra tu SOAT en línea, de forma fácil y rápida.</span><span class="svc__cta">Comprar en línea{{icon:arrow-right:icon--sm}}</span></span></a></li>
+      <li><a class="svc" href="{{wa:¡Hola! Me gustaría recibir más información sobre el seguro de auto.}}" target="_blank" rel="noopener"><span class="svc__media">{{photo:svc-auto|Un joven sonríe junto a la puerta de su carro nuevo|(min-width: 900px) 300px, 75vw|loading="lazy"}}</span><span class="svc__body">{{seal:car}}<span class="svc__kicker">Auto</span><span class="svc__title">Tu seguro de autos a la medida de tus necesidades.</span><span class="svc__cta">Más información{{icon:arrow-right:icon--sm}}</span></span></a></li>
+      <li><a class="svc" href="{{wa:¡Hola! Me gustaría recibir más información sobre el seguro de vida.}}" target="_blank" rel="noopener"><span class="svc__media">{{photo:personas|Un niño abraza a su mamá mientras su papá lo carga en el parque|(min-width: 900px) 300px, 75vw|loading="lazy"}}</span><span class="svc__body">{{seal:cross}}<span class="svc__kicker">Vida</span><span class="svc__title">Porque la familia es lo más importante, protege tu vida.</span><span class="svc__cta">Más información{{icon:arrow-right:icon--sm}}</span></span></a></li>
+      <li><a class="svc" href="{{wa:¡Hola! Me gustaría recibir más información sobre el seguro de salud.}}" target="_blank" rel="noopener"><span class="svc__media">{{photo:svc-salud|Un médico atiende a una niña en el consultorio|(min-width: 900px) 300px, 75vw|loading="lazy"}}</span><span class="svc__body">{{seal:heart}}<span class="svc__kicker">Salud</span><span class="svc__title">Los mejores profesionales, cuidando de ti y de los que amas.</span><span class="svc__cta">Más información{{icon:arrow-right:icon--sm}}</span></span></a></li>
+      <li><a class="svc" href="{{wa:¡Hola! Me gustaría recibir más información sobre el seguro de hogar.}}" target="_blank" rel="noopener"><span class="svc__media">{{photo:svc-hogar|Unos abuelos ríen abrazados con su nieta en casa|(min-width: 900px) 300px, 75vw|loading="lazy"}}</span><span class="svc__body">{{seal:home}}<span class="svc__kicker">Hogar</span><span class="svc__title">Un seguro de hogar para cada estilo de vida.</span><span class="svc__cta">Más información{{icon:arrow-right:icon--sm}}</span></span></a></li>
+      <li><a class="svc" href="{{link:suraViaje}}" target="_blank" rel="noopener"><span class="svc__media">{{photo:u-viaje|Una familia con abuelos y una niña sale feliz de viaje a la playa|(min-width: 900px) 300px, 75vw|loading="lazy"}}</span><span class="svc__body">{{seal:plane}}<span class="svc__kicker">Viaje</span><span class="svc__title">Viaja tranquilo, con un seguro que te acompaña.</span><span class="svc__cta">Cotizar en línea{{icon:arrow-right:icon--sm}}</span></span></a></li>
+      <li><a class="svc" href="{{wa:¡Hola! Me gustaría recibir más información sobre el seguro para mascotas.}}" target="_blank" rel="noopener"><span class="svc__media">{{photo:svc-mascota|Una joven abraza a su perro en el parque|(min-width: 900px) 300px, 75vw|loading="lazy"}}</span><span class="svc__body">{{seal:paw}}<span class="svc__kicker">Mascotas</span><span class="svc__title">Protege tu tranquilidad y la de tu mejor amigo.</span><span class="svc__cta">Más información{{icon:arrow-right:icon--sm}}</span></span></a></li>
+      <li><a class="svc" href="{{wa:¡Hola! Me gustaría recibir más información sobre el seguro para bicicletas.}}" target="_blank" rel="noopener"><span class="svc__media">{{photo:svc-bici|Un hombre con su bicicleta junto al mar al amanecer|(min-width: 900px) 300px, 75vw|loading="lazy"}}</span><span class="svc__body">{{seal:bike}}<span class="svc__kicker">Bicicletas</span><span class="svc__title">Pedalea más tranquilo durante tus recorridos.</span><span class="svc__cta">Más información{{icon:arrow-right:icon--sm}}</span></span></a></li>
+      <li id="arrendamiento"><a class="svc" href="{{link:suraArriendo}}" target="_blank" rel="noopener"><span class="svc__media">{{photo:u-arriendo|Una pareja sonríe con las llaves de su nuevo hogar|(min-width: 900px) 300px, 75vw|loading="lazy"}}</span><span class="svc__body">{{seal:key}}<span class="svc__kicker">Arrendamiento SURA</span><span class="svc__title">Arrienda con tranquilidad: estudio y póliza en línea.</span><span class="svc__cta">Cotizar en línea{{icon:arrow-right:icon--sm}}</span></span></a></li>
+      <li><a class="svc" href="{{link:soat}}" target="_blank" rel="noopener"><span class="svc__media">{{photo:u-moto|Una joven sonríe mientras maneja su moto entre palmeras|(min-width: 900px) 300px, 75vw|loading="lazy"}}</span><span class="svc__body">{{seal:file-check}}<span class="svc__kicker">SOAT</span><span class="svc__title">Compra tu SOAT en línea, de forma fácil y rápida.</span><span class="svc__cta">Comprar en línea{{icon:arrow-right:icon--sm}}</span></span></a></li>
     </ul>
   </div>
 
   <div class="services__panel" role="tabpanel" id="empresas" aria-labelledby="tab-empresas">
     <h3 class="services__label container">Para empresas</h3>
     <ul class="track">
-      <li><a class="svc" href="{{wa:¡Hola! Soy profesional independiente y me gustaría recibir más información sobre sus seguros.}}" target="_blank" rel="noopener">{{photo:u-profesional|Un profesional independiente trabaja con su portátil y sonríe|(min-width: 900px) 300px, 75vw|loading="lazy"}}<span class="svc__body"><span class="svc__kicker">Profesionales independientes</span><span class="svc__title">Ejerce con tranquilidad tu profesión.</span><span class="svc__cta">Más información{{icon:arrow-right:icon--sm}}</span></span></a></li>
-      <li><a class="svc" href="{{wa:¡Hola! Me gustaría recibir más información sobre las pólizas de cumplimiento.}}" target="_blank" rel="noopener">{{photo:u-cumplimiento|Dos socios sonríen y se dan la mano al aire libre|(min-width: 900px) 300px, 75vw|loading="lazy"}}<span class="svc__body"><span class="svc__kicker">Cumplimiento</span><span class="svc__title">Pólizas de cumplimiento que respaldan tus contratos.</span><span class="svc__cta">Más información{{icon:arrow-right:icon--sm}}</span></span></a></li>
-      <li><a class="svc" href="{{wa:¡Hola! Me gustaría recibir más información sobre los beneficios en seguros para empleados.}}" target="_blank" rel="noopener">{{photo:u-empleados|Compañeros de trabajo se abrazan y ríen en la oficina|(min-width: 900px) 300px, 75vw|loading="lazy"}}<span class="svc__body"><span class="svc__kicker">Beneficios a empleados</span><span class="svc__title">Seguros para tu equipo, con pago por descuento de nómina.</span><span class="svc__cta">Más información{{icon:arrow-right:icon--sm}}</span></span></a></li>
-      <li><a class="svc" href="{{wa:¡Hola! Me gustaría recibir más información sobre el seguro de responsabilidad civil.}}" target="_blank" rel="noopener">{{photo:empresas|Dos profesionales revisan una tableta en la oficina|(min-width: 900px) 300px, 75vw|loading="lazy"}}<span class="svc__body"><span class="svc__kicker">Responsabilidad civil</span><span class="svc__title">Respaldo para tu actividad y lo que ofreces a tus clientes.</span><span class="svc__cta">Más información{{icon:arrow-right:icon--sm}}</span></span></a></li>
-      <li><a class="svc" href="{{wa:¡Hola! Me gustaría recibir más información sobre el seguro de daños y lucro cesante.}}" target="_blank" rel="noopener">{{photo:u-negocio|Un florista sonríe en su floristería|(min-width: 900px) 300px, 75vw|loading="lazy"}}<span class="svc__body"><span class="svc__kicker">Daños &amp; Lucro</span><span class="svc__title">Respaldo extra por pérdidas consecuenciales.</span><span class="svc__cta">Más información{{icon:arrow-right:icon--sm}}</span></span></a></li>
-      <li><a class="svc" href="{{wa:¡Hola! Me gustaría recibir más información sobre el seguro de transporte.}}" target="_blank" rel="noopener">{{photo:u-transporte|Una conductora sonríe frente a su camión azul|(min-width: 900px) 300px, 75vw|loading="lazy"}}<span class="svc__body"><span class="svc__kicker">Transporte</span><span class="svc__title">Tu carga protegida en Colombia y en el exterior.</span><span class="svc__cta">Más información{{icon:arrow-right:icon--sm}}</span></span></a></li>
-      <li><a class="svc" href="{{wa:¡Hola! Me gustaría recibir más información sobre el seguro de montaje y construcción.}}" target="_blank" rel="noopener">{{photo:u-obra|Dos constructores con casco y chaleco sonríen en una obra|(min-width: 900px) 300px, 75vw|loading="lazy"}}<span class="svc__body"><span class="svc__kicker">Montaje &amp; Construcción</span><span class="svc__title">Protección para tus proyectos nuevos o de ampliación.</span><span class="svc__cta">Más información{{icon:arrow-right:icon--sm}}</span></span></a></li>
+      <li><a class="svc" href="{{wa:¡Hola! Soy profesional independiente y me gustaría recibir más información sobre sus seguros.}}" target="_blank" rel="noopener"><span class="svc__media">{{photo:u-profesional|Un profesional independiente trabaja con su portátil y sonríe|(min-width: 900px) 300px, 75vw|loading="lazy"}}</span><span class="svc__body">{{seal:briefcase}}<span class="svc__kicker">Profesionales independientes</span><span class="svc__title">Ejerce con tranquilidad tu profesión.</span><span class="svc__cta">Más información{{icon:arrow-right:icon--sm}}</span></span></a></li>
+      <li><a class="svc" href="{{wa:¡Hola! Me gustaría recibir más información sobre las pólizas de cumplimiento.}}" target="_blank" rel="noopener"><span class="svc__media">{{photo:u-cumplimiento|Dos socios sonríen y se dan la mano al aire libre|(min-width: 900px) 300px, 75vw|loading="lazy"}}</span><span class="svc__body">{{seal:handshake}}<span class="svc__kicker">Cumplimiento</span><span class="svc__title">Pólizas de cumplimiento que respaldan tus contratos.</span><span class="svc__cta">Más información{{icon:arrow-right:icon--sm}}</span></span></a></li>
+      <li><a class="svc" href="{{wa:¡Hola! Me gustaría recibir más información sobre los beneficios en seguros para empleados.}}" target="_blank" rel="noopener"><span class="svc__media">{{photo:u-empleados|Compañeros de trabajo se abrazan y ríen en la oficina|(min-width: 900px) 300px, 75vw|loading="lazy"}}</span><span class="svc__body">{{seal:users}}<span class="svc__kicker">Beneficios a empleados</span><span class="svc__title">Seguros para tu equipo, con pago por descuento de nómina.</span><span class="svc__cta">Más información{{icon:arrow-right:icon--sm}}</span></span></a></li>
+      <li><a class="svc" href="{{wa:¡Hola! Me gustaría recibir más información sobre el seguro de responsabilidad civil.}}" target="_blank" rel="noopener"><span class="svc__media">{{photo:empresas|Dos profesionales revisan una tableta en la oficina|(min-width: 900px) 300px, 75vw|loading="lazy"}}</span><span class="svc__body">{{seal:scale}}<span class="svc__kicker">Responsabilidad civil</span><span class="svc__title">Respaldo para tu actividad y lo que ofreces a tus clientes.</span><span class="svc__cta">Más información{{icon:arrow-right:icon--sm}}</span></span></a></li>
+      <li><a class="svc" href="{{wa:¡Hola! Me gustaría recibir más información sobre el seguro de daños y lucro cesante.}}" target="_blank" rel="noopener"><span class="svc__media">{{photo:u-negocio|Un florista sonríe en su floristería|(min-width: 900px) 300px, 75vw|loading="lazy"}}</span><span class="svc__body">{{seal:flame}}<span class="svc__kicker">Daños &amp; Lucro</span><span class="svc__title">Respaldo extra por pérdidas consecuenciales.</span><span class="svc__cta">Más información{{icon:arrow-right:icon--sm}}</span></span></a></li>
+      <li><a class="svc" href="{{wa:¡Hola! Me gustaría recibir más información sobre el seguro de transporte.}}" target="_blank" rel="noopener"><span class="svc__media">{{photo:u-transporte|Una conductora sonríe frente a su camión azul|(min-width: 900px) 300px, 75vw|loading="lazy"}}</span><span class="svc__body">{{seal:truck}}<span class="svc__kicker">Transporte</span><span class="svc__title">Tu carga protegida en Colombia y en el exterior.</span><span class="svc__cta">Más información{{icon:arrow-right:icon--sm}}</span></span></a></li>
+      <li><a class="svc" href="{{wa:¡Hola! Me gustaría recibir más información sobre el seguro de montaje y construcción.}}" target="_blank" rel="noopener"><span class="svc__media">{{photo:u-obra|Dos constructores con casco y chaleco sonríen en una obra|(min-width: 900px) 300px, 75vw|loading="lazy"}}</span><span class="svc__body">{{seal:helmet}}<span class="svc__kicker">Montaje &amp; Construcción</span><span class="svc__title">Protección para tus proyectos nuevos o de ampliación.</span><span class="svc__cta">Más información{{icon:arrow-right:icon--sm}}</span></span></a></li>
     </ul>
   </div>
   </div>
@@ -109,11 +112,8 @@ light: true
 <section class="section" id="por-que" aria-labelledby="porque-titulo">
   <div class="container why">
     <figure class="why__media reveal">
-      {{photo:familia|Una familia de cuatro juega sentada en el césped en un día de sol|(min-width: 960px) 50vw, 100vw|width="1600" height="1067" loading="lazy"}}
-      <figcaption class="why__badge">
-        <strong>La calidez es nuestra marca.</strong>
-        <span>Así nos relacionamos con cada familia y cada empresa que confía en nosotros.</span>
-      </figcaption>
+      <div class="ball">{{photo:familia|Una familia de cuatro juega sentada en el césped en un día de sol|(min-width: 960px) 560px, 90vw|width="1600" height="1067" loading="lazy"}}</div>
+      <figcaption class="bubble bubble--right why__bubble">La calidez es nuestra marca. Así nos relacionamos con cada familia y cada empresa que confía en nosotros.</figcaption>
     </figure>
     <div class="why__body">
       <div class="head reveal">
@@ -170,9 +170,9 @@ light: true
 </section>
 
 <section class="section" id="equipo" aria-labelledby="equipo-titulo">
+  <p class="tab-label reveal">Conoce a nuestro equipo</p>
   <div class="container">
-    <div class="head head--center reveal">
-      <p class="eyebrow">Equipo</p>
+    <div class="head reveal">
       <h2 id="equipo-titulo"><span class="dim">Las personas</span> que te acompañan.</h2>
     </div>
     <div class="panel reveal">

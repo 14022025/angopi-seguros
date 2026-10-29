@@ -149,7 +149,19 @@ function icon(name, cls = '') {
   return `<svg class="icon${extra}" viewBox="0 0 24 24" aria-hidden="true" focusable="false">${body}</svg>`;
 }
 
-const wa = (text) => `https://wa.me/${SITE.whatsapp}?text=${encodeURIComponent(text)}`;
+// Sello de Angopi (como en sus redes): escudo relleno con el ícono en blanco, dentro de un círculo
+const SEAL_SHIELD = 'M24 5c4.6 3.6 10 5.4 16 5.6V23c0 9.6-6.6 16.4-16 20-9.4-3.6-16-10.4-16-20V10.6C14 10.4 19.4 8.6 24 5Z';
+const SEAL_GLYPHS = {
+  heart: '<path d="M19 14c1.49-1.46 3-3.21 3-5.5A5.5 5.5 0 0 0 16.5 3c-1.76 0-3 .5-4.5 2-1.5-1.5-2.74-2-4.5-2A5.5 5.5 0 0 0 2 8.5c0 2.3 1.5 4.05 3 5.5l7 7Z"/>',
+  cross: '<path d="M12 5v14"/><path d="M5 12h14"/>',
+};
+function seal(name, cls = '') {
+  const body = SEAL_GLYPHS[name] || ICONS[name];
+  if (!body) throw new Error(`Ícono desconocido para el sello: ${name}`);
+  return `<span class="seal${cls ? ' ' + cls : ''}" aria-hidden="true"><svg viewBox="0 0 48 48" focusable="false"><path class="seal__shield" d="${SEAL_SHIELD}"/><g class="seal__glyph" transform="translate(15.2 13.4) scale(.73)">${body}</g></svg></span>`;
+}
+
+const wa = (text) =>`https://wa.me/${SITE.whatsapp}?text=${encodeURIComponent(text)}`;
 
 // Fotografías propias en WebP (assets/img/fotos), en dos tamaños cada una
 const PHOTOS = {
@@ -225,6 +237,7 @@ function render(html, ctx) {
     out = out
       .replace(/\{\{partial:([\w-]+)\}\}/g, (_, n) => partial(n))
       .replace(/\{\{icon:([\w-]+)(?::([^}]+))?\}\}/g, (_, n, c) => icon(n, c || ''))
+      .replace(/\{\{seal:([\w-]+)(?::([^}]+))?\}\}/g, (_, n, c) => seal(n, c || ''))
       .replace(/\{\{wa:([^}]*)\}\}/g, (_, t) => esc(wa(t)))
       .replace(/\{\{photo:([^|}]+)\|([^|}]+)\|([^|}]+)(?:\|([^}]*))?\}\}/g, (_, name, alt, sizes, attrs) => photo(ctx.root, name, alt, sizes, attrs))
       .replace(/\{\{link:(\w+)\}\}/g, (_, k) => {
