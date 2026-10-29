@@ -172,7 +172,7 @@ const PHOTOS = {
   familia: [900, 1600],
   // ¿Por qué elegir?: una foto por cada punto (Unsplash, uso libre)
   "familia-2": [900, 1600],
-  "familia-3": [900, 1600],
+  "familia-5": [900, 1600],
   "familia-4": [900, 1600],
   campo: [1400, 2400],
   historia: [1400, 2400, 3200],
@@ -182,16 +182,18 @@ const PHOTOS = {
   "svc-hogar": [720, 1080],
   "svc-mascota": [720, 1080],
   "svc-bici": [720, 1080],
+  // Empresas y Arrendamiento: Unsplash (uso libre), con luz cálida como las de personas
+  "svc-arriendo": [720, 1080],
+  "svc-profesional": [720, 1080],
+  "svc-cumplimiento": [720, 1080],
+  "svc-empleados": [720, 1080],
+  "svc-rc": [720, 1080],
+  "svc-negocio": [720, 1080],
+  "svc-transporte": [720, 1080],
+  "svc-obra": [720, 1080],
   // Provisionales: Unsplash (u:, licencia libre) y vista previa de Magnific (m:, hay que descargarlas con la cuenta antes de publicar)
   "u-viaje": "m:big-family-leaving-seaside-holiday-with-vehicle-trip-small-child-with-grandparents-parents-travelling-vacation-journey-summer-people-feeling-excited-about-sea-destination_482257-48324.jpg",
-  "u-arriendo": "m:happy-couple-with-house-keys_1098-1984.jpg",
   "u-moto": "m:young-woman-driving-moped-tropical-life_1321-2766.jpg",
-  "u-profesional": "m:portrait-handsome-smiling-young-man-online-tutor-businessman-working-cafe-remotely-waving-hand_1258-245358.jpg",
-  "u-cumplimiento": "u:1758599543278-32d9d073941e",
-  "u-empleados": "m:happy-business-colleagues-hugging_1262-21066.jpg",
-  "u-negocio": "m:young-florist_1098-13710.jpg",
-  "u-transporte": "m:portrait-professional-truck-driver-showing-thumbs-up-smiling_342744-296.jpg",
-  "u-obra": "m:happy-builders-hardhat_1398-1745.jpg",
 };
 function photo(root, name, alt, sizes, attrs = '') {
   const widths = PHOTOS[name];
