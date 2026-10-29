@@ -1279,43 +1279,37 @@ html:not(.has-tabs) .services__stage .arrow { display: none; }
 .svc { position: relative; display: block; aspect-ratio: auto; overflow: visible; border-radius: 0; color: var(--ink-2); box-shadow: none; cursor: pointer; }
 .svc::after { display: none; }
 .svc__media { display: block; overflow: hidden; aspect-ratio: 4 / 3.7; border-radius: var(--r-lg); }
-.svc img { position: static; z-index: auto; width: 100%; height: 100%; object-fit: cover; object-position: 50% 30%; transition: transform 1.2s var(--ease-k); }
-.svc:hover img, .svc.is-open img { transform: scale(1.06); }
+.svc img { position: static; z-index: auto; width: 100%; height: 100%; object-fit: cover; object-position: 50% 30%; transition: none; }
+.svc:hover img { transform: none; }
 .svc__card {
   position: relative; z-index: 1;
   margin: -96px 14px 0 40px;
   border-radius: 20px; background: #fff;
   box-shadow: 0 18px 36px -20px rgba(10, 10, 12, 0.45);
-  transition: transform 0.45s var(--ease-k), box-shadow 0.45s var(--ease-k);
 }
 .svc__head {
-  display: flex; align-items: center; gap: 10px; width: 100%; min-height: 80px;
-  padding: 16px 14px 16px 40px; border: 0; background: none; text-align: left; cursor: pointer;
+  display: flex; align-items: center; gap: 10px; width: 100%; min-height: 72px;
+  padding: 12px 14px 12px 40px; border: 0; background: none; text-align: left; cursor: pointer;
   font: inherit; color: inherit; border-radius: 20px;
 }
-.svc__head .seal { position: absolute; left: -30px; top: 10px; width: 60px; height: 60px; transition: transform 0.5s var(--ease-k); }
+.svc__head .seal { position: absolute; left: -30px; top: 8px; width: 56px; height: 56px; }
 .svc__kicker { flex: 1; align-self: auto; padding: 0; border-radius: 0; background: none; font-family: var(--font-title); font-size: 1.25rem; font-weight: 800; line-height: 1.15; color: var(--blue); }
 .svc__chev { display: inline-grid; place-items: center; flex: none; width: 32px; height: 32px; border-radius: 50%; border: 1.5px solid var(--blue); color: var(--blue); transition: transform 0.45s var(--ease-k), background-color 0.25s var(--ease), color 0.25s var(--ease); }
 .svc.is-open .svc__chev { transform: rotate(180deg); background: var(--blue); color: #fff; }
-.svc__more { display: grid; grid-template-rows: 1fr; transition: grid-template-rows 0.5s var(--ease-k), visibility 0.5s; }
+.svc__more { display: grid; grid-template-rows: 1fr; transition: grid-template-rows 0.5s var(--ease-k), margin 0.5s var(--ease-k), visibility 0.5s; }
+.svc.is-open .svc__more { margin-top: -12px; }
 .svc__inner { min-height: 0; overflow: hidden; }
-.svc__inner > * { margin-inline: 20px 18px; }
-.svc__title { padding-top: 2px; font-family: var(--font); font-weight: 400; font-size: 0.9375rem; line-height: 1.5; color: var(--muted); }
+.svc__inner > * { margin-inline: 40px 18px; }
+.svc__title { padding-top: 0; font-family: var(--font); font-weight: 400; font-size: 0.9375rem; line-height: 1.5; color: var(--muted); }
 .svc__cta.btn { margin-top: 14px; margin-bottom: 18px; }
 .js .svc:not(.is-open) .svc__more { grid-template-rows: 0fr; visibility: hidden; }
-.js .svc .svc__inner > * { opacity: 0; transform: translateY(-8px); transition: opacity 0.35s var(--ease-k), transform 0.45s var(--ease-k); }
-.js .svc.is-open .svc__inner > * { opacity: 1; transform: none; transition-delay: 0.12s; }
-.js .svc.is-open .svc__inner > .btn { transition-delay: 0.2s; }
-@media (hover: hover) {
-  .svc:hover { transform: none; box-shadow: none; }
-  .svc:hover .svc__card { transform: translateY(-6px); box-shadow: 0 26px 44px -22px rgba(10, 10, 12, 0.5); }
-  .svc:hover .seal { transform: rotate(-10deg) scale(1.08); }
-}
+@media (hover: hover) { .svc:hover { transform: none; box-shadow: none; } }
 .services__stage .arrow { top: 120px; }
 @media (max-width: 639px) {
   .svc__card { margin: -92px 12px 0 34px; }
   .svc__head { padding-left: 34px; }
-  .svc__head .seal { left: -26px; top: 13px; width: 52px; height: 52px; }
+  .svc__inner > * { margin-left: 34px; }
+  .svc__head .seal { left: -26px; top: 10px; width: 52px; height: 52px; }
 }
 
 /* ---------- ¿Por qué elegir Angopi?: la foto en una casita, con su burbuja ---------- */
@@ -1324,10 +1318,11 @@ html:not(.has-tabs) .services__stage .arrow { display: none; }
 @media (max-width: 559px) { .why__bubble { position: relative; right: auto; bottom: auto; margin: -40px -10px 0 auto; } }
 
 /* ---------- Somos Angopi: tarjeta y textos más grandes ---------- */
-#respaldo .stage__card { max-width: 920px; padding: clamp(28px, 1rem + 3vw, 60px); }
-#respaldo .manifesto { font-size: clamp(1.6rem, 1.1rem + 1.9vw, 2.75rem); line-height: 1.15; }
-#respaldo .facts { gap: 20px; margin-top: 36px; padding-top: 30px; }
-#respaldo .facts__num { font-size: clamp(2.2rem, 1.8rem + 1.2vw, 3rem); }
+#respaldo .stage__card { max-width: 800px; padding: clamp(26px, 1rem + 2.4vw, 48px); }
+@media (min-width: 960px) { #respaldo .stage__card { margin-left: -12px; } }
+#respaldo .manifesto { font-size: clamp(1.5rem, 1.1rem + 1.4vw, 2.35rem); line-height: 1.16; }
+#respaldo .facts { gap: 18px; margin-top: 30px; padding-top: 26px; }
+#respaldo .facts__num { font-size: clamp(2rem, 1.7rem + 0.9vw, 2.6rem); }
 #respaldo .facts__txt { font-size: 1rem; }
 
 /* ---------- Equipo: pestaña azul pegada al borde, como «Conoce a nuestro equipo» ---------- */
@@ -1342,51 +1337,36 @@ html:not(.has-tabs) .services__stage .arrow { display: none; }
 /* ---------- Cierre: azul con casitas de fondo ---------- */
 .cta { background: var(--blue) var(--houses-blue) center / 150px 150px; }
 
-/* ==========================================================================
-   Movimiento: sellos que saltan, fotos que se destapan, burbujas que flotan
-   ========================================================================== */
-:root { --spring: cubic-bezier(0.34, 1.56, 0.64, 1); }
-@keyframes float { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-8px); } }
-@keyframes houses-drift { to { background-position: 150px -150px; } }
-
-/* Portada: la tarjeta «Desde 1955» flota */
-.hero-v__card.hero-in { animation: rise 0.9s var(--ease-k) 0.7s both, float 6s ease-in-out 1.8s infinite; }
-.hero-v__media { will-change: transform; }
-
-/* Tarjetas de seguros: suben, y el sello salta después */
-.js .svc .svc__card { opacity: 0; transform: translateY(28px); transition: opacity 0.8s var(--ease-k) var(--d, 0ms), transform 0.8s var(--ease-k) var(--d, 0ms), box-shadow 0.45s var(--ease-k); }
-.js .svc .svc__media { opacity: 0; transform: scale(0.94); transition: opacity 0.9s var(--ease-k) var(--d, 0ms), transform 0.9s var(--ease-k) var(--d, 0ms); }
-.js .svc .seal { transform: scale(0) rotate(-40deg); transition: transform 0.7s var(--spring) calc(var(--d, 0ms) + 0.35s); }
-.js .svc.is-in .svc__card, .js .svc.is-in .svc__media { opacity: 1; transform: none; }
-.js .svc.is-in .seal { transform: none; }
-@media (hover: hover) {
-  .js .svc.is-in:hover .svc__card { transform: translateY(-6px); transition-delay: 0s; }
-  .js .svc.is-in:hover .seal { transform: rotate(-12deg) scale(1.1); transition-delay: 0s; }
-}
-
-/* ¿Por qué elegir?: la foto se destapa de abajo hacia arriba y la burbuja aparece y flota */
-.js .why__media .house img { clip-path: inset(100% 0 0 0); transition: clip-path 1.2s var(--ease-k) 0.1s; }
-.js .why__media.is-in .house img { clip-path: inset(0); }
-.js .why__bubble { opacity: 0; transform: scale(0.6); transform-origin: 85% 110%; transition: opacity 0.5s var(--ease-k) 0.9s, transform 0.7s var(--spring) 0.9s; }
-.js .why__media.is-in .why__bubble { opacity: 1; transform: none; animation: float 6s ease-in-out 2s infinite; }
-
-/* Somos Angopi: las cifras entran una tras otra */
-.js .stage__card .facts li { opacity: 0; transform: translateY(16px); transition: opacity 0.7s var(--ease-k), transform 0.7s var(--ease-k); }
-.js .stage__card.is-in .facts li { opacity: 1; transform: none; }
-.js .stage__card.is-in .facts li:nth-child(2) { transition-delay: 0.15s; }
-.js .stage__card.is-in .facts li:nth-child(3) { transition-delay: 0.3s; }
-
-/* Equipo: la pestaña entra desde el borde y las fotos saltan */
+/* Equipo: la pestaña entra desde el borde (su aparición) */
 .js .tab-label.reveal { transform: translateX(-100%); opacity: 1; }
 .js .tab-label.reveal.is-in { transform: none; }
-.js .person img { transform: scale(0.6); opacity: 0; transition: transform 0.7s var(--spring) var(--d, 0ms), opacity 0.4s var(--ease-k) var(--d, 0ms); }
-.js .person.is-in img { transform: none; opacity: 1; }
+@media (prefers-reduced-motion: reduce) { .js .tab-label.reveal { transform: none; } }
 
-/* Hablemos: las casitas del fondo se mueven despacio */
-.cta { animation: houses-drift 40s linear infinite; }
+/* ¿Por qué elegir?: sin efectos */
+@media (hover: hover) { #por-que .why__media:hover, #por-que .acc details:hover { transform: none; } }
 
-@media (prefers-reduced-motion: reduce) {
-  .js .svc .svc__card, .js .svc .svc__media, .js .svc .seal, .js .why__bubble, .js .stage__card .facts li, .js .person img { opacity: 1; transform: none; }
-  .js .why__media .house img { clip-path: none; }
-  .js .tab-label.reveal { transform: none; }
+/* Nuestra historia: que la tarjeta quepa entera en la pantalla */
+#nosotros { padding-block: clamp(2.5rem, 1.5rem + 3vw, 4.5rem); }
+#nosotros .timeline { margin-top: 20px; }
+#nosotros .timeline li { padding-bottom: 14px; }
+#nosotros .history-card__quote { margin-top: 18px; padding-top: 16px; }
+
+/* Pantallas de portátil (poca altura): cada sección cabe entera al verla */
+@media (min-width: 960px) {
+  .why__media .house { width: min(100%, calc((100vh - 170px) / 0.94)); margin-inline: auto; }
+}
+@media (min-width: 960px) and (max-height: 820px) {
+  #por-que { padding-block: 64px; }
+  #nosotros .history-card { padding: 26px 30px; }
+  #nosotros .history-card h2 { font-size: 1.8rem; }
+  #nosotros .timeline { margin-top: 14px; }
+  #nosotros .timeline li { padding-bottom: 10px; }
+  #nosotros .timeline p { font-size: 0.875rem; }
+  #nosotros .history-card__quote { font-size: 1rem; }
+}
+@media (min-width: 960px) and (max-height: 820px) {
+  .services { padding-top: 72px; padding-bottom: 72px; }
+  .services .head { margin-bottom: 14px; }
+  .services .head > p:not(.eyebrow) { margin-top: 10px; }
+  .svc__media { aspect-ratio: 4 / 3.2; }
 }

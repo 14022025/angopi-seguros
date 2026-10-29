@@ -70,36 +70,6 @@
     showAll();
   }
 
-  // Tarjetas de seguros y del equipo que entran una tras otra, con el sello que salta
-  var pops = document.querySelectorAll('.svc, .person');
-  var popAll = function () { Array.prototype.forEach.call(pops, function (el) { el.classList.add('is-in'); }); };
-  if ('IntersectionObserver' in window && !calm) {
-    var popAnswered = false;
-    window.setTimeout(function () { if (!popAnswered) popAll(); }, 2500);
-    var popper = new IntersectionObserver(function (entries) {
-      popAnswered = true;
-      var n = 0;
-      entries.forEach(function (entry) {
-        if (!entry.isIntersecting) return;
-        entry.target.style.setProperty('--d', Math.min(n++, 5) * 90 + 'ms');
-        entry.target.classList.add('is-in');
-        popper.unobserve(entry.target);
-      });
-    }, { rootMargin: '0px 0px -6% 0px' });
-    Array.prototype.forEach.call(pops, function (el) { popper.observe(el); });
-  } else {
-    popAll();
-  }
-
-  // La foto de la portada baja más despacio que la página
-  var heroMedia = document.querySelector('.hero-v__media');
-  if (heroMedia && !calm) {
-    var drift = function () {
-      if (window.scrollY < 1200) heroMedia.style.transform = 'translate3d(0,' + (window.scrollY * 0.18).toFixed(1) + 'px,0)';
-    };
-    window.addEventListener('scroll', function () { window.requestAnimationFrame(drift); }, { passive: true });
-  }
-
   // Manifiesto que se enciende palabra por palabra al bajar
   each('[data-manifesto]', function (el) {
     var text = el.textContent.trim();
