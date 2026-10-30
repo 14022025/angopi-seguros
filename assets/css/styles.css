@@ -1463,3 +1463,9 @@ h4.svc__kicker { letter-spacing: 0; }
   .hero-v__inner { order: 1; margin-top: -36px; }
   .hero-chat { display: none; }
 }
+
+/* Pantallas altas (p. ej. 1920 × 1080): la portada llena la pantalla para que la primera vista termine en la
+   franja de aseguradoras y no se asome la sección siguiente. En portátiles queda igual que antes. */
+@media (min-width: 960px) {
+  .hero-v { min-height: max(clamp(600px, 92vh, 820px), calc(100vh - 110px)); }
+}
