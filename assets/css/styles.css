@@ -1444,3 +1444,22 @@ h4.svc__kicker { letter-spacing: 0; }
   -webkit-mask-image: linear-gradient(to bottom, #000 84%, transparent 99%);
   mask-image: linear-gradient(to bottom, #000 84%, transparent 99%);
 }
+
+/* Celular: la foto va arriba, de lado a lado, y se funde con la portada; el título empieza sobre el difuminado.
+   Sin burbujas de chat. */
+@media (max-width: 959px) {
+  .hero-v { padding-top: 76px; }
+  .hero-v__media { order: 0; height: clamp(360px, 104vw, 540px); margin-top: 0; }
+  .hero-v__media::after { height: 30%; }
+  .hero-v__media img {
+    object-position: 50% 30%;
+    -webkit-mask-image: linear-gradient(to bottom, transparent 0%, #000 12%, #000 62%, transparent 100%);
+    mask-image: linear-gradient(to bottom, transparent 0%, #000 12%, #000 62%, transparent 100%);
+  }
+  .hero-v__media .hero-v__front {
+    -webkit-mask-image: linear-gradient(to bottom, #000 60%, transparent 98%);
+    mask-image: linear-gradient(to bottom, #000 60%, transparent 98%);
+  }
+  .hero-v__inner { order: 1; margin-top: -36px; }
+  .hero-chat { display: none; }
+}
