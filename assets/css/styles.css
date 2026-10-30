@@ -1418,7 +1418,7 @@ h4.svc__kicker { letter-spacing: 0; }
 /* Portada con la casita azul: foto más pequeña, corrida a la derecha y con un desvanecido redondo hacia el blanco */
 @media (min-width: 960px) {
   /* La foto lleva más pared arriba (hero-casa2) para que el difuminado de arriba no toque las cabezas */
-  .hero-v__media { top: 30px; bottom: 34px; right: -2%; width: 56%; }
+  .hero-v__media { top: 10px; bottom: 14px; right: -3%; width: 61%; }
   .hero-v__media::before, .hero-v__media::after { display: none; }
   /* El óvalo llega justo a los cuatro bordes: la foto termina transparente y no se ve ningún corte */
   .hero-v__media img {
