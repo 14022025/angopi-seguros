@@ -1436,3 +1436,11 @@ h4.svc__kicker { letter-spacing: 0; }
 /* Las fotos del carrusel siempre ocupan todo el ancho de la tarjeta */
 .track .svc { align-items: stretch; }
 .svc__media { width: 100%; }
+
+/* Portada: encima de la foto difuminada va la familia con la línea azul de la casita, recortada y sin
+   difuminar, para que el degradado solo se vea en el fondo. Abajo sí se funde, donde la foto corta los jeans. */
+.hero-v__media .hero-v__front {
+  position: absolute; inset: 0; z-index: 0;
+  -webkit-mask-image: linear-gradient(to bottom, #000 84%, transparent 99%);
+  mask-image: linear-gradient(to bottom, #000 84%, transparent 99%);
+}
