@@ -1418,13 +1418,13 @@ h4.svc__kicker { letter-spacing: 0; }
 /* Portada con la casita azul: foto más pequeña, corrida a la derecha y con un desvanecido redondo hacia el blanco */
 @media (min-width: 960px) {
   /* La foto lleva más pared arriba (hero-casa2) para que el difuminado de arriba no toque las cabezas */
-  .hero-v__media { top: 64px; bottom: 0; right: -2%; width: 56%; }
-  .hero-v__media::before { display: block; height: 20%; }
-  .hero-v__media::after { height: 20%; }
+  .hero-v__media { top: 30px; bottom: 34px; right: -2%; width: 56%; }
+  .hero-v__media::before, .hero-v__media::after { display: none; }
+  /* El óvalo llega justo a los cuatro bordes: la foto termina transparente y no se ve ningún corte */
   .hero-v__media img {
     object-position: 50% 40%;
-    -webkit-mask-image: radial-gradient(ellipse 60% 66% at 52% 56%, #000 62%, transparent 100%);
-    mask-image: radial-gradient(ellipse 60% 66% at 52% 56%, #000 62%, transparent 100%);
+    -webkit-mask-image: radial-gradient(closest-side ellipse at 50% 52%, #000 58%, transparent 100%);
+    mask-image: radial-gradient(closest-side ellipse at 50% 52%, #000 58%, transparent 100%);
   }
 }
 @media (min-width: 960px) {
