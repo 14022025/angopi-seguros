@@ -1639,11 +1639,6 @@ h4.svc__kicker { letter-spacing: 0; }
 .why__bubble { z-index: 2; }
 @media (max-width: 559px) { .lhero__bubble { left: auto; margin: -36px auto 0 -10px; } }
 
-/* Portada de la home: cuatro accesos directos según lo que la persona quiere proteger */
-.goals__label { margin-top: 26px; font-size: var(--fs-sm); font-weight: 600; color: var(--ink); }
-.goals { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 8px; margin-top: 10px; max-width: 440px; list-style: none; }
-.goals .btn { width: 100%; padding-inline: 12px; }
-.hero-v__copy .hero-in:nth-child(6) { animation-delay: 0.4s; }
 /* Títulos largos de cada seguro: palabra de búsqueda en azul y remate en negro */
 .ins__card h2 { font-size: clamp(1.45rem, 1.2rem + 0.9vw, 1.95rem); }
 .lhero .btn-row { margin-top: 22px; }
