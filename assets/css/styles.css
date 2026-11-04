@@ -1649,3 +1649,12 @@ h4.svc__kicker { letter-spacing: 0; }
 .lhero .btn-row { margin-top: 22px; }
 .lhero .jump { margin-top: 18px; }
 .duo .svc__kicker { font-size: 1.3rem; }
+
+/* Contacto: el mismo azul con casitas del cierre de la home, con el formulario blanco encima */
+.lhero--contact { background: var(--blue) var(--houses-blue) center / 150px 150px; }
+.lhero--contact .crumbs, .lhero--contact .crumbs a, .lhero--contact .crumbs [aria-current] { color: #fff; }
+.lhero--contact .crumbs a:hover { color: #fff; text-decoration: underline; }
+.lhero--contact h1 { color: #fff; }
+.lhero--contact .form-card h2 { color: var(--ink); }
+.lhero--contact .form-card { box-shadow: 0 30px 60px -36px rgba(10, 10, 12, 0.5); }
+.lhero--contact .channel { box-shadow: none; }
