@@ -53,8 +53,9 @@ const LINKS = {
   instagram: 'https://www.instagram.com/angopi_ltda',
   linkedin: 'https://co.linkedin.com/company/agencia-de-seguros-angopi-ltda',
   youtube: 'https://www.youtube.com/channel/UCFu8ceEwrFtgullOjb4gHsA',
-  maps: 'https://www.google.com/maps/search/?api=1&query=Edificio+River+View+Carrera+64B+85-150+Barranquilla',
-  mapsEmbed: 'https://www.google.com/maps?q=Edificio%20River%20View%2C%20Carrera%2064B%20%2385-150%2C%20Barranquilla&z=17&output=embed',
+  // Ubicación exacta de la oficina, tomada del mapa de Google de Angopi. Por nombre, Google mostraba otra empresa.
+  maps: 'https://www.google.com/maps/search/?api=1&query=11.0145337%2C-74.8137678',
+  mapsEmbed: 'https://www.google.com/maps?q=11.0145337,-74.8137678&z=17&output=embed',
 };
 
 // El mismo menú en todas las páginas. Nosotros y Recursos viven en la home.
