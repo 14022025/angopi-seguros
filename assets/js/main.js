@@ -258,6 +258,24 @@
     });
   });
 
+  // Cotizador de SURA: solo se le cambia el aspecto para que sea de la familia de Angopi.
+  // Campos, datos y conexión siguen siendo los del proveedor. Si algo falla aquí, el cotizador funciona igual.
+  var quoter = document.querySelector('arriendy-quoter');
+  if (quoter) {
+    var QUOTER_CSS = ":host, .quoter-root, .quoter-root * { font-family: \"Geist\", ui-sans-serif, system-ui, sans-serif !important; } .card { background: #fff !important; box-shadow: none !important; border: 0 !important; } .card-title { font-family: \"Nunito Sans\", \"Geist\", sans-serif !important; font-weight: 800 !important; color: #0a0a0c !important; } .card-subtitle, .label-count, .version-text { color: #6b6f78 !important; } label, .cb-label { color: #0a0a0c !important; } .form-control { color: #0a0a0c !important; border-color: #d6d6dc !important; border-radius: 14px !important; } .form-control:focus { border-color: #418ef2 !important; box-shadow: 0 0 0 4px rgba(65, 142, 242, .15) !important; } .form-control::placeholder { color: #9a9ea6 !important; } .btn { border-radius: 999px !important; font-weight: 600 !important; transition: background-color .2s, color .2s, border-color .2s !important; } /* En este cotizador, btn-secondary es la opción elegida y btn-neutral la que no */ .btn-secondary { background: #418ef2 !important; border-color: #418ef2 !important; color: #fff !important; } .btn-neutral { background: #fff !important; border-color: #d6d6dc !important; color: #3a3c42 !important; } .btn-neutral:hover { border-color: #418ef2 !important; color: #418ef2 !important; } .btn-primary { background: #418ef2 !important; border-color: #418ef2 !important; color: #fff !important; } .btn-primary:hover { background: #418ef2 !important; } .circle { background: #d6d6dc !important; color: #fff !important; } .circle.active { background: #418ef2 !important; color: #fff !important; } .line { background: #d6d6dc !important; } .link, a { color: #418ef2 !important; } .cb-box { border-color: #d6d6dc !important; border-radius: 6px !important; } input:checked + .cb-box, .cb-box.checked, .cb-box.active { background: #418ef2 !important; border-color: #418ef2 !important; } .modal-backdrop { background: rgba(10, 10, 12, .45) !important; } .modal-container { max-width: 460px !important; border-radius: 28px !important; } .modal-content { display: block !important; min-height: 0 !important; padding: 32px !important; } .image-section { display: none !important; } .content-section { padding: 0 !important; } .modal-container h2 { font-family: \"Nunito Sans\", \"Geist\", sans-serif !important; font-weight: 800 !important; color: #0a0a0c !important; padding-right: 36px; } .modal-container p { color: #6b6f78 !important; } .modal-container strong { color: #0a0a0c !important; } .close-button { background: #418ef2 !important; } .spinner { border-top-color: #418ef2 !important; }";
+    var tries = 0;
+    var dress = function () {
+      if (quoter.shadowRoot) {
+        var style = document.createElement('style');
+        style.textContent = QUOTER_CSS;
+        quoter.shadowRoot.appendChild(style);
+        return;
+      }
+      if (++tries < 300) window.setTimeout(dress, 50);
+    };
+    dress();
+  }
+
   // Cifras que cuentan desde cero
   if ('IntersectionObserver' in window && !calm) {
     var counter = new IntersectionObserver(function (entries) {
