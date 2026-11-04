@@ -5,6 +5,7 @@ description: Escríbele a Angopi por WhatsApp, llámanos, agenda una cita virtua
 path: contacto/
 nav: contacto
 crumb: Contacto
+schema: home
 light: true
 ---
 <section class="lhero lhero--contact" aria-labelledby="titulo">
@@ -40,8 +41,7 @@ light: true
           <div class="field"><label for="nombre">Nombre</label><input class="input" id="nombre" name="nombre" type="text" autocomplete="name"><p class="field__error" data-error-for="nombre"></p></div>
           <div class="field"><label for="telefono">Celular o WhatsApp</label><input class="input" id="telefono" name="telefono" type="tel" autocomplete="tel" placeholder="+57"><p class="field__error" data-error-for="telefono"></p></div>
         </div>
-        <div class="field"><label for="correo">Correo</label><input class="input" id="correo" name="correo" type="email" autocomplete="email"><p class="field__error" data-error-for="correo"></p></div>
-        <div class="field"><label for="mensaje">Mensaje</label><textarea class="textarea" id="mensaje" name="mensaje" rows="3"></textarea></div>
+        <div class="field"><label for="mensaje">Mensaje (si quieres contarnos algo más)</label><textarea class="textarea" id="mensaje" name="mensaje" rows="3"></textarea></div>
         <label class="consent"><input type="checkbox" name="autorizacion"><span>Autorizo a Agencia de Seguros Angopi Ltda. a tratar mis datos personales para atender mi solicitud, según la <a href="{{root}}politica-de-datos/">política de tratamiento de datos</a>.</span></label>
         <p class="field__error" data-error-for="autorizacion"></p>
         <button class="btn btn--dark btn--block" type="submit">{{icon:whatsapp}}Enviar por WhatsApp</button>

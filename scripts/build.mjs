@@ -305,6 +305,27 @@ function agencySchema() {
   };
 }
 
+function serviceSchema(meta) {
+  if (!meta.service) return null;
+  return {
+    '@context': 'https://schema.org',
+    '@type': 'Service',
+    name: meta.service,
+    serviceType: meta.service,
+    description: meta.description,
+    url: SITE.url + meta.path,
+    areaServed: { '@type': 'Country', name: 'Colombia' },
+    provider: {
+      '@type': 'InsuranceAgency',
+      '@id': `${SITE.url}#agencia`,
+      name: SITE.legalName,
+      telephone: SITE.phone1Raw,
+      url: SITE.url,
+      address: { '@type': 'PostalAddress', streetAddress: SITE.address, addressLocality: SITE.city, addressRegion: SITE.region, addressCountry: 'CO' },
+    },
+  };
+}
+
 function breadcrumbSchema(meta) {
   if (!meta.crumb) return null;
   return {
@@ -329,6 +350,8 @@ function layout(meta, body, ctx) {
 
   const schemas = [];
   if (meta.schema === 'home') schemas.push(agencySchema());
+  const srv = serviceSchema(meta);
+  if (srv) schemas.push(srv);
   const bc = breadcrumbSchema(meta);
   if (bc) schemas.push(bc);
   const faq = faqSchema(body);
