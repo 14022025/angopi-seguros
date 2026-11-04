@@ -1,0 +1,82 @@
+---
+title: Contacto | Angopi, agencia de seguros en Barranquilla
+ogTitle: Hablemos, te guardamos la espalda | Angopi
+description: Escríbele a Angopi por WhatsApp, llámanos, agenda una cita virtual o visítanos en el Edificio River View, en Barranquilla. La asesoría es gratuita y sin compromiso.
+path: contacto/
+nav: contacto
+crumb: Contacto
+light: true
+---
+<section class="lhero lhero--contact" aria-labelledby="titulo">
+  <div class="container lhero__grid">
+    <div class="lhero__copy">
+      <nav class="crumbs hero-in" aria-label="Ruta de navegación"><ol><li><a href="{{root}}">Inicio</a></li><li aria-current="page">Contacto</li></ol></nav>
+      <h1 id="titulo" class="hero-in"><span class="dim">Hablemos,</span><br> te guardamos la espalda.</h1>
+      <p class="lead hero-in">Escríbenos, llámanos, agenda una cita virtual o ven a visitarnos, como te quede más cómodo. La asesoría es gratuita y sin compromiso.</p>
+      <ul class="channels hero-in">
+        <li><a class="channel" href="{{wa:¡Hola! Me gustaría hablar con un asesor.}}" target="_blank" rel="noopener">{{seal:message}}<span><span class="channel__label">WhatsApp</span><span class="channel__value">{{site:phone1}}</span></span></a></li>
+        <li><a class="channel" href="tel:{{site:phone2Raw}}">{{seal:phone}}<span><span class="channel__label">Teléfono</span><span class="channel__value">{{site:phone2}}</span></span></a></li>
+        <li><a class="channel" href="mailto:{{site:email}}">{{seal:mail}}<span><span class="channel__label">Correo</span><span class="channel__value">{{site:email}}</span></span></a></li>
+        <li><a class="channel" href="{{link:calendly}}" target="_blank" rel="noopener">{{seal:calendar}}<span><span class="channel__label">Cita virtual</span><span class="channel__value">Agendar con un asesor</span></span></a></li>
+      </ul>
+    </div>
+    <div class="lhero__tool hero-in">
+      <form class="form form-card" data-whatsapp novalidate>
+        <div class="form-card__head">
+          <h2>Cuéntanos qué necesitas</h2>
+          <p>Al enviar, se abre WhatsApp con tu mensaje listo.</p>
+        </div>
+        <fieldset class="field choice-grid">
+          <legend>¿Qué quieres proteger?</legend>
+          <label class="choice"><input type="radio" name="necesidad" value="Mi carro o moto"><span>Carro o moto</span></label>
+          <label class="choice"><input type="radio" name="necesidad" value="Mi vida o mi salud"><span>Vida o salud</span></label>
+          <label class="choice"><input type="radio" name="necesidad" value="Mi hogar"><span>Hogar</span></label>
+          <label class="choice"><input type="radio" name="necesidad" value="Un arriendo"><span>Arriendo</span></label>
+          <label class="choice"><input type="radio" name="necesidad" value="Mi empresa"><span>Empresa</span></label>
+          <label class="choice"><input type="radio" name="necesidad" value="Otra cosa"><span>Otra cosa</span></label>
+          <p class="field__error" data-error-for="necesidad"></p>
+        </fieldset>
+        <div class="form__row form__row--2">
+          <div class="field"><label for="nombre">Nombre</label><input class="input" id="nombre" name="nombre" type="text" autocomplete="name"><p class="field__error" data-error-for="nombre"></p></div>
+          <div class="field"><label for="telefono">Celular o WhatsApp</label><input class="input" id="telefono" name="telefono" type="tel" autocomplete="tel" placeholder="+57"><p class="field__error" data-error-for="telefono"></p></div>
+        </div>
+        <div class="field"><label for="correo">Correo</label><input class="input" id="correo" name="correo" type="email" autocomplete="email"><p class="field__error" data-error-for="correo"></p></div>
+        <div class="field"><label for="mensaje">Mensaje</label><textarea class="textarea" id="mensaje" name="mensaje" rows="3"></textarea></div>
+        <label class="consent"><input type="checkbox" name="autorizacion"><span>Autorizo a Agencia de Seguros Angopi Ltda. a tratar mis datos personales para atender mi solicitud, según la <a href="{{root}}politica-de-datos/">política de tratamiento de datos</a>.</span></label>
+        <p class="field__error" data-error-for="autorizacion"></p>
+        <button class="btn btn--dark btn--block" type="submit">{{icon:whatsapp}}Enviar por WhatsApp</button>
+        <p class="form-card__status" data-status role="status"></p>
+      </form>
+    </div>
+  </div>
+</section>
+
+<section class="section section--flush-top" id="como-llegar" aria-labelledby="llegar-t">
+  <div class="container grid-2 grid-2--center">
+    <div class="reveal">
+      <p class="eyebrow">Cómo llegar</p>
+      <h2 id="llegar-t"><span class="dim">Nos encantará</span> recibirte en la oficina.</h2>
+      <address class="visit">Carrera 64B # 85 – 150, Oficina 506<br>Edificio River View, Barranquilla, Colombia</address>
+      <div class="btn-row btn-row--stack">
+        <a class="btn btn--dark" href="{{link:maps}}" target="_blank" rel="noopener">{{icon:pin:icon--sm}}Abrir en Google Maps</a>
+      </div>
+    </div>
+    <div class="map reveal"><iframe src="{{link:mapsEmbed}}" title="Mapa de la oficina de Angopi en el Edificio River View, Barranquilla" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe></div>
+  </div>
+</section>
+
+<section class="section section--flush-top" id="asesores" aria-labelledby="asesores-t">
+  <div class="container">
+    <div class="head reveal">
+      <p class="eyebrow">Contacto directo</p>
+      <h2 id="asesores-t"><span class="dim">¿Ya tienes un asesor?</span> Escríbele directamente.</h2>
+    </div>
+    <ul class="direct reveal">
+      <li><a href="mailto:gerencia@angopi.co"><strong>Andrés González</strong><span>gerencia@angopi.co</span></a></li>
+      <li><a href="mailto:comercial@angopi.co"><strong>David González</strong><span>comercial@angopi.co</span></a></li>
+      <li><a href="mailto:asistente@angopi.co"><strong>Esmeralda Ballestas</strong><span>asistente@angopi.co</span></a></li>
+      <li><a href="mailto:tecnico@angopi.co"><strong>Joselyn Navas</strong><span>tecnico@angopi.co</span></a></li>
+      <li><a href="mailto:ventas@angopi.co"><strong>Paola Peñaranda</strong><span>ventas@angopi.co</span></a></li>
+    </ul>
+  </div>
+</section>

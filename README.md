@@ -6,17 +6,13 @@ Home de **Agencia de Seguros Angopi Ltda.** (Barranquilla, desde 1955), por Kaiv
 
 ## Qué tiene
 
-Una sola página de inicio, con sus secciones en este orden:
+Cinco páginas con el mismo menú:
 
-1. Portada.
-2. Aliados: franja con los logos en movimiento.
-3. Seguros y soluciones: carrusel con todos los servicios para personas y empresas.
-4. Somos Angopi.
-5. ¿Por qué elegir Angopi?
-6. Nuestra historia.
-7. Equipo.
-8. Recursos y gestiones.
-9. Contacto.
+- **Home:** portada, aliados, carrusel de seguros, Somos Angopi, ¿Por qué elegir Angopi?, Nuestra historia, Equipo, Recursos y Contacto. Cada tarjeta del carrusel lleva a la sección de ese seguro en su landing.
+- **Personas (`/personas/`):** auto, moto, SOAT, vida, salud, hogar, viaje, mascotas, bicicletas y otros seguros.
+- **Empresas (`/empresas/`):** responsabilidad civil, cumplimiento, daños y lucro, transporte, montaje y construcción, beneficios a empleados y profesionales independientes.
+- **Arrendamiento (`/arrendamiento/`):** abre con el cotizador de SURA (Arriendy) y el código de asesor de Angopi.
+- **Contacto (`/contacto/`):** canales, formulario que abre WhatsApp, mapa y correos de cada asesor.
 
 - **Textos:** salen de fuentes reales de Angopi: angopi.co, su LinkedIn, su Instagram, su Linktree y el correo de bienvenida.
 - **Color:** un solo azul, el del logo (`#418EF2`), con negro, grises y blanco.

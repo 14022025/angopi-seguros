@@ -247,6 +247,17 @@
     if (location.hash) openFromHash(location.hash);
   }
 
+  // Seguros de la home: tocar cualquier parte de la tarjeta lleva a ese seguro en su página
+  each('.track .svc', function (card) {
+    var cta = card.querySelector('.svc__cta');
+    if (!cta) return;
+    card.style.cursor = 'pointer';
+    card.addEventListener('click', function (e) {
+      if (e.target.closest('a')) return;
+      window.location.href = cta.href;
+    });
+  });
+
   // Cifras que cuentan desde cero
   if ('IntersectionObserver' in window && !calm) {
     var counter = new IntersectionObserver(function (entries) {
@@ -305,13 +316,15 @@
       var necesidad = (data.get('necesidad') || '').toString().trim();
       var mensaje = (data.get('mensaje') || '').toString().trim();
       var ciudad = (data.get('ciudad') || '').toString().trim();
+      var correo = (data.get('correo') || '').toString().trim();
       var acepta = data.get('autorizacion');
       var firstInvalid = null;
 
       var checks = [
         ['nombre', nombre.length >= 2 ? '' : 'Escribe tu nombre.'],
         ['telefono', /^[+()\d\s-]{7,20}$/.test(telefono) ? '' : 'Escribe un número de contacto válido.'],
-        ['necesidad', necesidad ? '' : 'Elige qué quieres asegurar.'],
+        ['correo', !correo || /^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(correo) ? '' : 'Revisa tu correo, parece que le falta algo.'],
+        ['necesidad', necesidad ? '' : 'Cuéntanos qué quieres proteger.'],
         ['autorizacion', acepta ? '' : 'Necesitamos tu autorización para contactarte.'],
       ];
       checks.forEach(function (c) {
@@ -326,12 +339,13 @@
         return;
       }
 
-      var lines = ['Hola Angopi, quiero cotizar un seguro.'];
-      if (necesidad) lines.push('Necesito: ' + necesidad);
+      var lines = ['¡Hola! Les escribo desde la página de contacto.'];
+      if (necesidad) lines.push('Quiero proteger: ' + necesidad);
       if (nombre) lines.push('Nombre: ' + nombre);
       if (telefono) lines.push('Teléfono: ' + telefono);
+      if (correo) lines.push('Correo: ' + correo);
       if (ciudad) lines.push('Ciudad: ' + ciudad);
-      if (mensaje) lines.push('Detalles: ' + mensaje);
+      if (mensaje) lines.push('Mensaje: ' + mensaje);
 
       var url = 'https://wa.me/' + WHATSAPP + '?text=' + encodeURIComponent(lines.join('\n'));
       if (status) status.textContent = 'Abriendo WhatsApp con tu mensaje…';

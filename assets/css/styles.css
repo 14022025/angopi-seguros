@@ -1474,3 +1474,167 @@ h4.svc__kicker { letter-spacing: 0; }
 @media (min-width: 960px) {
   .hero-v { min-height: max(clamp(600px, 92vh, 820px), calc(100vh - 110px)); }
 }
+
+/* ==========================================================================
+   Landings (Personas, Empresas, Arrendamiento) y Contacto
+   Mismo lenguaje de la home: casita, burbuja, tarjeta blanca con sello.
+   ========================================================================== */
+.nav-links a[aria-current="page"], .mobile-menu li a[aria-current="page"] { font-weight: 700; }
+
+/* Portada de cada página: su título y su acción en la primera pantalla */
+.lhero { padding: 118px 0 clamp(2.5rem, 2rem + 2vw, 4rem); }
+.lhero__grid { display: grid; gap: 36px; align-items: center; }
+@media (min-width: 960px) {
+  .lhero__grid { grid-template-columns: 1.08fr 0.92fr; gap: clamp(32px, 2rem + 2vw, 72px); }
+  .lhero { min-height: min(100vh, 860px); display: flex; align-items: center; }
+  .lhero--quote .lhero__grid { grid-template-columns: 0.72fr 1.28fr; }
+  .lhero--contact { align-items: flex-start; }
+  .lhero--contact .lhero__grid { grid-template-columns: 0.92fr 1.08fr; align-items: start; }
+}
+.lhero h1 { font-size: clamp(2.2rem, 1.5rem + 2.2vw, 3.3rem); line-height: 1.05; letter-spacing: -0.015em; }
+.lhero__kw { display: block; margin-top: 14px; font-size: clamp(1.05rem, 0.95rem + 0.4vw, 1.3rem); font-weight: 700; line-height: 1.3; letter-spacing: 0; color: var(--blue); }
+.lhero .lead { margin-top: 20px; font-size: var(--fs-md); max-width: 36rem; }
+.lhero__copy .hero-in:nth-child(2) { animation-delay: 0.08s; }
+.lhero__copy .hero-in:nth-child(3) { animation-delay: 0.16s; }
+.lhero__copy .hero-in:nth-child(4) { animation-delay: 0.24s; }
+.lhero__copy .hero-in:nth-child(5) { animation-delay: 0.32s; }
+.crumbs { margin-bottom: 16px; font-size: var(--fs-sm); color: var(--muted); }
+.crumbs ol { display: flex; flex-wrap: wrap; gap: 8px; list-style: none; }
+.crumbs li + li::before { content: "/"; margin-right: 8px; opacity: 0.5; }
+.crumbs a { color: var(--muted); text-decoration: none; }
+.crumbs a:hover { color: var(--blue); }
+.crumbs [aria-current] { color: var(--blue); font-weight: 600; }
+.jump { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 24px; list-style: none; }
+.jump .chip { min-height: 38px; padding: 0 14px; }
+.jump .chip:hover { background: var(--blue); border-color: var(--blue); color: #fff; }
+.lhero__media { position: relative; margin: 0; }
+.lhero__media .house { max-width: min(100%, calc((100vh - 170px) / 0.94)); margin-inline: auto; }
+.lhero__bubble { position: absolute; left: 0; bottom: 8%; max-width: 250px; }
+@media (max-width: 559px) { .lhero__bubble { position: relative; left: auto; bottom: auto; margin: -36px auto 0 -4px; } }
+.lhero__help { margin-top: 18px; font-size: var(--fs-sm); color: var(--muted); }
+.lhero__help a { font-weight: 600; }
+.lhero .checks { margin-top: 20px; }
+.lhero__tool { min-width: 0; }
+
+/* Cotizador de arrendamiento */
+.lhero .quoter { border-radius: var(--r-lg); padding: clamp(6px, 0.2rem + 0.6vw, 14px); min-height: 480px; box-shadow: 0 30px 60px -36px rgba(10, 10, 12, 0.4); }
+.lhero .quoter__fallback { text-align: center; }
+
+/* Cada seguro: foto con la tarjeta blanca encima y el sello montado en el borde */
+.ins { padding-block: clamp(1.75rem, 1rem + 2.4vw, 3.5rem); }
+.ins__grid { display: grid; }
+.ins__media { margin: 0; overflow: hidden; aspect-ratio: 4 / 3; border-radius: var(--r-lg); background: var(--panel); }
+.ins__media img { width: 100%; height: 100%; object-fit: cover; object-position: 50% 30%; }
+.ins__card { position: relative; z-index: 1; margin: -56px 12px 0; padding: 44px 22px 24px; border-radius: var(--r-lg); background: #fff; box-shadow: 0 30px 60px -34px rgba(10, 10, 12, 0.45); }
+.ins__card > .seal { position: absolute; left: 20px; top: -28px; width: 58px; height: 58px; }
+.ins__card .eyebrow { margin-bottom: 10px; }
+.ins__card h2 { font-size: clamp(1.5rem, 1.25rem + 1vw, 2.15rem); line-height: 1.12; }
+.ins__card > p:not(.eyebrow):not(.ins__note) { margin-top: 12px; color: var(--muted); }
+.ins__card .btn-row { margin-top: 20px; }
+.ins__note { margin-top: 14px; font-size: var(--fs-sm); color: var(--muted); }
+.ins__note a { font-weight: 600; }
+@media (min-width: 960px) {
+  .ins__grid { grid-template-columns: repeat(12, minmax(0, 1fr)); align-items: center; }
+  .ins__media { grid-column: 1 / 8; grid-row: 1; aspect-ratio: 1 / 0.86; max-height: calc(100vh - 140px); width: 100%; }
+  .ins__card { grid-column: 7 / 13; grid-row: 1; margin: 0; padding: clamp(28px, 1.2rem + 1.2vw, 40px) clamp(28px, 1.2rem + 1.2vw, 40px) clamp(28px, 1.2rem + 1.2vw, 40px) clamp(44px, 2rem + 1.2vw, 56px); }
+  .ins__card > .seal { left: -32px; top: 28px; width: 64px; height: 64px; }
+  .ins--flip .ins__media { grid-column: 6 / 13; }
+  .ins--flip .ins__card { grid-column: 1 / 7; padding-left: clamp(28px, 1.2rem + 1.2vw, 40px); padding-right: clamp(44px, 2rem + 1.2vw, 56px); }
+  .ins--flip .ins__card > .seal { left: auto; right: -32px; }
+}
+.checks li::before { background-color: var(--blue); background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23ffffff' stroke-width='3' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M20 6 9 17l-5-5'/%3E%3C/svg%3E"); }
+.ins .checks { margin-top: 14px; gap: 8px; }
+
+/* Mascotas y bicicletas: dos tarjetas de la misma familia que la home */
+.duo-sec { padding-block: clamp(2rem, 1rem + 2.4vw, 3.5rem); }
+.duo { display: grid; gap: 28px; }
+@media (min-width: 900px) { .duo { grid-template-columns: 1fr 1fr; gap: 24px; } }
+.duo .svc { display: flex; flex-direction: column; height: 100%; }
+.duo .svc__media { aspect-ratio: 4 / 3; }
+.duo .svc__card { flex: 1; display: flex; flex-direction: column; }
+.duo .svc__kicker { font-size: 1.4rem; }
+.duo .svc__inner { display: flex; flex-direction: column; align-items: flex-start; }
+.duo .svc__inner > .btn { margin-top: auto; margin-bottom: 18px; }
+.duo .svc__title { margin-bottom: 14px; }
+
+/* Otros seguros */
+.minis { display: grid; gap: clamp(10px, 0.4rem + 0.8vw, 14px); list-style: none; }
+@media (min-width: 640px) { .minis { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+@media (min-width: 1000px) { .minis { grid-template-columns: repeat(3, minmax(0, 1fr)); } }
+.mini { display: flex; flex-direction: column; align-items: flex-start; padding: 22px; border-radius: var(--r); background: #fff; }
+.mini h3 { margin-top: 12px; font-size: 1.15rem; }
+.mini p { margin: 6px 0 14px; font-size: 0.9375rem; color: var(--muted); }
+.mini .link { margin-top: auto; color: var(--blue); }
+.mini .seal { width: 52px; height: 52px; box-shadow: none; margin-left: -6px; }
+.mini--link { padding: 0; }
+.mini--link a { display: flex; flex: 1; flex-direction: column; align-items: flex-start; width: 100%; padding: 22px; color: inherit; text-decoration: none; }
+.mini--link a:hover .link { color: var(--blue); }
+
+/* Arrendamiento: para quién es */
+.roles { display: grid; gap: 14px; list-style: none; }
+.roles li { display: flex; gap: 14px; align-items: flex-start; padding: 16px 18px 16px 12px; border-radius: var(--r); background: #fff; box-shadow: 0 18px 36px -28px rgba(10, 10, 12, 0.4); }
+.roles .seal { width: 54px; height: 54px; box-shadow: none; }
+.roles h3 { font-size: 1.1rem; }
+.roles p { margin-top: 4px; font-size: 0.9375rem; color: var(--muted); }
+.how__steps { margin-top: 4px; }
+
+/* Contacto */
+.lhero--contact { padding-bottom: clamp(2.5rem, 2rem + 2vw, 4rem); }
+.lhero--contact .channels { margin-top: 26px; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 10px; }
+.channel { padding: 10px 14px 10px 8px; gap: 10px; box-shadow: 0 14px 30px -26px rgba(10, 10, 12, 0.4); }
+.channel .seal { width: 50px; height: 50px; box-shadow: none; }
+.channel__label { color: var(--blue); font-weight: 600; }
+.channel__value { font-family: var(--font-title); font-weight: 800; overflow-wrap: anywhere; }
+.form-card { gap: 16px; padding: clamp(20px, 1rem + 1.2vw, 32px); border-radius: var(--r-lg); background: #fff; box-shadow: 0 30px 60px -36px rgba(10, 10, 12, 0.4); }
+.form-card .form__row { gap: 16px; }
+.form-card__head h2 { font-size: clamp(1.4rem, 1.2rem + 0.8vw, 1.9rem); }
+.form-card__head p { margin-top: 6px; font-size: var(--fs-sm); color: var(--muted); }
+.form-card__status { font-size: var(--fs-sm); color: var(--muted); text-align: center; }
+.form-card__status:empty { display: none; }
+.form-card .input, .form-card .textarea { min-height: 46px; }
+.form-card .textarea { min-height: 84px; }
+.form-card .choice span { min-height: 38px; padding: 0 14px; }
+.visit { margin: 16px 0 20px; font-style: normal; font-size: var(--fs-md); color: var(--muted); }
+.map { box-shadow: 0 30px 60px -36px rgba(10, 10, 12, 0.4); border-radius: var(--r-lg); }
+.map iframe { filter: none; }
+.direct { display: grid; gap: 10px; list-style: none; }
+@media (min-width: 640px) { .direct { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+@media (min-width: 1000px) { .direct { grid-template-columns: repeat(5, minmax(0, 1fr)); } }
+.direct a { display: block; height: 100%; padding: 16px 18px; border-radius: var(--r); background: #fff; color: inherit; text-decoration: none; box-shadow: 0 14px 30px -26px rgba(10, 10, 12, 0.4); }
+.direct strong { display: block; font-family: var(--font-title); font-weight: 800; }
+.direct span { display: block; margin-top: 2px; font-size: var(--fs-sm); color: var(--blue); overflow-wrap: anywhere; }
+
+/* Cierre con la línea larga: en celular puede partirse en dos */
+@media (max-width: 720px) { .cta__line { white-space: normal; } }
+
+/* ¿Por qué elegir?: seis puntos que caben enteros en la pantalla */
+#por-que .acc { gap: 8px; }
+#por-que .acc summary { min-height: 52px; padding-block: 8px; }
+#por-que .acc__body { padding-bottom: 16px; }
+@media (min-width: 960px) {
+  #por-que { padding-block: clamp(72px, 9vh, 96px); }
+  #por-que .why__body .head { margin-bottom: 18px; }
+  #por-que .why__body h2 { font-size: clamp(1.6rem, 1.2rem + 1.2vw, 2.2rem); }
+}
+@media (min-width: 960px) and (max-height: 820px) {
+  #por-que { padding-block: 76px 24px; }
+  #por-que .eyebrow { margin-bottom: 8px; }
+  #por-que .why__body h2 { font-size: 1.55rem; }
+  #por-que .acc { gap: 6px; }
+  #por-que .acc summary { min-height: 46px; padding-block: 4px; }
+  #por-que .acc__body p { font-size: 0.875rem; line-height: 1.45; }
+}
+
+/* Landings: las personas se salen de la casita. Encima de la foto va su recorte, sin la forma de la casa,
+   así la cabeza se ve sobre el blanco en vez de cortarse con el techo. Solo se usa en la parte de arriba. */
+.lhero__media .house, #para-quien .house { position: relative; }
+.house img.house__front {
+  position: absolute; inset: 0; z-index: 1; width: 100%; height: 100%; object-fit: cover;
+  -webkit-mask: none; mask: none;
+  clip-path: inset(0 0 42% 0);
+  pointer-events: none;
+}
+/* La burbuja de comentario siempre sale un poco de la figura */
+.lhero__bubble { z-index: 2; left: clamp(-30px, -2vw, -14px); }
+.why__bubble { z-index: 2; }
+@media (max-width: 559px) { .lhero__bubble { left: auto; margin: -36px auto 0 -10px; } }

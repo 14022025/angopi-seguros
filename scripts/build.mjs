@@ -54,32 +54,29 @@ const LINKS = {
   linkedin: 'https://co.linkedin.com/company/agencia-de-seguros-angopi-ltda',
   youtube: 'https://www.youtube.com/channel/UCFu8ceEwrFtgullOjb4gHsA',
   maps: 'https://www.google.com/maps/search/?api=1&query=Edificio+River+View+Carrera+64B+85-150+Barranquilla',
-  mapsEmbed: 'https://www.google.com/maps?q=Edificio%20River%20View%2C%20Carrera%2064B%20%2385-150%2C%20Barranquilla&output=embed',
+  mapsEmbed: 'https://www.google.com/maps?q=Edificio%20River%20View%2C%20Carrera%2064B%20%2385-150%2C%20Barranquilla&z=17&output=embed',
 };
 
-// El sitio es una sola landing: la navegación lleva a sus secciones
+// El mismo menú en todas las páginas. Nosotros y Recursos viven en la home.
 const NAV = [
-  { label: 'Personas', href: '#personas' },
-  { label: 'Empresas', href: '#empresas' },
-  { label: 'Arrendamiento', href: '#arrendamiento' },
+  { label: 'Personas', href: 'personas/', key: 'personas' },
+  { label: 'Empresas', href: 'empresas/', key: 'empresas' },
+  { label: 'Arrendamiento', href: 'arrendamiento/', key: 'arrendamiento' },
   { label: 'Nosotros', href: '#nosotros' },
   { label: 'Recursos', href: '#recursos' },
+  { label: 'Contacto', href: 'contacto/', key: 'contacto' },
 ];
 
 // Redirecciones desde las URLs de angopi.co y de las páginas internas anteriores
 const LEGACY = {
-  'spersonas.html': '#personas',
-  'sempresas.html': '#empresas',
-  'segurodearrendamiento.html': '#arrendamiento',
+  'spersonas.html': 'personas/',
+  'sempresas.html': 'empresas/',
+  'segurodearrendamiento.html': 'arrendamiento/',
   'about.html': '#nosotros',
   'formatos.html': '#recursos',
-  'contact.html': '#contacto',
-  'personas/index.html': '#personas',
-  'empresas/index.html': '#empresas',
-  'arrendamiento/index.html': '#arrendamiento',
-  'siniestros/index.html': '#contacto',
+  'contact.html': 'contacto/',
+  'siniestros/index.html': 'contacto/',
   'nosotros/index.html': '#nosotros',
-  'contacto/index.html': '#contacto',
   'formatos/index.html': '#recursos',
 };
 
@@ -95,6 +92,7 @@ const ICONS = {
   calendar: '<rect x="3" y="4" width="18" height="18" rx="2"/><path d="M16 2v4"/><path d="M8 2v4"/><path d="M3 10h18"/>',
   pin: '<path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/>',
   car: '<path d="M19 17h2c.6 0 1-.4 1-1v-3c0-.9-.7-1.7-1.5-1.9C18.7 10.6 16 10 16 10s-1.3-1.4-2.2-2.3c-.5-.4-1.1-.7-1.8-.7H5c-.6 0-1.1.4-1.4.9l-1.4 2.9A3.7 3.7 0 0 0 2 12v4c0 .6.4 1 1 1h2"/><circle cx="7" cy="17" r="2"/><path d="M9 17h6"/><circle cx="17" cy="17" r="2"/>',
+  motorbike: '<path d="m18 14-1-3"/><path d="m3 9 6 2a2 2 0 0 1 2-2h2a2 2 0 0 1 1.99 1.81"/><path d="M8 17h3a1 1 0 0 0 1-1 6 6 0 0 1 6-6 1 1 0 0 0 1-1v-.75A5 5 0 0 0 17 5"/><circle cx="19" cy="17" r="3"/><circle cx="5" cy="17" r="3"/>',
   bike: '<circle cx="18.5" cy="17.5" r="3.5"/><circle cx="5.5" cy="17.5" r="3.5"/><circle cx="15" cy="5" r="1"/><path d="M12 17.5V14l-3-3 4-3 2 3h2"/>',
   health: '<path d="M19 14c1.49-1.46 3-3.21 3-5.5A5.5 5.5 0 0 0 16.5 3c-1.76 0-3 .5-4.5 2-1.5-1.5-2.74-2-4.5-2A5.5 5.5 0 0 0 2 8.5c0 2.3 1.5 4.05 3 5.5l7 7Z"/><path d="M3.22 12H9.5l.5-1 2 4.5 2-7 1.5 3.5h5.27"/>',
   users: '<path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M22 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/>',
@@ -387,7 +385,7 @@ function layout(meta, body, ctx) {
         <img class="brand__light" src="${root}assets/img/logo-angopi-blanco.png" alt="ANGOPI Agencia de Seguros" width="568" height="191">
       </a>
       <nav aria-label="Principal">
-        <ul class="nav-links">${NAV.map((n) => `<li><a href="${root}${n.href}">${n.label}</a></li>`).join('')}</ul>
+        <ul class="nav-links">${NAV.map((n) => `<li><a href="${root}${n.href}"${n.key && n.key === meta.nav ? ' aria-current="page"' : ''}>${n.label}</a></li>`).join('')}</ul>
       </nav>
       <div class="nav-actions">
         <a class="btn btn--dark btn--sm nav-cta" href="${asesoria}" target="_blank" rel="noopener">Solicitar asesoría</a>
@@ -399,7 +397,7 @@ function layout(meta, body, ctx) {
     <div class="mobile-menu" id="menu-movil" hidden>
       <nav aria-label="Principal (móvil)">
         <ul>
-          ${NAV.map((n) => `<li><a href="${root}${n.href}">${n.label}${icon('arrow-right', 'icon--sm')}</a></li>`).join('')}
+          ${NAV.map((n) => `<li><a href="${root}${n.href}"${n.key && n.key === meta.nav ? ' aria-current="page"' : ''}>${n.label}${icon('arrow-right', 'icon--sm')}</a></li>`).join('')}
         </ul>
       </nav>
       <div class="mobile-menu__actions">
